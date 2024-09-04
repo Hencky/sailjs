@@ -31,4 +31,6 @@ export interface FormItemProps<OptionType = any> extends AFormItemProps {
   mode?: FieldMode;
   /** 数据源类型 */
   options?: OptionType[];
+  /** 远程数据源 */
+  remoteOptions?: () => Promise<OptionType[]>;
 }

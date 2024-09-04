@@ -1,7 +1,6 @@
+import { Fragment } from 'react';
 import { Input, Button, Divider, Select } from 'antd';
-import { Fragment } from 'react/jsx-runtime';
-import { FormItem, Form, useForm } from '@sailjs/core';
-import { FieldMode } from '@sailjs/core/src/FormItem';
+import { FormItem, Form, useForm, FieldMode } from '@sailjs/core';
 
 function Instance() {
   const [form] = useForm();

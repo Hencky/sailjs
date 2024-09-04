@@ -1,8 +1,11 @@
 import { Fragment } from 'react';
 import { Menu } from 'antd';
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
-import Depdendency from '@/pages/dependency';
+
+/** ===== pages ===== */
+import Options from '@/pages/options';
 import Instance from '@/pages/instance';
+import Depdendency from '@/pages/dependency';
 
 const list = [
   {
@@ -21,7 +24,7 @@ const list = [
     label: '数据源',
     key: 'options',
     path: '/options',
-    element: <Instance />,
+    element: <Options />,
   },
 ];
 

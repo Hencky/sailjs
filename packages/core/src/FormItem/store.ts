@@ -9,17 +9,17 @@ import { LabelTooltipType } from 'antd/lib/form/FormItemLabel';
 import { FieldMode, ValidateStatus } from './interface';
 import type { FormItemProps } from './interface';
 
-export class FieldStore<ValueType = any, OptionsType = any> implements Omit<AFormItemProps, 'validateStatus'> {
+export class FieldStore<ValueType = any, OptionType = any> implements Omit<FormItemProps, 'validateStatus'> {
   form: FormStore & FormInstance;
-  name: NamePath;
+  name?: NamePath;
   /** 表单渲染状态 */
   mode: FieldMode = FieldMode.EDIT;
   /** 表单校验状态 */
   validateStatus: ValidateStatus = ValidateStatus.NONE;
   /** 表单loading状态 */
-  loading: boolean = false;
+  optionsLoading: boolean = false;
   /** 数据源 */
-  options: OptionsType[] = [];
+  options: OptionType[] = [];
 
   style: React.CSSProperties = {};
 
@@ -51,10 +51,10 @@ export class FieldStore<ValueType = any, OptionsType = any> implements Omit<AFor
 
   forceUpdate: () => void;
 
+  remoteOptions?: (() => Promise<OptionType[]>) | undefined;
+
   constructor(props: FormItemProps, form: FormStore & FormInstance, forceUpdate: () => void) {
-    this.name = props.name;
     this.mode = props.mode || FieldMode.EDIT;
-    this.options = props.options || [];
     this.form = form;
     this.forceUpdate = forceUpdate;
 
@@ -63,10 +63,26 @@ export class FieldStore<ValueType = any, OptionsType = any> implements Omit<AFor
     });
 
     this.makeObservable();
+    this.makeRemoteOptions();
   }
 
   makeObservable() {
     makeAutoObservable(this);
+  }
+
+  /** 远程数据源 */
+  makeRemoteOptions() {
+    if (!this.remoteOptions) return;
+    this.optionsLoading = true;
+    try {
+      this.remoteOptions(this).then((data) => {
+        this.options = data;
+        this.optionsLoading = false;
+      });
+    } catch (e) {
+      console.warn(`${this.name} remote options error`, e);
+      this.optionsLoading = false;
+    }
   }
 
   set value(val: ValueType) {
