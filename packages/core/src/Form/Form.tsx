@@ -16,10 +16,11 @@ export const Form: React.FC<PropsWithChildren<FormProps>> = (props) => {
   const [aForm] = useAForm();
 
   formStore.setFormInstance(aForm);
+  formStore.setProps(props);
 
   return (
     <FormContext.Provider value={formStore}>
-      <AForm form={aForm}>{children}</AForm>
+      <AForm form={aForm} onValuesChange={formStore.onValuesChange}>{children}</AForm>
     </FormContext.Provider>
   );
 };

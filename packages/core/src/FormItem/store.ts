@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx';
-import { FormStore, NamePath } from '../Form/store';
+import { FormStore } from '../Form/store';
 import { FormInstance, FormRule } from 'antd';
 import { FormItemProps as AFormItemProps, FeedbackIcons } from 'antd/lib/form/FormItem';
 import { ReactNode } from 'react';
@@ -8,6 +8,7 @@ import { ColProps } from 'antd/lib';
 import { LabelTooltipType } from 'antd/lib/form/FormItemLabel';
 import { FieldMode, ValidateStatus } from './interface';
 import type { FormItemProps } from './interface';
+import type { NamePath } from 'antd/lib/form/interface';
 
 export class FieldStore<ValueType = any, OptionType = any> implements Omit<FormItemProps, 'validateStatus'> {
   form: FormStore & FormInstance;
@@ -72,17 +73,22 @@ export class FieldStore<ValueType = any, OptionType = any> implements Omit<FormI
 
   /** 远程数据源 */
   makeRemoteOptions() {
-    if (!this.remoteOptions) return;
+    if (!this.remoteOptions) return Promise.resolve();
     this.optionsLoading = true;
-    try {
-      this.remoteOptions(this).then((data) => {
+
+    const deps = this.dependencies?.map((key) => {
+      return this.form.getFieldValue(key);
+    });
+
+    return this.remoteOptions(deps)
+      .then((data) => {
         this.options = data;
         this.optionsLoading = false;
+      })
+      .catch((e) => {
+        console.warn(`${this.name} remote options error`, e);
+        this.optionsLoading = false;
       });
-    } catch (e) {
-      console.warn(`${this.name} remote options error`, e);
-      this.optionsLoading = false;
-    }
   }
 
   set value(val: ValueType) {

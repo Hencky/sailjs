@@ -1,4 +1,4 @@
-import { Divider, Select } from 'antd';
+import { Divider, Input, Select } from 'antd';
 import { Fragment } from 'react/jsx-runtime';
 import { FormItem, Form, useForm } from '@sailjs/core';
 import { sleep } from '@/utils';
@@ -30,7 +30,25 @@ function Instance() {
         >
           <Select />
         </FormItem>
-        <FormItem name="b" label="b">
+
+        <FormItem name="b1" label="b1">
+          <Input />
+        </FormItem>
+
+        <FormItem
+          name="b2"
+          label="b2"
+          dependencies={['b1']}
+          remoteOptions={async (dep1) => {
+            console.log('remoteOptions', dep1);
+            await sleep(2000);
+            return [
+              { label: `a  ${dep1}`, value: 'a' },
+              { label: `b  ${dep1}`, value: 'b' },
+              { label: `c  ${dep1}`, value: 'c' },
+            ];
+          }}
+        >
           <Select />
         </FormItem>
         <FormItem name="c" label="c">

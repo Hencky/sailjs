@@ -1,15 +1,18 @@
 import { makeAutoObservable } from 'mobx';
 import { FieldStore } from '../FormItem/store';
-import type { FormInstance } from 'antd';
+import type { FormInstance, FormProps as AFormProps } from 'antd';
+import type { NamePath } from 'antd/es/form/interface';
+import { FormProps } from 'antd/lib';
+import { toCompareName } from '../utils';
 
-export type NamePath = string;
-
-export class FormStore<ValuesType = Record<NamePath, any>> {
+export class FormStore<ValuesType = Record<NamePath, any>> implements Omit<AFormProps, 'fields'> {
   fields: Record<NamePath, FieldStore> = {};
 
   storeValue: ValuesType;
 
   form?: FormInstance;
+
+  deps: Map<NamePath, Set<NamePath>> = new Map();
 
   constructor() {
     this.storeValue = {} as ValuesType;
@@ -18,20 +21,47 @@ export class FormStore<ValuesType = Record<NamePath, any>> {
   }
 
   createField(name: NamePath, field: FieldStore) {
-    this.fields[name] = field;
+    this.fields[this.getName(name)] = field;
+
+    if (field.dependencies) {
+      field.dependencies.forEach((depFieldName) => {
+        const name = this.getName(depFieldName);
+        const actionKeys = this.deps.get(name);
+
+        if (actionKeys) {
+          actionKeys.add(this.getName(field.name));
+          this.deps.set(name, actionKeys);
+        } else {
+          this.deps.set(name, new Set([name]));
+        }
+      });
+    }
+
     return field;
   }
 
-  getField(name: NamePath) {
-    return this.fields[name];
-  }
+  onValuesChange = (value, values) => {
+    const key = Object.keys(value)[0];
 
-  getFieldValue(name: keyof ValuesType) {
-    return this.storeValue[name];
+    const target = this.deps?.get(key);
+
+    if (target) {
+      target.forEach((k) => {
+        this.getField(k).forceUpdate();
+      });
+    }
+  };
+
+  getField(name: NamePath) {
+    return this.fields[this.getName(name)];
   }
 
   setFormInstance(form: FormInstance) {
     this.form = form;
+  }
+
+  setProps(props: FormProps) {
+    this.deps = new Map();
   }
 
   get values(): ValuesType {
@@ -40,5 +70,9 @@ export class FormStore<ValuesType = Record<NamePath, any>> {
 
   set values(vals: ValuesType) {
     this.form?.setFieldsValue(vals);
+  }
+
+  getName(name: NamePath) {
+    return toCompareName(name);
   }
 }

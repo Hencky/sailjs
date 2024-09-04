@@ -1,4 +1,5 @@
 import type { FormItemProps as AFormItemProps } from 'antd/lib/form/FormItem';
+import type { DebounceOptions } from 'ahooks/lib/useDebounce/debounceOptions';
 
 export enum FieldMode {
   /** 编辑状态 */
@@ -33,4 +34,6 @@ export interface FormItemProps<OptionType = any> extends AFormItemProps {
   options?: OptionType[];
   /** 远程数据源 */
   remoteOptions?: () => Promise<OptionType[]>;
+  /** 远程数据源属性设置 */
+  remoteOptionsDebounceProps?: DebounceOptions;
 }
