@@ -33,7 +33,7 @@ export interface FormItemProps<OptionType = any> extends AFormItemProps {
   /** 数据源类型 */
   options?: OptionType[];
   /** 远程数据源 */
-  remoteOptions?: () => Promise<OptionType[]>;
+  remoteOptions?: (depValues?: any[]) => Promise<OptionType[]>;
   /** 远程数据源属性设置 */
   remoteOptionsDebounceProps?: DebounceOptions;
 }

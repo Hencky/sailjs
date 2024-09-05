@@ -5,6 +5,7 @@ import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 /** ===== pages ===== */
 import Options from '@/pages/options';
 import Instance from '@/pages/instance';
+import ArrayName from '@/pages/arrayname';
 import Depdendency from '@/pages/dependency';
 
 const list = [
@@ -25,6 +26,12 @@ const list = [
     key: 'options',
     path: '/options',
     element: <Options />,
+  },
+  {
+    label: '数组name',
+    key: 'arrayname',
+    path: '/arrayname',
+    element: <ArrayName />,
   },
 ];
 

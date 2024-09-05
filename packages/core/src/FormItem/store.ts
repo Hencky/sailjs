@@ -52,7 +52,7 @@ export class FieldStore<ValueType = any, OptionType = any> implements Omit<FormI
 
   forceUpdate: () => void;
 
-  remoteOptions?: (() => Promise<OptionType[]>) | undefined;
+  remoteOptions?: ((depValues?: any[]) => Promise<OptionType[]>) | undefined;
 
   constructor(props: FormItemProps, form: FormStore & FormInstance, forceUpdate: () => void) {
     this.mode = props.mode || FieldMode.EDIT;
