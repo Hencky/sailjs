@@ -27,7 +27,7 @@ export enum ValidateStatus {
   VALIDATING = 'VALIDATING',
 }
 
-export interface FormItemProps<OptionType = any> extends AFormItemProps {
+export interface FormItemProps<ValuesType = any, OptionType = any> extends AFormItemProps<ValuesType> {
   /** 控件状态 */
   mode?: FieldMode;
   /** 数据源类型 */

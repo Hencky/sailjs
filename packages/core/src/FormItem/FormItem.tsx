@@ -8,7 +8,9 @@ import { FormItemProps, FieldMode } from './interface';
 
 const { Item, useFormInstance } = Form;
 
-export const FormItem: FC<PropsWithChildren<FormItemProps>> = observer((props) => {
+function IFormItem<ValuesType = any, OptionType = any>(
+  props: PropsWithChildren<FormItemProps<ValuesType, OptionType>>
+) {
   const {
     children,
     name,
@@ -28,7 +30,10 @@ export const FormItem: FC<PropsWithChildren<FormItemProps>> = observer((props) =
   const forceUpdate = () => update({});
 
   const field = useMemo(() => {
-    return formStore.createField(name, new FieldStore(props, { ...formStore, ...form }, forceUpdate));
+    return formStore.createField<string | number | symbol, OptionType>(
+      name,
+      new FieldStore(props, { ...formStore, ...form }, forceUpdate)
+    );
   }, [form, formStore, name, props]);
 
   useDebounceEffect(
@@ -54,4 +59,6 @@ export const FormItem: FC<PropsWithChildren<FormItemProps>> = observer((props) =
       {cloneElement(children, { ...field.childProps })}
     </Item>
   );
-});
+}
+
+export const FormItem = observer(IFormItem);

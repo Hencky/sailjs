@@ -1,11 +1,11 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import { Form as AForm } from 'antd';
 import { FormContext } from './context';
 import type { FormProps } from './interface';
 
 const { useForm: useAForm } = AForm;
 
-export const Form: React.FC<PropsWithChildren<FormProps>> = (props) => {
+export function Form<ValuesType = any>(props: PropsWithChildren<FormProps<ValuesType>>) {
   const { children, form: formStore, onValuesChange } = props;
 
   const [aForm] = useAForm();
@@ -15,10 +15,10 @@ export const Form: React.FC<PropsWithChildren<FormProps>> = (props) => {
 
   return (
     <FormContext.Provider value={formStore}>
-      <AForm
+      <AForm<ValuesType>
         form={aForm}
         onValuesChange={(changeValues, values) => {
-          formStore.onValuesChange(changeValues, values);
+          formStore.onValuesChange(changeValues);
           onValuesChange?.(changeValues, values);
         }}
       >
@@ -26,4 +26,4 @@ export const Form: React.FC<PropsWithChildren<FormProps>> = (props) => {
       </AForm>
     </FormContext.Provider>
   );
-};
+}

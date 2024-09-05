@@ -1,27 +1,26 @@
 import { makeAutoObservable } from 'mobx';
 import { keys } from 'radash';
+import { toCompareName } from '../utils';
 import { FieldStore } from '../FormItem/store';
 import type { FormInstance, FormProps as AFormProps } from 'antd';
 import type { NamePath } from 'antd/es/form/interface';
 import type { FormProps } from './interface';
-import { toCompareName } from '../utils';
 
-export class FormStore<ValuesType = Record<NamePath, any>> implements Omit<AFormProps, 'fields'> {
+export class FormStore<ValuesType = any> implements Omit<AFormProps, 'fields'> {
   fields: Record<NamePath, FieldStore> = {};
 
-  storeValue: ValuesType;
-
-  form?: FormInstance;
+  form?: FormInstance<ValuesType>;
 
   deps: Map<NamePath, Set<NamePath>> = new Map();
 
   constructor() {
-    this.storeValue = {} as ValuesType;
-
     makeAutoObservable(this);
   }
 
-  createField(name: NamePath, field: FieldStore) {
+  createField<NameType extends keyof ValuesType, OptionType>(
+    name: NameType,
+    field: FieldStore<ValuesType[NameType], OptionType>
+  ) {
     this.fields[this.getName(name)] = field;
 
     if (field.dependencies) {
@@ -41,7 +40,11 @@ export class FormStore<ValuesType = Record<NamePath, any>> implements Omit<AForm
     return field;
   }
 
-  onValuesChange = (value: any) => {
+  getField<NameType extends keyof ValuesType>(name: NameType): FieldStore<ValuesType[NameType]> {
+    return this.fields[this.getName(name)];
+  }
+
+  onValuesChange = (value: ValuesType) => {
     this.deps.forEach((targetDeps, key) => {
       if (keys(value)[0].startsWith(key)) {
         targetDeps.forEach((targetName) => {
@@ -51,11 +54,7 @@ export class FormStore<ValuesType = Record<NamePath, any>> implements Omit<AForm
     });
   };
 
-  getField(name: NamePath) {
-    return this.fields[this.getName(name)];
-  }
-
-  setFormInstance(form: FormInstance) {
+  setFormInstance(form: FormInstance<ValuesType>) {
     this.form = form;
   }
 
@@ -64,11 +63,11 @@ export class FormStore<ValuesType = Record<NamePath, any>> implements Omit<AForm
   }
 
   get values(): ValuesType {
-    return this.form?.getFieldsValue();
+    return this.form!.getFieldsValue();
   }
 
   set values(vals: ValuesType) {
-    this.form?.setFieldsValue(vals);
+    this.form!.setFieldsValue(vals!);
   }
 
   getName(name: NamePath) {

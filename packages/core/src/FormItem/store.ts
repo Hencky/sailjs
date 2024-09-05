@@ -10,7 +10,7 @@ import { FieldMode, ValidateStatus } from './interface';
 import type { FormItemProps } from './interface';
 import type { NamePath } from 'antd/lib/form/interface';
 
-export class FieldStore<ValueType = any, OptionType = any> implements Omit<FormItemProps, 'validateStatus'> {
+export class FieldStore<ValuesType = any, OptionType = any> implements Omit<FormItemProps, 'validateStatus'> {
   form: FormStore & FormInstance;
   name?: NamePath;
   /** 表单渲染状态 */
@@ -91,11 +91,11 @@ export class FieldStore<ValueType = any, OptionType = any> implements Omit<FormI
       });
   }
 
-  set value(val: ValueType) {
+  set value(val: any) {
     this.form.setFieldValue(this.name, val);
   }
 
-  get value() {
+  get value(): any {
     const field = this.form.getFieldValue(this.name);
     return field;
   }
