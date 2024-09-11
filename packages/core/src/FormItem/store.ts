@@ -1,7 +1,7 @@
 import { makeObservable, observable, runInAction } from 'mobx';
 import { FormInstance } from 'antd';
 import type { FormItemProps as AFormItemProps } from 'antd/lib/form/FormItem';
-import { FieldMode, type FormItemProps } from './interface';
+import { FieldMode, type FormItemProps, type ReactionType } from './interface';
 import type { NamePath } from 'antd/lib/form/interface';
 import type { FormStore, FormProps } from '../Form';
 
@@ -20,6 +20,9 @@ export class FieldStore<ValuesType = any, OptionType = any> implements Omit<Form
   remoteOptions?: ((depValues?: any[]) => Promise<OptionType[]>) | undefined;
   /** 强制刷新 */
   forceUpdate: () => void;
+
+  /** 主动关联 */
+  reactions?: ReactionType[];
 
   // ===== 内置 =====
   /** 样式 */

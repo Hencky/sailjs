@@ -2,6 +2,7 @@ import { Menu } from 'antd';
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 
 /** ===== pages ===== */
+import Desctoy from '@/pages/destroy';
 import Options from '@/pages/options';
 import Instance from '@/pages/instance';
 import ArrayName from '@/pages/arrayname';
@@ -38,6 +39,12 @@ const list = [
     key: 'remoteValues',
     path: '/remoteValues',
     element: <RemoteValues />,
+  },
+  {
+    label: '卸载',
+    key: 'destroy',
+    path: '/destroy',
+    element: <Desctoy />,
   },
 ];
 

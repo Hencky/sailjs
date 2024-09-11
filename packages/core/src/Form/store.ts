@@ -107,8 +107,9 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
     name: NameType,
     field: FieldStore<ValuesType[NameType], OptionType>
   ) {
-    this.store[this.getName(name)] = field;
+    this.addField(name, field);
 
+    // 构建被动依赖关系，主要用于 remoteOptions 更新
     if (field.dependencies) {
       field.dependencies.forEach((depFieldName) => {
         const depName = this.getName(depFieldName);
@@ -124,6 +125,13 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
     }
 
     return field;
+  }
+
+  addField<NameType extends keyof ValuesType, OptionType>(
+    name: NameType,
+    field: FieldStore<ValuesType[NameType], OptionType>
+  ) {
+    this.store[this.getName(name)] = field;
   }
 
   removeField(name: NamePath) {

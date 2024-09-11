@@ -1,5 +1,6 @@
 import type { FormItemProps as AFormItemProps } from 'antd/lib/form/FormItem';
 import type { DebounceOptions } from 'ahooks/lib/useDebounce/debounceOptions';
+import type { NamePath } from 'antd/es/form/interface';
 
 export enum FieldMode {
   /** 编辑状态 */
@@ -26,6 +27,14 @@ export enum ValidateStatus {
   /** 校验中 */
   VALIDATING = 'VALIDATING',
 }
+
+export type ReactionType = {
+  dependencies?: NamePath[];
+  target?: NamePath[];
+  result: {
+    [Key in keyof FormItemProps]: FormItemProps[Key] | string;
+  };
+};
 
 export interface FormItemProps<ValuesType = any, OptionType = any> extends AFormItemProps<ValuesType> {
   /** 控件状态 */

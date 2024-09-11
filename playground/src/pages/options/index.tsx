@@ -3,7 +3,7 @@ import { sleep } from 'radash';
 import { Divider, Input, Select } from 'antd';
 import { FormItem, Form, useForm } from '@sailjs/core';
 
-function Instance() {
+function Options() {
   const [form] = useForm();
 
   return (
@@ -62,4 +62,4 @@ function Instance() {
   );
 }
 
-export default Instance;
+export default Options;

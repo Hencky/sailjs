@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { PropsWithChildren, cloneElement, useMemo, useState } from 'react';
+import { PropsWithChildren, cloneElement, useEffect, useMemo, useState } from 'react';
 import { Form } from 'antd';
 import { useDebounceEffect } from 'ahooks';
 import { observer } from 'mobx-react-lite';
@@ -43,12 +43,21 @@ export const FormItem: <ValuesType = any, OptionType = any>(
     remoteOptionsDebounceProps
   );
 
+  useEffect(() => {
+    // @ts-expect-error
+    formStore.addField(name, field);
+    return () => {
+      formStore.removeField(name);
+    };
+  }, [field, formStore, name]);
+
   if (field.mode === FieldMode.NODE) {
     return null;
   }
 
   return (
     <Item {...restProps} {...field.fieldProps} name={name}>
+      {/* @ts-expect-error */}
       {cloneElement(children, { ...field.childProps })}
     </Item>
   );

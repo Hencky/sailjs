@@ -3,7 +3,7 @@ import { sleep } from 'radash';
 import { Input } from 'antd';
 import { FormItem, Form, useForm } from '@sailjs/core';
 
-function Instance() {
+function RemoteValues() {
   const [form] = useForm();
 
   return (
@@ -40,4 +40,4 @@ function Instance() {
   );
 }
 
-export default Instance;
+export default RemoteValues;
