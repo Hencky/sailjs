@@ -1,29 +1,38 @@
-import { PropsWithChildren } from 'react';
-import { Form as AForm } from 'antd';
+import { PropsWithChildren, useEffect } from 'react';
+import { Form as AForm, Spin } from 'antd';
+import { observer } from 'mobx-react-lite';
 import { FormContext } from './context';
 import type { FormProps } from './interface';
 
 const { useForm: useAForm } = AForm;
 
-export function Form<ValuesType = any>(props: PropsWithChildren<FormProps<ValuesType>>) {
-  const { children, form: formStore, onValuesChange } = props;
+export const Form: <ValuesType = any>(props: PropsWithChildren<FormProps<ValuesType>>) => React.ReactNode = observer(
+  (props: PropsWithChildren<FormProps<any>>) => {
+    const { children, form: formStore, onValuesChange } = props;
 
-  const [aForm] = useAForm();
+    const [aForm] = useAForm();
 
-  formStore.setFormInstance(aForm);
-  formStore.setProps(props);
+    formStore.setFormInstance(aForm);
 
-  return (
-    <FormContext.Provider value={formStore}>
-      <AForm<ValuesType>
-        form={aForm}
-        onValuesChange={(changeValues, values) => {
-          formStore.onValuesChange(changeValues);
-          onValuesChange?.(changeValues, values);
-        }}
-      >
-        {children}
-      </AForm>
-    </FormContext.Provider>
-  );
-}
+    useEffect(() => {
+      formStore.init(props);
+    }, []);
+
+    return (
+      <FormContext.Provider value={formStore}>
+        <Spin spinning={formStore.loading}>
+          <AForm
+            form={aForm}
+            onValuesChange={(changeValues, values) => {
+              formStore.innerValueChange(changeValues);
+              onValuesChange?.(changeValues, values);
+            }}
+            {...formStore.formProps}
+          >
+            {children}
+          </AForm>
+        </Spin>
+      </FormContext.Provider>
+    );
+  }
+);

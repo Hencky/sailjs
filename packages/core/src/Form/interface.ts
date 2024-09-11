@@ -3,4 +3,6 @@ import type { FormStore } from './store';
 
 export interface FormProps<Values = any> extends Omit<AFormProps<Values>, 'form'> {
   form: FormStore;
+
+  remoteValues?: () => Promise<Values>;
 }

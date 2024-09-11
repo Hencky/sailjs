@@ -7,6 +7,7 @@ import Options from '@/pages/options';
 import Instance from '@/pages/instance';
 import ArrayName from '@/pages/arrayname';
 import Depdendency from '@/pages/dependency';
+import RemoteValues from '@/pages/remoteValues';
 
 const list = [
   {
@@ -32,6 +33,12 @@ const list = [
     key: 'arrayname',
     path: '/arrayname',
     element: <ArrayName />,
+  },
+  {
+    label: '远程值',
+    key: 'remoteValues',
+    path: '/remoteValues',
+    element: <RemoteValues />,
   },
 ];
 

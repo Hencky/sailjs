@@ -15,6 +15,13 @@ function Instance() {
       >
         获取实例
       </Button>
+      <Button
+        onClick={() => {
+          form.colon = false;
+        }}
+      >
+        取消冒号
+      </Button>
 
       <Button
         onClick={() => {
@@ -23,6 +30,14 @@ function Instance() {
         }}
       >
         禁用
+      </Button>
+      <Button
+        onClick={() => {
+          const field = form.getField('a');
+          field.mode = FieldMode.VIEW;
+        }}
+      >
+        只读
       </Button>
       <Button
         onClick={() => {
@@ -113,7 +128,7 @@ function Instance() {
           console.log('values', values);
         }}
       >
-        <FormItem name="a" label="a" rules={[{ required: true, message: '请输入' }]}>
+        <FormItem name="a" label="a">
           <Input />
         </FormItem>
         <FormItem name="b" label="b">
