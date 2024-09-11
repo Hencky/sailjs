@@ -28,13 +28,9 @@ export enum ValidateStatus {
   VALIDATING = 'VALIDATING',
 }
 
-export type ReactionType = {
-  dependencies?: NamePath[];
-  target?: NamePath[];
-  result: {
-    [Key in keyof FormItemProps]: FormItemProps[Key] | string;
-  };
-};
+export type ReactionResultKeyType = keyof Omit<FormItemProps, 'reactions' | 'dependencies'> & 'value';
+
+export type ReactionResultType<Key extends keyof FormItemProps> = (target: any) => FormItemProps[Key];
 
 export interface FormItemProps<ValuesType = any, OptionType = any> extends AFormItemProps<ValuesType> {
   /** 控件状态 */
@@ -45,4 +41,16 @@ export interface FormItemProps<ValuesType = any, OptionType = any> extends AForm
   remoteOptions?: (depValues?: any[]) => Promise<OptionType[]>;
   /** 远程数据源属性设置 */
   remoteOptionsDebounceProps?: DebounceOptions;
+
+  reactions?: ReactionType[];
 }
+
+export type ReactionType = {
+  /** 被动关联 */
+  dependencies?: NamePath[];
+  /** 主动关联 */
+  targets?: NamePath[];
+  result: {
+    [Key in ReactionResultKeyType]: ReactionResultType<Key> | string;
+  };
+};

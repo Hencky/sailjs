@@ -1,17 +1,21 @@
-import { makeObservable, observable } from 'mobx';
-import { keys, pick } from 'radash';
-import { toCompareName } from '../utils';
-import type { FieldStore } from '../FormItem';
+import { makeObservable, observable, runInAction } from 'mobx';
+import { isFunction, pick } from 'radash';
+import { isFieldChange, toCompareName } from '../utils';
+import type { FieldStore, ReactionResultType } from '../FormItem';
 import type { FormInstance } from 'antd/lib/form';
 import type { NamePath } from 'antd/lib/form/interface';
 import type { FormProps } from './interface';
 
 export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
-  store: Record<NamePath, FieldStore | null> = {};
+  private store: Record<NamePath, FieldStore | null> = {};
   /** 表单实例 */
   form?: FormInstance<ValuesType>;
 
-  deps: Map<NamePath, Set<NamePath>> = new Map();
+  /** 被动关联关系 */
+  private deps: Map<NamePath, Set<NamePath>> = new Map();
+  /** 主动关联关系 */
+  private reactions: Map<NamePath, Set<{ name: NamePath; result: ReactionResultType<NamePath> }>> = new Map();
+  private deps2: Map<NamePath, Set<{ name: NamePath; result: ReactionResultType<NamePath> }>> = new Map();
 
   /** 表单loading状态 */
   loading: boolean = false;
@@ -73,7 +77,7 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
     this.makeObservable();
   }
 
-  makeObservable() {
+  private makeObservable() {
     makeObservable(this, {
       loading: observable,
       autoComplete: observable,
@@ -103,23 +107,45 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
     });
   }
 
+  addToMap<T extends Map<any, any>, K, V>(map: T, key: K, value: V) {
+    const depName = this.getName(key);
+    const actionKeys = map.get(depName);
+
+    if (actionKeys) {
+      actionKeys.add(this.getName(value));
+      map.set(depName, actionKeys);
+    } else {
+      map.set(depName, new Set([value]));
+    }
+  }
+
   createField<NameType extends keyof ValuesType, OptionType>(
     name: NameType,
     field: FieldStore<ValuesType[NameType], OptionType>
   ) {
     this.addField(name, field);
 
-    // 构建被动依赖关系，主要用于 remoteOptions 更新
+    // 构建被动关联关系，用于field依赖的dependencies项值变化时，更新FormItem组件，触发remoteOptions
     if (field.dependencies) {
       field.dependencies.forEach((depFieldName) => {
-        const depName = this.getName(depFieldName);
-        const actionKeys = this.deps.get(depName);
+        this.addToMap(this.deps, depFieldName, name);
+      });
+    }
 
-        if (actionKeys) {
-          actionKeys.add(this.getName(field.name));
-          this.deps.set(depName, actionKeys);
-        } else {
-          this.deps.set(depName, new Set([name]));
+    // 构建主动联动关系
+    if (field.reactions) {
+      field.reactions.forEach((reaction) => {
+        const { dependencies, targets, result } = reaction;
+        if (targets) {
+          targets.forEach((target) => {
+            this.addToMap(this.reactions, field.name, { name: target, result });
+          });
+        }
+
+        if (dependencies) {
+          dependencies.forEach((dependency) => {
+            this.addToMap(this.deps2, dependency, { name: field.name, result });
+          });
         }
       });
     }
@@ -143,10 +169,47 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
   }
 
   innerValueChange = (value: ValuesType) => {
+    // 被动关联触发组件更新
     this.deps.forEach((targetDeps, key) => {
-      if (keys(value)[0].startsWith(key)) {
+      if (isFieldChange(value, key)) {
         targetDeps.forEach((targetName) => {
           this.getField(targetName).forceUpdate();
+        });
+      }
+    });
+
+    this.triggerReactions(value);
+  };
+
+  triggerReactions = (value: ValuesType) => {
+    // 触发主动关联关系
+    this.reactions.forEach((reaction, selfName) => {
+      if (isFieldChange(value, selfName)) {
+        runInAction(() => {
+          reaction.forEach(({ name: reactionName, result }) => {
+            // @ts-expect-error
+            Object.keys(result).forEach((key: keyof typeof result) => {
+              let resultValue;
+
+              const selfValue = this.getField(selfName).value;
+
+              if (isFunction(result[key])) {
+                resultValue = (result[key] as ReactionResultType<any>)(selfValue);
+              } else {
+                resultValue = new Function('$root', `with($root) { return (${result[key]}); }`)({
+                  $self: selfValue,
+                });
+              }
+
+              // 循环触发 a -> b -> c
+              if (key === 'value') {
+                this.triggerReactions({ [reactionName]: resultValue } as ValuesType);
+              }
+
+              // @ts-expect-error
+              this.getField(reactionName)[key] = resultValue;
+            });
+          });
         });
       }
     });

@@ -1,3 +1,5 @@
+import { keys } from 'radash';
+
 type NameType = string | number;
 
 type Join<T extends any[], U extends string | number> = T extends [infer F, ...infer R]
@@ -13,4 +15,8 @@ export function toCompareName(name: any): any {
     return name.join('.');
   }
   return name;
+}
+
+export function isFieldChange(value: any, fieldName: string) {
+  return keys(value)[0].startsWith(fieldName);
 }

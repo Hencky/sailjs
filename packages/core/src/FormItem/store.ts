@@ -1,7 +1,7 @@
 import { makeObservable, observable, runInAction } from 'mobx';
 import { FormInstance } from 'antd';
-import type { FormItemProps as AFormItemProps } from 'antd/lib/form/FormItem';
 import { FieldMode, type FormItemProps, type ReactionType } from './interface';
+import type { FormItemProps as AFormItemProps } from 'antd/lib/form/FormItem';
 import type { NamePath } from 'antd/lib/form/interface';
 import type { FormStore, FormProps } from '../Form';
 

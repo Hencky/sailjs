@@ -20,7 +20,7 @@ function Options() {
           label="a"
           options={[{ label: 'a', value: 'a' }]}
           remoteOptions={async () => {
-            await sleep(2000);
+            // await sleep(2000);
             return [
               { label: 'a', value: 'a' },
               { label: 'b', value: 'b' },
@@ -41,7 +41,7 @@ function Options() {
           dependencies={['b1']}
           remoteOptions={async (dep1) => {
             console.log('remoteOptions', dep1);
-            await sleep(2000);
+            // await sleep(2000);
             return [
               { label: `a  ${dep1}`, value: 'a' },
               { label: `b  ${dep1}`, value: 'b' },
