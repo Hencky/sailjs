@@ -150,7 +150,7 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
 
   init(props: FormProps) {
     Object.keys(props).forEach((key) => {
-      if (key === 'form') return;
+      // @ts-expect-error
       this[key] = props[key];
     });
 

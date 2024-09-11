@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
+import { sleep } from 'radash';
 import { Divider, Input, Select } from 'antd';
 import { FormItem, Form, useForm } from '@sailjs/core';
-import { sleep } from '@/utils';
 
 function ArrayName() {
   const [form] = useForm();

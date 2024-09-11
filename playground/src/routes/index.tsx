@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { Menu } from 'antd';
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 
@@ -58,12 +57,10 @@ const Layout = () => {
   };
 
   return (
-    <Fragment>
-      <BrowserRouter>
-        <Menu mode="horizontal" items={renderMenus()} style={{ marginBottom: 24 }} />
-        <Routes>{renderRoutes()}</Routes>
-      </BrowserRouter>
-    </Fragment>
+    <BrowserRouter>
+      <Menu mode="horizontal" items={renderMenus()} style={{ marginBottom: 24 }} />
+      <Routes>{renderRoutes()}</Routes>
+    </BrowserRouter>
   );
 };
 

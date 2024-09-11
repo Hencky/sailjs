@@ -1,10 +1,9 @@
 import { makeObservable, observable, runInAction } from 'mobx';
 import { FormInstance } from 'antd';
-import type { FormStore } from '../Form/store';
 import type { FormItemProps as AFormItemProps } from 'antd/lib/form/FormItem';
-import { FieldMode } from './interface';
-import type { FormItemProps } from './interface';
+import { FieldMode, type FormItemProps } from './interface';
 import type { NamePath } from 'antd/lib/form/interface';
+import type { FormStore, FormProps } from '../Form';
 
 export class FieldStore<ValuesType = any, OptionType = any> implements Omit<FormItemProps, 'validateStatus'> {
   /** 表单实例 */
@@ -90,6 +89,7 @@ export class FieldStore<ValuesType = any, OptionType = any> implements Omit<Form
     this.forceUpdate = forceUpdate;
 
     Object.keys(props).forEach((key) => {
+      // @ts-expect-error
       this[key] = props[key];
     });
 
@@ -166,8 +166,11 @@ export class FieldStore<ValuesType = any, OptionType = any> implements Omit<Form
   }
 
   public get childProps() {
-    const displayOptions = {
-      variant: '',
+    const displayOptions: {
+      variant: FormProps['variant'];
+      readOnly: boolean;
+    } = {
+      variant: 'outlined',
       readOnly: false,
     };
 

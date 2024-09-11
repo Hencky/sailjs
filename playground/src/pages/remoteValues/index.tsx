@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { sleep } from 'radash';
-import { Input, Select } from 'antd';
-import { FormItem, Form, useForm, FieldMode } from '@sailjs/core';
+import { Input } from 'antd';
+import { FormItem, Form, useForm } from '@sailjs/core';
 
 function Instance() {
   const [form] = useForm();
@@ -19,6 +19,7 @@ function Instance() {
             a: '1',
             b: '2',
             c: '3',
+            d: '4',
           };
         }}
       >
@@ -26,31 +27,13 @@ function Instance() {
           <Input />
         </FormItem>
         <FormItem name="b" label="b">
-          <Input
-            onChange={(e) => {
-              const val = e.target.value;
-              const field = form.getField('a');
-              field.value = val;
-            }}
-          />
+          <Input />
         </FormItem>
         <FormItem name="c" label="c">
-          <Select />
+          <Input />
         </FormItem>
         <FormItem name="d" label="d">
-          <Input
-            onChange={(e) => {
-              const val = e.target.value;
-              const field = form.getField('c');
-              if (val === 'a') {
-                field.value = '123';
-                field.mode = FieldMode.DISABLED;
-              } else {
-                field.value = undefined;
-                field.mode = FieldMode.EDIT;
-              }
-            }}
-          />
+          <Input />
         </FormItem>
       </Form>
     </Fragment>
