@@ -49,7 +49,7 @@ export type ReactionType = {
   /** 被动关联 */
   dependencies?: NamePath[];
   /** 主动关联 */
-  targets?: NamePath[];
+  effects?: NamePath[];
   result: {
     [Key in ReactionResultKeyType]: ReactionResultType<Key> | string;
   };
