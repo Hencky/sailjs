@@ -22,12 +22,12 @@ export const Form: <ValuesType = any>(props: PropsWithChildren<FormProps<ValuesT
       <FormContext.Provider value={formStore}>
         <Spin spinning={formStore.loading}>
           <AForm
+            {...formStore.formProps}
             form={aForm}
             onValuesChange={(changeValues, values) => {
               formStore.innerValueChange(changeValues);
               onValuesChange?.(changeValues, values);
             }}
-            {...formStore.formProps}
           >
             {children}
           </AForm>

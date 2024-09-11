@@ -149,8 +149,6 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
   }
 
   init(props: FormProps) {
-    this.deps = new Map();
-
     Object.keys(props).forEach((key) => {
       if (key === 'form') return;
       this[key] = props[key];
@@ -206,7 +204,6 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
       'onFieldsChange',
       'onFinish',
       'onFinishFailed',
-      'onValuesChange',
       'clearOnDestroy',
     ]);
   }
