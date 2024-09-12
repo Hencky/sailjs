@@ -1,7 +1,7 @@
 import { makeObservable, observable, runInAction } from 'mobx';
 import { isFunction, pick, isEqual } from 'radash';
 import { isFieldChange, toCompareName } from '../utils';
-import type { FieldStore, ReactionResultType, ReactionResultFunctionType } from '../FormItem';
+import type { FieldStore, ReactionResultType, ReactionResultFunctionType, FormItemProps, FieldMode } from '../FormItem';
 import type { FormInstance } from 'antd/lib/form';
 import type { NamePath } from 'antd/lib/form/interface';
 import type { FormProps } from './interface';
@@ -18,6 +18,8 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
   private store: Record<NamePath, FieldStore | null> = {};
   /** 表单实例 */
   form?: FormInstance<ValuesType>;
+  /** 表单状态 */
+  mode?: FieldMode;
 
   /** 被动关联关系,dependencies关联关系 */
   private deps: Record<NamePath, InnerDependencyType[]> = {};
@@ -28,6 +30,8 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
   loading: boolean = false;
   /** 获取表单值 */
   remoteValues?: () => Promise<any>;
+  /** 联动值设置 */
+  remoteOptionsDebounceProps?: FormItemProps<ValuesType>['remoteOptionsDebounceProps'] = { wait: 600 };
 
   // ===== 内置 =====
   autoComplete?: FormProps['autoComplete'];
@@ -124,7 +128,6 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
     field: FieldStore<ValuesType[NameType], OptionType>
   ) {
     this.addField(name, field);
-    field.created = true;
 
     return field;
   }

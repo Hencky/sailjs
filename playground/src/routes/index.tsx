@@ -2,6 +2,7 @@ import { Menu } from 'antd';
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 
 /** ===== pages ===== */
+import Group from '@/pages/group';
 import Desctoy from '@/pages/destroy';
 import Options from '@/pages/options';
 import Instance from '@/pages/instance';
@@ -45,6 +46,12 @@ const list = [
     key: 'destroy',
     path: '/destroy',
     element: <Desctoy />,
+  },
+  {
+    label: '分组',
+    key: 'group',
+    path: '/group',
+    element: <Group />,
   },
 ];
 

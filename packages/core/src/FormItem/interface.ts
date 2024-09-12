@@ -1,3 +1,4 @@
+import type { ColProps } from 'antd/lib/col';
 import type { FormItemProps as AFormItemProps } from 'antd/lib/form/FormItem';
 import type { DebounceOptions } from 'ahooks/lib/useDebounce/debounceOptions';
 import type { NamePath } from 'antd/es/form/interface';
@@ -34,7 +35,10 @@ export type ReactionResultFunctionType<Key extends keyof FormItemProps> = (targe
 
 export type ReactionResultType<Key extends keyof FormItemProps> = ReactionResultFunctionType<Key> | string;
 
-export interface FormItemProps<ValuesType = any, OptionType = any> extends AFormItemProps<ValuesType> {
+export interface FormItemProps<ValuesType = any, OptionType = any>
+  extends AFormItemProps<ValuesType>,
+    Pick<ColProps, 'offset' | 'push' | 'pull' | 'order' | 'flex'> {
+  span?: ColProps['span'] | null;
   /** 控件状态 */
   mode?: FieldMode;
   /** 数据源类型 */
@@ -43,8 +47,10 @@ export interface FormItemProps<ValuesType = any, OptionType = any> extends AForm
   remoteOptions?: (depValues?: any[]) => Promise<OptionType[]>;
   /** 远程数据源属性设置 */
   remoteOptionsDebounceProps?: DebounceOptions;
-
+  /** 联动关系 */
   reactions?: ReactionType[];
+
+  variant?: any;
 }
 
 export type ReactionType = {

@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { PropsWithChildren, cloneElement, useEffect, useMemo, useState } from 'react';
-import { Form } from 'antd';
+import { Form, Col } from 'antd';
 import { useDebounceEffect } from 'ahooks';
 import { observer } from 'mobx-react-lite';
 import { FieldStore } from './store';
 import { useFormContext } from '../Form/context';
+import { useFormGroupContext } from '../FormGroup';
 import { type FormItemProps, FieldMode } from './interface';
 
 const { Item, useFormInstance } = Form;
@@ -12,28 +12,29 @@ const { Item, useFormInstance } = Form;
 export const FormItem: <ValuesType = any, OptionType = any>(
   props: PropsWithChildren<FormItemProps<ValuesType, OptionType>>
 ) => React.ReactNode = observer((props) => {
-  const {
-    children,
-    name,
-    style,
-    remoteOptions,
-    dependencies,
-    remoteOptionsDebounceProps = { wait: 600 },
-    ...restProps
-  } = props;
+  const { name, children, ...restProps } = props;
 
   const [updateKey, update] = useState({});
 
-  const formStore = useFormContext();
+  const { form: formStore, ...formCtx } = useFormContext();
+
+  const formGroupCtx = useFormGroupContext();
+
+  const assignProps = Object.assign({}, formCtx, formGroupCtx, props);
 
   const form = useFormInstance();
 
   const forceUpdate = () => update({});
 
   const field = useMemo(() => {
-    // @ts-expect-error
-    return formStore.createField(name, new FieldStore(props, { ...formStore, ...form }, forceUpdate));
+    return formStore.createField(
+      // @ts-expect-error
+      name,
+      new FieldStore(assignProps, { ...formStore, ...form }, forceUpdate)
+    );
   }, []);
+
+  const { remoteOptionsDebounceProps } = assignProps;
 
   useDebounceEffect(
     () => {
@@ -55,10 +56,16 @@ export const FormItem: <ValuesType = any, OptionType = any>(
     return null;
   }
 
-  return (
+  const element = (
     <Item {...restProps} {...field.fieldProps} name={name}>
       {/* @ts-expect-error */}
       {cloneElement(children, { ...field.childProps })}
     </Item>
   );
+
+  if (field.colProps.span === null) {
+    return element;
+  }
+
+  return <Col {...field.colProps}>{element}</Col>;
 });

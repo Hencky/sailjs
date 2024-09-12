@@ -25,7 +25,19 @@ export class FieldStore<ValuesType = any, OptionType = any> implements Omit<Form
   /** 主动关联 */
   reactions?: ReactionType[];
 
-  created = false;
+  // ===== ColProps =====
+  /** flex 布局属性 */
+  flex?: FormItemProps['flex'];
+  /** 栅格左侧的间隔格数，间隔内不可以有栅格 */
+  offset?: FormItemProps['offset'];
+  /** 栅格顺序 */
+  order?: FormItemProps['order'];
+  /** 栅格向左移动格数 */
+  pull?: FormItemProps['pull'];
+  /** 栅格向右移动格数 */
+  push?: FormItemProps['push'];
+  /** 栅格占位格数，为 0 时相当于 display: none */
+  span?: FormItemProps['span'];
 
   // ===== 内置 =====
   /** 样式 */
@@ -134,6 +146,12 @@ export class FieldStore<ValuesType = any, OptionType = any> implements Omit<Form
       valuePropName: observable,
       wrapperCol: observable,
       remoteOptions: observable,
+      span: observable,
+      offset: observable,
+      push: observable,
+      pull: observable,
+      order: observable,
+      flex: observable,
     });
   }
 
@@ -169,6 +187,17 @@ export class FieldStore<ValuesType = any, OptionType = any> implements Omit<Form
   get value(): any {
     const field = this.form.getFieldValue(this.name);
     return field;
+  }
+
+  public get colProps() {
+    return {
+      span: this.span,
+      offset: this.offset,
+      push: this.push,
+      pull: this.pull,
+      order: this.order,
+      flex: this.flex,
+    };
   }
 
   public get childProps() {
