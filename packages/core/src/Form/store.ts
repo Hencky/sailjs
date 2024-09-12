@@ -224,13 +224,13 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
             });
           }
 
+          // @ts-expect-error
+          this.getField(effectName)[key] = resultValue;
+
           // 循环触发 a -> b -> c
           if (key === 'value') {
             this.triggerReactions({ [effectName]: resultValue } as ValuesType);
           }
-
-          // @ts-expect-error
-          this.getField(effectName)[key] = resultValue;
         });
       });
     });

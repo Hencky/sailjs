@@ -84,14 +84,14 @@ function Dependency() {
                     }
                     return 'edit';
                   },
-                  colon: `$self === '1' ? true : false`,
+                  colon: `$self === '1'`,
                 },
               },
               {
                 effects: ['c'],
                 result: {
                   mode: `$self === '1' ? 'disabled' : 'edit'`,
-                  colon: `$self === '1' ? true : false`,
+                  colon: `$self === '1'`,
                 },
               },
             ]}
