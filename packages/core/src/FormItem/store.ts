@@ -1,9 +1,10 @@
 import { makeObservable, observable, runInAction } from 'mobx';
 import { FormInstance } from 'antd';
-import { FieldMode, type FormItemProps, type ReactionType } from './interface';
+import { FieldMode } from './interface';
 import type { FormItemProps as AFormItemProps } from 'antd/lib/form/FormItem';
 import type { NamePath } from 'antd/lib/form/interface';
 import type { FormStore, FormProps } from '../Form';
+import type { FormItemProps, ReactionType } from './interface';
 
 export class FieldStore<ValuesType = any, OptionType = any> implements Omit<FormItemProps, 'validateStatus'> {
   /** 表单实例 */
@@ -23,6 +24,8 @@ export class FieldStore<ValuesType = any, OptionType = any> implements Omit<Form
 
   /** 主动关联 */
   reactions?: ReactionType[];
+
+  created = false;
 
   // ===== 内置 =====
   /** 样式 */

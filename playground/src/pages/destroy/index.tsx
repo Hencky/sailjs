@@ -1,31 +1,16 @@
 import { Fragment, useState } from 'react';
-import { Input, Button, Divider } from 'antd';
+import { Input, Button, Divider, Card } from 'antd';
 import { FormItem, Form, useForm, FieldMode } from '@sailjs/core';
 
 function Destroy() {
   const [form] = useForm();
 
-  const [visible, setVisible] = useState(true);
+  const [visibleA, setVisibleA] = useState(true);
+  const [visibleB, setVisibleB] = useState(true);
+  const [visibleC, setVisibleC] = useState(true);
 
   return (
     <Fragment>
-      <Button
-        onClick={() => {
-          setVisible(false);
-        }}
-      >
-        销毁
-      </Button>
-      <Button
-        onClick={() => {
-          setVisible(true);
-        }}
-      >
-        加载
-      </Button>
-
-      <Divider />
-
       <Button
         onClick={() => {
           const field = form.getField('a');
@@ -118,11 +103,87 @@ function Destroy() {
           console.log('values', values);
         }}
       >
-        {visible && (
-          <FormItem name="a" label="a">
-            <Input />
-          </FormItem>
-        )}
+        <Card
+          extra={
+            <Fragment>
+              <Button
+                onClick={() => {
+                  setVisibleA(false);
+                  console.log('form', form);
+                }}
+              >
+                销毁
+              </Button>
+              <Button
+                onClick={() => {
+                  setVisibleA(true);
+                }}
+              >
+                加载
+              </Button>
+            </Fragment>
+          }
+        >
+          {visibleA && (
+            <FormItem name="a" label="a">
+              <Input />
+            </FormItem>
+          )}
+        </Card>
+        <Card
+          extra={
+            <Fragment>
+              <Button
+                onClick={() => {
+                  setVisibleB(false);
+                  console.log('form', form);
+                }}
+              >
+                销毁
+              </Button>
+              <Button
+                onClick={() => {
+                  setVisibleB(true);
+                }}
+              >
+                加载
+              </Button>
+            </Fragment>
+          }
+        >
+          {visibleB && (
+            <FormItem name="b" label="b" dependencies={['a']}>
+              <Input />
+            </FormItem>
+          )}
+        </Card>
+        <Card
+          extra={
+            <Fragment>
+              <Button
+                onClick={() => {
+                  setVisibleC(false);
+                  console.log('form', form);
+                }}
+              >
+                销毁
+              </Button>
+              <Button
+                onClick={() => {
+                  setVisibleC(true);
+                }}
+              >
+                加载
+              </Button>
+            </Fragment>
+          }
+        >
+          {visibleC && (
+            <FormItem name="c" label="c" dependencies={['a', 'b']}>
+              <Input />
+            </FormItem>
+          )}
+        </Card>
       </Form>
     </Fragment>
   );

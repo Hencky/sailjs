@@ -33,7 +33,7 @@ export const FormItem: <ValuesType = any, OptionType = any>(
   const field = useMemo(() => {
     // @ts-expect-error
     return formStore.createField(name, new FieldStore(props, { ...formStore, ...form }, forceUpdate));
-  }, [form, formStore, name, props]);
+  }, []);
 
   useDebounceEffect(
     () => {
@@ -49,7 +49,7 @@ export const FormItem: <ValuesType = any, OptionType = any>(
     return () => {
       formStore.removeField(name);
     };
-  }, [field, formStore, name]);
+  }, []);
 
   if (field.mode === FieldMode.NODE) {
     return null;

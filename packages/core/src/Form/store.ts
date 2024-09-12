@@ -1,21 +1,28 @@
 import { makeObservable, observable, runInAction } from 'mobx';
-import { isFunction, pick } from 'radash';
+import { isFunction, pick, isEqual } from 'radash';
 import { isFieldChange, toCompareName } from '../utils';
-import type { FieldStore, ReactionResultType } from '../FormItem';
+import type { FieldStore, ReactionResultType, ReactionResultFunctionType } from '../FormItem';
 import type { FormInstance } from 'antd/lib/form';
 import type { NamePath } from 'antd/lib/form/interface';
 import type { FormProps } from './interface';
+
+export type InnerDependencyType = {
+  name: NamePath;
+  result?: ReactionResultType<NamePath>;
+  dependencies?: NamePath[];
+  /** 来源 */
+  _source: NamePath;
+};
 
 export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
   private store: Record<NamePath, FieldStore | null> = {};
   /** 表单实例 */
   form?: FormInstance<ValuesType>;
 
-  /** 被动关联关系 */
-  private deps: Map<NamePath, Set<NamePath>> = new Map();
-  /** 主动关联关系 */
-  private reactions: Map<NamePath, Set<{ name: NamePath; result: ReactionResultType<NamePath> }>> = new Map();
-  private deps2: Map<NamePath, Set<{ name: NamePath; result: ReactionResultType<NamePath> }>> = new Map();
+  /** 被动关联关系,dependencies关联关系 */
+  private deps: Record<NamePath, InnerDependencyType[]> = {};
+  /** 关联关系 */
+  private effects: Record<NamePath, InnerDependencyType[]> = {};
 
   /** 表单loading状态 */
   loading: boolean = false;
@@ -107,16 +114,9 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
     });
   }
 
-  private addToMap<T extends Map<any, any>, K, V>(map: T, key: K, value: V) {
-    const depName = this.getName(key);
-    const actionKeys = map.get(depName);
-
-    if (actionKeys) {
-      actionKeys.add(this.getName(value));
-      map.set(depName, actionKeys);
-    } else {
-      map.set(depName, new Set([value]));
-    }
+  private addToMap(map: Record<NamePath, InnerDependencyType[]>, name: NamePath, value: InnerDependencyType) {
+    const strName = this.getName(name);
+    map[strName] = [...(map[strName] || []), value];
   }
 
   createField<NameType extends keyof ValuesType, OptionType>(
@@ -124,31 +124,7 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
     field: FieldStore<ValuesType[NameType], OptionType>
   ) {
     this.addField(name, field);
-
-    // 构建被动关联关系，用于field依赖的dependencies项值变化时，更新FormItem组件，触发remoteOptions
-    if (field.dependencies) {
-      field.dependencies.forEach((depFieldName) => {
-        this.addToMap(this.deps, depFieldName, name);
-      });
-    }
-
-    // 构建主动联动关系
-    if (field.reactions) {
-      field.reactions.forEach((reaction) => {
-        const { dependencies, effects, result } = reaction;
-        if (effects) {
-          effects.forEach((target) => {
-            this.addToMap(this.reactions, field.name, { name: target, result });
-          });
-        }
-
-        if (dependencies) {
-          dependencies.forEach((dependency) => {
-            this.addToMap(this.deps2, dependency, { name: field.name, result, dependencies });
-          });
-        }
-      });
-    }
+    field.created = true;
 
     return field;
   }
@@ -157,15 +133,48 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
     name: NameType,
     field: FieldStore<ValuesType[NameType], OptionType>
   ) {
+    if (this.getField(name)) return;
+
     this.store[this.getName(name)] = field;
+
+    // 构建被动关联关系，用于field依赖的dependencies项值变化时，更新FormItem组件，触发remoteOptions
+    field.dependencies?.forEach((depName) => {
+      this.addToMap(this.deps, depName, { name, _source: name });
+    });
+
+    field.reactions?.forEach((reaction) => {
+      const { dependencies, effects, result } = reaction;
+      // 构建主动联动关系
+      effects?.forEach((target) => {
+        this.addToMap(this.effects, name, { name: target, result, _source: name });
+      });
+
+      // 构建被动联动关系成主动关联关系
+      dependencies?.forEach((depName) => {
+        this.addToMap(this.effects, depName, { name: name, result, dependencies, _soruce: name });
+      });
+    });
   }
 
   removeField(name: NamePath) {
-    const field = this.getName(name);
+    const field = this.getField(name);
 
-    // TODO: 删除关联关系
-    if (field.dependencies) {
-    }
+    // 清空dependencies的关联关系
+    field.dependencies?.forEach((depName) => {
+      this.deps[this.getName(depName)] = this.deps[this.getName(depName)].filter(
+        (item) => !isEqual(item._source, name)
+      );
+    });
+
+    // 清空reactions构造的关联关系
+    field.reactions?.forEach(({ dependencies }) => {
+      this.effects[this.getName(field.name)] = [];
+      dependencies?.forEach((effectName) => {
+        this.effects[this.getName(effectName)] = this.effects[this.getName(effectName)].filter(
+          (item) => !isEqual(item._source, name)
+        );
+      });
+    });
 
     this.store[this.getName(name)] = null;
   }
@@ -174,64 +183,58 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
     return this.store[this.getName(name)]!;
   }
 
+  triggerChange(
+    list: Record<string, InnerDependencyType[]>,
+    value: ValuesType,
+    callback: (config: InnerDependencyType, depName: NamePath) => void
+  ) {
+    Object.keys(list).forEach((depName) => {
+      if (isFieldChange(value, depName)) {
+        list[depName].forEach((item) => callback(item, depName));
+      }
+    });
+  }
+
   innerValueChange = (value: ValuesType) => {
     // 被动关联触发组件更新
-    this.deps.forEach((targetDeps, key) => {
-      if (isFieldChange(value, key)) {
-        targetDeps.forEach((targetName) => {
-          this.getField(targetName).forceUpdate();
-        });
-      }
+    this.triggerChange(this.deps, value, ({ name: effectName }) => {
+      this.getField(effectName).forceUpdate();
     });
 
     this.triggerReactions(value);
   };
 
-  triggerChange = (reaction, selfName) => {
+  triggerReactions(value: ValuesType) {
     runInAction(() => {
-      reaction.forEach(({ name: reactionName, result, dependencies }) => {
+      this.triggerChange(this.effects, value, ({ name: effectName, result, dependencies }, changeName) => {
+        // @ts-expect-error
         Object.keys(result).forEach((key: keyof typeof result) => {
           let resultValue;
 
-          const selfValue = this.getField(selfName).value;
+          const changeValue = this.getField(changeName).value;
           const depValues = dependencies ? dependencies.map((depName) => this.getField(depName).value) : [];
 
-          if (isFunction(result[key])) {
-            resultValue = (result[key] as ReactionResultType<any>)(selfValue);
+          if (isFunction(result![key])) {
+            resultValue = (result![key] as ReactionResultFunctionType<any>)(changeValue);
           } else {
-            resultValue = new Function('$root', `with($root) { return (${result[key]}); }`)({
-              $self: selfValue,
+            resultValue = new Function('$root', `with($root) { return (${result![key]}); }`)({
+              $self: changeValue,
               $deps: depValues,
+              $values: this.values,
             });
           }
 
           // 循环触发 a -> b -> c
           if (key === 'value') {
-            this.triggerReactions({ [reactionName]: resultValue } as ValuesType);
+            this.triggerReactions({ [effectName]: resultValue } as ValuesType);
           }
 
           // @ts-expect-error
-          this.getField(reactionName)[key] = resultValue;
+          this.getField(effectName)[key] = resultValue;
         });
       });
     });
-  };
-
-  triggerReactions = (value: ValuesType) => {
-    // 触发主动关联关系
-    this.reactions.forEach((reaction, selfName) => {
-      if (isFieldChange(value, selfName)) {
-        this.triggerChange(reaction, selfName);
-      }
-    });
-
-    // 触发被动关联关系
-    this.deps2.forEach((dependency, selfName) => {
-      if (isFieldChange(value, selfName)) {
-        this.triggerChange(dependency, selfName);
-      }
-    });
-  };
+  }
 
   setFormInstance(form: FormInstance<ValuesType>) {
     this.form = form;
