@@ -1,6 +1,8 @@
 import { PropsWithChildren, useEffect, useMemo } from 'react';
+import { pick } from 'radash';
 import { Form as AForm, Spin } from 'antd';
 import { observer } from 'mobx-react-lite';
+import { commonKeys } from '../Base';
 import { FormContext } from './context';
 import type { FormProps } from './interface';
 
@@ -8,18 +10,9 @@ const { useForm: useAForm } = AForm;
 
 export const Form: <ValuesType = any>(props: PropsWithChildren<FormProps<ValuesType>>) => React.ReactNode = observer(
   (props: PropsWithChildren<FormProps<any>>) => {
-    const {
-      children,
-      form: formStore,
-      onValuesChange,
-      colon,
-      layout,
-      labelCol,
-      labelAlign,
-      wrapperCol,
-      disabled,
-      variant,
-    } = props;
+    const { children, form: formStore, onValuesChange } = props;
+
+    const commonProps = pick(props, commonKeys);
 
     const [aForm] = useAForm();
 
@@ -30,16 +23,7 @@ export const Form: <ValuesType = any>(props: PropsWithChildren<FormProps<ValuesT
     }, []);
 
     const formContextValue = useMemo(() => {
-      return {
-        colon,
-        layout,
-        labelCol,
-        labelAlign,
-        wrapperCol,
-        variant,
-        disabled,
-        form: formStore,
-      };
+      return { ...commonProps, form: formStore };
     }, []);
 
     return (

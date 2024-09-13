@@ -1,14 +1,16 @@
 import { useMemo } from 'react';
 import { Row } from 'antd';
+import { pick } from 'radash';
 import { observer } from 'mobx-react-lite';
 import { FormItem } from '../FormItem';
 import { toCompareName } from '../utils';
-import { CommonPropType, FormGroupContext } from './context';
+import { FormGroupContext } from './context';
+import { BaseProps, commonKeys } from '../Base';
 import { useFormContext } from '../Form/context';
 import type { RowProps } from 'antd/lib/row';
 import type { FormItemProps } from '../FormItem';
 
-export interface FormGruopProps<ValuesType = any> extends Pick<FormItemProps, CommonPropType>, RowProps {
+export interface FormGruopProps<ValuesType = any> extends Pick<FormItemProps, keyof BaseProps>, RowProps {
   fields: FormItemProps<ValuesType>[];
 }
 
@@ -17,40 +19,10 @@ export const FormGroup = observer((props: FormGruopProps) => {
 
   const formContext = useFormContext();
 
-  const {
-    span,
-    offset,
-    push,
-    pull,
-    order,
-    flex,
-    colon,
-    layout,
-    labelCol,
-    labelAlign,
-    wrapperCol,
-    variant,
-    mode,
-    remoteOptionsDebounceProps,
-  } = Object.assign({}, formContext, props);
+  const realProps = Object.assign({}, formContext, props);
 
   const groupContext = useMemo(() => {
-    return {
-      span,
-      offset,
-      push,
-      pull,
-      order,
-      flex,
-      colon,
-      layout,
-      labelCol,
-      labelAlign,
-      wrapperCol,
-      mode,
-      variant,
-      remoteOptionsDebounceProps,
-    };
+    return { ...pick(realProps, commonKeys) };
   }, []);
 
   const renderFields = () => {

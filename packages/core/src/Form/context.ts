@@ -1,10 +1,10 @@
 import { createContext, useContext } from 'react';
-import { FormStore } from './store';
-import { CommonPropType } from '../FormGroup';
+import type { FormStore } from '../Form';
+import type { BaseProps } from '../Base';
 
-export type FormContextType = {
-  form: FormStore;
-} & Pick<FormStore, CommonPropType>;
+export interface FormContextType<ValuesType = any> extends BaseProps {
+  form: FormStore<ValuesType>;
+}
 
 export const FormContext = createContext({} as FormContextType);
 

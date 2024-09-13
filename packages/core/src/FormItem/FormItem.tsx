@@ -5,14 +5,15 @@ import { observer } from 'mobx-react-lite';
 import { FieldStore } from './store';
 import { useFormContext } from '../Form/context';
 import { useFormGroupContext } from '../FormGroup';
-import { type FormItemProps, FieldMode } from './interface';
+import { FieldMode } from '../Base';
+import type { FormItemProps } from './interface';
 
 const { Item, useFormInstance } = Form;
 
 export const FormItem: <ValuesType = any, OptionType = any>(
   props: PropsWithChildren<FormItemProps<ValuesType, OptionType>>
 ) => React.ReactNode = observer((props) => {
-  const { name, children, ...restProps } = props;
+  const { name, children } = props;
 
   const [updateKey, update] = useState({});
 
@@ -20,21 +21,18 @@ export const FormItem: <ValuesType = any, OptionType = any>(
 
   const formGroupCtx = useFormGroupContext();
 
-  const assignProps = Object.assign({}, formCtx, formGroupCtx, props);
+  const realProps = Object.assign({}, formCtx, formGroupCtx, props);
 
   const form = useFormInstance();
 
   const forceUpdate = () => update({});
 
   const field = useMemo(() => {
-    return formStore.createField(
-      // @ts-expect-error
-      name,
-      new FieldStore(assignProps, { ...formStore, ...form }, forceUpdate)
-    );
+    // @ts-expect-error
+    return formStore!.createField(name, new FieldStore(realProps, { ...formStore, ...form }, forceUpdate));
   }, []);
 
-  const { remoteOptionsDebounceProps } = assignProps;
+  const { remoteOptionsDebounceProps } = realProps;
 
   useDebounceEffect(
     () => {
@@ -57,7 +55,7 @@ export const FormItem: <ValuesType = any, OptionType = any>(
   }
 
   const element = (
-    <Item {...restProps} {...field.fieldProps} name={name}>
+    <Item {...field.fieldProps} name={name}>
       {/* @ts-expect-error */}
       {cloneElement(children, { ...field.childProps })}
     </Item>
