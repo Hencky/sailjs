@@ -2,6 +2,7 @@ import type { ColProps } from 'antd/lib/col';
 import type { FormItemProps as AFormItemProps } from 'antd/lib/form/FormItem';
 import type { DebounceOptions } from 'ahooks/lib/useDebounce/debounceOptions';
 import type { NamePath } from 'antd/es/form/interface';
+import type { FormProps } from 'antd/lib/form';
 
 export enum FieldMode {
   /** 编辑状态 */
@@ -49,8 +50,8 @@ export interface FormItemProps<ValuesType = any, OptionType = any>
   remoteOptionsDebounceProps?: DebounceOptions;
   /** 联动关系 */
   reactions?: ReactionType[];
-
-  variant?: any;
+  /** 表单内控件变体 */
+  variant?: FormProps['variant'];
 }
 
 export type ReactionType = {

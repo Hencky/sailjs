@@ -1,7 +1,8 @@
 import { makeObservable, observable, runInAction } from 'mobx';
 import { isFunction, pick, isEqual } from 'radash';
+import { BaseStore } from '../Base';
 import { isFieldChange, toCompareName } from '../utils';
-import type { FieldStore, ReactionResultType, ReactionResultFunctionType, FormItemProps, FieldMode } from '../FormItem';
+import type { FieldStore, ReactionResultType, ReactionResultFunctionType, FormItemProps } from '../FormItem';
 import type { FormInstance } from 'antd/lib/form';
 import type { NamePath } from 'antd/lib/form/interface';
 import type { FormProps } from './interface';
@@ -14,12 +15,10 @@ export type InnerDependencyType = {
   _source: NamePath;
 };
 
-export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
+export class FormStore<ValuesType = any> extends BaseStore implements Omit<FormProps, 'form'> {
   private store: Record<NamePath, FieldStore | null> = {};
   /** 表单实例 */
   form?: FormInstance<ValuesType>;
-  /** 表单状态 */
-  mode?: FieldMode;
 
   /** 被动关联关系,dependencies关联关系 */
   private deps: Record<NamePath, InnerDependencyType[]> = {};
@@ -35,8 +34,6 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
 
   // ===== 内置 =====
   autoComplete?: FormProps['autoComplete'];
-  /** 配置 Form.Item 的 colon 的默认值。表示是否显示 label 后面的冒号 (只有在属性 layout 为 horizontal 时有效) */
-  colon?: FormProps['colon'];
   /** 设置表单组件禁用，仅对 antd 组件有效 */
   disabled?: FormProps['disabled'];
   /** 设置 Form 渲染元素，为 false 则不创建 DOM 节点 */
@@ -47,14 +44,8 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
   feedbackIcons?: FormProps['feedbackIcons'];
   /** 表单默认值，只有初始化以及重置时生效 */
   initialValues?: FormProps['initialValues'];
-  /** label 标签的文本对齐方式 */
-  labelAlign?: FormProps['labelAlign'];
   /** label 标签的文本换行方式 */
   labelWrap?: FormProps['labelWrap'];
-  /** label 标签布局，同 <Col> 组件 */
-  labelCol?: FormProps['labelCol'];
-  /** 表单布局 */
-  layout?: FormProps['layout'];
   /** 表单名称，会作为表单字段 id 前缀使用 */
   name?: FormProps['name'];
   /** 当字段被删除时保留字段值。你可以通过 getFieldsValue(true) 来获取保留字段值 */
@@ -67,12 +58,6 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
   size?: FormProps['size'];
   /** 验证提示模板 */
   validateMessages?: FormProps['validateMessages'];
-  /** 统一设置字段触发验证的时机 */
-  validateTrigger?: FormProps['validateTrigger'];
-  /** 表单内控件变体  5.13.0 */
-  variant?: FormProps['variant'];
-  /** 需要为输入控件设置布局样式时，使用该属性，用法同 labelCol */
-  wrapperCol?: FormProps['wrapperCol'];
   /** 字段更新时触发回调事件 */
   onFieldsChange?: FormProps['onFieldsChange'];
   /** 提交表单且数据验证成功后回调事件 */
@@ -85,31 +70,26 @@ export class FormStore<ValuesType = any> implements Omit<FormProps, 'form'> {
   clearOnDestroy?: FormProps['clearOnDestroy'];
 
   constructor() {
+    super();
+    super.makeObservable();
     this.makeObservable();
   }
 
-  private makeObservable() {
+  makeObservable() {
     makeObservable(this, {
       loading: observable,
       autoComplete: observable,
-      colon: observable,
       disabled: observable,
       component: observable,
       feedbackIcons: observable,
       initialValues: observable,
-      labelAlign: observable,
       labelWrap: observable,
-      labelCol: observable,
-      layout: observable,
       name: observable,
       preserve: observable,
       requiredMark: observable,
       scrollToFirstError: observable,
       size: observable,
       validateMessages: observable,
-      validateTrigger: observable,
-      variant: observable,
-      wrapperCol: observable,
       onFieldsChange: observable,
       onFinish: observable,
       onFinishFailed: observable,

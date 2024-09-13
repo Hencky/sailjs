@@ -3,7 +3,6 @@ import { createContext, useContext } from 'react';
 
 export type CommonPropType =
   | 'mode'
-  | 'help'
   | 'colon'
   | 'layout'
   | 'variant'
@@ -11,7 +10,14 @@ export type CommonPropType =
   | 'labelAlign'
   | 'wrapperCol'
   | 'validateDebounce'
-  | 'remoteOptionsDebounceProps';
+  | 'remoteOptionsDebounceProps'
+  // ColProps
+  | 'span'
+  | 'offset'
+  | 'push'
+  | 'pull'
+  | 'order'
+  | 'flex';
 
 export const FormGroupContext = createContext({});
 

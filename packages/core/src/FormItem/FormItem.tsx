@@ -67,5 +67,9 @@ export const FormItem: <ValuesType = any, OptionType = any>(
     return element;
   }
 
-  return <Col {...field.colProps}>{element}</Col>;
+  return (
+    <Col {...field.colProps} span={field.colProps.span}>
+      {element}
+    </Col>
+  );
 });

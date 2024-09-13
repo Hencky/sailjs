@@ -3,32 +3,12 @@ import { Row } from 'antd';
 import { observer } from 'mobx-react-lite';
 import { FormItem } from '../FormItem';
 import { toCompareName } from '../utils';
-import { FormGroupContext } from './context';
+import { CommonPropType, FormGroupContext } from './context';
 import { useFormContext } from '../Form/context';
 import type { RowProps } from 'antd/lib/row';
 import type { FormItemProps } from '../FormItem';
 
-export interface FormGruopProps<ValuesType = any>
-  extends Pick<
-      FormItemProps,
-      | 'mode'
-      | 'help'
-      | 'colon'
-      | 'layout'
-      | 'variant'
-      | 'labelCol'
-      | 'labelAlign'
-      | 'wrapperCol'
-      | 'validateDebounce'
-      | 'remoteOptionsDebounceProps'
-      | 'span'
-      | 'offset'
-      | 'push'
-      | 'pull'
-      | 'order'
-      | 'flex'
-    >,
-    RowProps {
+export interface FormGruopProps<ValuesType = any> extends Pick<FormItemProps, CommonPropType>, RowProps {
   fields: FormItemProps<ValuesType>[];
 }
 

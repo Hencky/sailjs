@@ -1,18 +1,20 @@
 import { makeObservable, observable, runInAction } from 'mobx';
 import { FormInstance } from 'antd';
+import { BaseStore } from '../Base';
 import { FieldMode } from './interface';
 import type { FormItemProps as AFormItemProps } from 'antd/lib/form/FormItem';
 import type { NamePath } from 'antd/lib/form/interface';
 import type { FormStore, FormProps } from '../Form';
 import type { FormItemProps, ReactionType } from './interface';
 
-export class FieldStore<ValuesType = any, OptionType = any> implements Omit<FormItemProps, 'validateStatus'> {
+export class FieldStore<ValuesType = any, OptionType = any>
+  extends BaseStore
+  implements Omit<FormItemProps, 'validateStatus'>
+{
   /** 表单实例 */
   form: FormStore<ValuesType> & FormInstance<ValuesType>;
   /** 字段名，唯一路径标识 */
   name?: NamePath;
-  /** 表单渲染状态 */
-  mode: FieldMode = FieldMode.EDIT;
   /** 表单loading状态 */
   optionsLoading: boolean = false;
   /** 数据源 */
@@ -25,25 +27,9 @@ export class FieldStore<ValuesType = any, OptionType = any> implements Omit<Form
   /** 主动关联 */
   reactions?: ReactionType[];
 
-  // ===== ColProps =====
-  /** flex 布局属性 */
-  flex?: FormItemProps['flex'];
-  /** 栅格左侧的间隔格数，间隔内不可以有栅格 */
-  offset?: FormItemProps['offset'];
-  /** 栅格顺序 */
-  order?: FormItemProps['order'];
-  /** 栅格向左移动格数 */
-  pull?: FormItemProps['pull'];
-  /** 栅格向右移动格数 */
-  push?: FormItemProps['push'];
-  /** 栅格占位格数，为 0 时相当于 display: none */
-  span?: FormItemProps['span'];
-
   // ===== 内置 =====
   /** 样式 */
   style?: FormItemProps['style'];
-  /** 配合 label 属性使用，表示是否显示 label 后面的冒号 */
-  colon?: FormItemProps['colon'];
   /** 设置依赖字段 */
   dependencies?: FormItemProps['dependencies'];
   /** 额外的提示信息，和 help 类似，当需要错误信息和提示文案同时出现时 */
@@ -56,20 +42,12 @@ export class FieldStore<ValuesType = any, OptionType = any> implements Omit<Form
   hasFeedback?: FormItemProps['hasFeedback'];
   /** 提示信息，如不设置，则会根据校验规则自动生成 */
   help?: FormItemProps['help'];
-  /** 是否隐藏字段（依然会收集和校验字段） */
-  hidden?: FormItemProps['hidden'];
   /** 设置子元素 label htmlFor 属性 */
   htmlFor?: FormItemProps['htmlFor'];
   /** 设置子元素默认值，如果与 Form 的 initialValues 冲突则以 Form 为准 */
   initialValue?: FormItemProps['initialValue'];
   /** label 标签的文本 */
   label?: FormItemProps['label'];
-  /** 标签文本对齐方式 */
-  labelAlign?: FormItemProps['labelAlign'];
-  /** label 标签布局，同 <Col> 组件; 通过 Form 的 labelCol 进行统一设置，不会作用于嵌套 Item */
-  labelCol?: FormItemProps['labelCol'];
-  /** 默认验证字段的信息 */
-  messageVariables?: FormItemProps['messageVariables'];
   /** 组件获取值后进行转换，再放入 Form 中。不支持异步 */
   normalize?: FormItemProps['normalize'];
   /** 为 true 时不带样式，作为纯字段控件使用。当自身没有 validateStatus 而父元素存在有 validateStatus 的 Form.Item 会继承父元素的 validateStatus */
@@ -86,22 +64,13 @@ export class FieldStore<ValuesType = any, OptionType = any> implements Omit<Form
   tooltip?: FormItemProps['tooltip'];
   /** 设置收集字段值变更的时机 */
   trigger?: FormItemProps['trigger'];
-  /** 当某一规则校验不通过时，是否停止剩下的规则的校验。设置 parallel 时会并行校验 */
-  validateFirst?: FormItemProps['validateFirst'];
-  /** 设置防抖，延迟毫秒数后进行校验 5.9.0 */
-  validateDebounce?: FormItemProps['validateDebounce'];
   /** 校验状态，如不设置，则会根据校验规则自动生成，可选：'success' 'warning' 'error' 'validating' */
   validateStatus: FormItemProps['validateStatus'];
-  /** 设置字段校验的时机 */
-  validateTrigger?: FormItemProps['validateTrigger'];
   /** 子节点的值的属性 */
   valuePropName?: FormItemProps['valuePropName'];
-  /** 需要为输入控件设置布局样式时，使用该属性，用法同 labelCol。你可以通过 Form 的 wrapperCol 进行统一设置，不会作用于嵌套 Item。当和 Form 同时设置时，以 Item 为准 */
-  wrapperCol?: FormItemProps['wrapperCol'];
-  /** 表单项布局 5.18 */
-  layout?: FormItemProps['layout'];
 
   constructor(props: FormItemProps, form: FormStore & FormInstance, forceUpdate: () => void) {
+    super();
     this.mode = props.mode || FieldMode.EDIT;
     this.form = form;
     this.forceUpdate = forceUpdate;
@@ -111,29 +80,24 @@ export class FieldStore<ValuesType = any, OptionType = any> implements Omit<Form
       this[key] = props[key];
     });
 
+    super.makeObservable();
     this.makeObservable();
     this.fetchRemoteOptions();
   }
 
   makeObservable() {
     makeObservable(this, {
-      mode: observable,
       validateStatus: observable,
       optionsLoading: observable,
       options: observable,
       style: observable,
       rules: observable,
-      colon: observable,
       extra: observable,
       getValueFromEvent: observable,
       hasFeedback: observable,
       help: observable,
-      hidden: observable,
       htmlFor: observable,
       label: observable,
-      labelAlign: observable,
-      labelCol: observable,
-      messageVariables: observable,
       normalize: observable,
       noStyle: observable,
       preserve: observable,
@@ -141,17 +105,8 @@ export class FieldStore<ValuesType = any, OptionType = any> implements Omit<Form
       shouldUpdate: observable,
       tooltip: observable,
       trigger: observable,
-      validateFirst: observable,
-      validateTrigger: observable,
       valuePropName: observable,
-      wrapperCol: observable,
       remoteOptions: observable,
-      span: observable,
-      offset: observable,
-      push: observable,
-      pull: observable,
-      order: observable,
-      flex: observable,
     });
   }
 
