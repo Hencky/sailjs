@@ -20,8 +20,6 @@ export const FormItem: <ValuesType = any, OptionType = any>(
   const formStore = useFormContext();
   const groupStore = useFormGroupContext();
 
-  const realProps = Object.assign({}, formStore, props);
-
   const form = useFormInstance();
 
   const forceUpdate = () => update({});
@@ -39,7 +37,7 @@ export const FormItem: <ValuesType = any, OptionType = any>(
     );
   }, []);
 
-  const { remoteOptionsDebounceProps } = realProps;
+  const { remoteOptionsDebounceProps } = field;
 
   useDebounceEffect(
     () => {

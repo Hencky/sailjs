@@ -271,6 +271,12 @@ export class FormStore<ValuesType = any> extends BaseRootStore implements Omit<F
     return toCompareName(name);
   }
 
+  // ===== 插件专栏 =====
+
+
+
+  // ===== 获取属性 =====
+
   get formProps() {
     return pick(this, [
       'autoComplete',

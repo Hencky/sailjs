@@ -46,7 +46,7 @@ function Group() {
       <Button
         onClick={() => {
           const group = form.getField('group2');
-          debugger
+
           group.span += 1;
         }}
       >
