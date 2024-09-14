@@ -1,19 +1,23 @@
 import { makeObservable, observable, computed } from 'mobx';
 import { FormStore } from '../Form';
 import { BaseProps } from './interface';
+import { GroupStore } from '../FormGroup/store';
 
-export class BaseStore implements BaseProps {
+export class BaseStore<ValuesType = any> implements BaseProps {
   commonProps: BaseProps = {};
 
-  /** 获取store */
-  getFormStore: () => FormStore;
+  /** 获取form */
+  getFormStore: () => FormStore<ValuesType>;
+  /** 获取group */
+  getGroupStore: () => GroupStore<ValuesType>;
 
-  constructor(getFormStore: () => FormStore) {
+  constructor(getFormStore: () => FormStore<ValuesType>, getGroupStore: () => GroupStore<ValuesType>) {
     this.getFormStore = getFormStore;
+    this.getGroupStore = getGroupStore;
   }
 
-  get _parent() {
-    return this.getFormStore() ?? {};
+  get _parent(): BaseProps {
+    return this.getGroupStore() ?? this.getFormStore() ?? {};
   }
 
   private getVal<K extends keyof BaseProps>(key: K) {
@@ -178,6 +182,7 @@ export class BaseStore implements BaseProps {
 
   makeObservable() {
     makeObservable(this, {
+      _parent: computed,
       commonProps: observable,
       variant: computed,
       hidden: computed,

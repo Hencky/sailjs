@@ -110,9 +110,17 @@ export class FormStore<ValuesType = any> extends BaseRootStore implements Omit<F
     return field;
   }
 
-  createGroup<NameType extends keyof ValuesType>(name: NameType, group: GroupStore) {
+  createGroup<NameType extends keyof ValuesType>(name: NameType, group: GroupStore<ValuesType>) {
     this.addField(name, group as unknown as FieldStore);
     return group;
+  }
+
+  addGroup<NameType extends keyof ValuesType>(name: NameType, group: GroupStore<ValuesType>) {
+    this.addField(name, group as unknown as any);
+  }
+
+  removeGroup(name: NamePath) {
+    this.removeField(name);
   }
 
   addField<NameType extends keyof ValuesType, OptionType>(

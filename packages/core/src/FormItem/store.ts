@@ -5,13 +5,12 @@ import type { FormItemProps as AFormItemProps } from 'antd/lib/form/FormItem';
 import type { NamePath } from 'antd/lib/form/interface';
 import type { FormStore } from '../Form';
 import type { FormItemProps, ReactionType } from './interface';
+import type { GroupStore } from '../FormGroup/store';
 
 export class FieldStore<ValuesType = any, OptionType = any>
   extends BaseStore
   implements Omit<FormItemProps, 'validateStatus'>, BaseProps
 {
-  commonProps: BaseProps = {};
-
   /** 表单实例 */
   form: FormInstance<ValuesType>;
   /** 字段名，唯一路径标识 */
@@ -27,8 +26,10 @@ export class FieldStore<ValuesType = any, OptionType = any>
 
   /** 主动关联 */
   reactions?: ReactionType[];
-  /** 获取store */
+  /** 获取formstore */
   getFormStore: () => FormStore<ValuesType>;
+  /** 获取groupstore */
+  getGroupStore: () => GroupStore<ValuesType>;
 
   // ===== 内置 =====
   /** 样式 */
@@ -76,13 +77,15 @@ export class FieldStore<ValuesType = any, OptionType = any>
     props: FormItemProps,
     form: FormInstance<ValuesType>,
     getFormStore: () => FormStore<ValuesType>,
+    getGroupStore: () => GroupStore<ValuesType>,
     forceUpdate: () => void
   ) {
-    super(getFormStore);
+    super(getFormStore, getGroupStore);
     this.mode = props.mode || FieldMode.EDIT;
     this.form = form;
     this.forceUpdate = forceUpdate;
     this.getFormStore = getFormStore;
+    this.getGroupStore = getGroupStore;
 
     Object.keys(props).forEach((key) => {
       // @ts-expect-error

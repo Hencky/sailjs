@@ -27,7 +27,16 @@ export const FormItem: <ValuesType = any, OptionType = any>(
   const forceUpdate = () => update({});
 
   const field = useMemo(() => {
-    return formStore.createField(name, new FieldStore(props, form, () => groupStore || formStore, forceUpdate));
+    return formStore.createField(
+      name,
+      new FieldStore(
+        props,
+        form,
+        () => formStore,
+        () => groupStore,
+        forceUpdate
+      )
+    );
   }, []);
 
   const { remoteOptionsDebounceProps } = realProps;

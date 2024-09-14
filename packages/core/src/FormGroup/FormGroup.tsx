@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useState } from 'react';
+import { useMemo, useEffect } from 'react';
 import { Row } from 'antd';
 import { observer } from 'mobx-react-lite';
 import { FormItem } from '../FormItem';
@@ -12,8 +12,6 @@ import type { FormGroupProps } from './interface';
 export const FormGroup = observer((props: FormGroupProps) => {
   const { name } = props;
 
-  const [key, update] = useState(-1);
-
   const formStore = useFormContext();
   const groupStore = useFormGroupContext();
 
@@ -22,16 +20,16 @@ export const FormGroup = observer((props: FormGroupProps) => {
       name,
       new GroupStore(
         props,
-        () => groupStore || formStore,
-        () => update((k) => k + 1)
+        () => formStore,
+        () => groupStore
       )
     );
   }, []);
 
   useEffect(() => {
-    formStore.addField(name, group);
+    formStore.addGroup(name, group);
     return () => {
-      formStore.removeField(name);
+      formStore.removeGroup(name);
     };
   }, []);
 
@@ -49,11 +47,7 @@ export const FormGroup = observer((props: FormGroupProps) => {
 
   let element;
   if (group.groupProps.fields) {
-    element = (
-      <Row {...group.groupProps} key={key}>
-        {renderFields(group.groupProps.fields)}
-      </Row>
-    );
+    element = <Row {...group.groupProps}>{renderFields(group.groupProps.fields)}</Row>;
   } else {
     element = props.children;
   }

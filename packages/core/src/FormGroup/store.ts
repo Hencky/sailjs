@@ -1,9 +1,9 @@
 import { makeObservable, observable } from 'mobx';
-import { BaseStore } from '../Base';
+import { BaseStore, BaseProps } from '../Base';
 import type { FormStore } from '../Form/store';
 import type { FormGroupProps } from './interface';
 
-export class GroupStore extends BaseStore implements FormGroupProps {
+export class GroupStore<ValuesType = any> extends BaseStore implements Omit<FormGroupProps, 'form'>, BaseProps {
   name?: FormGroupProps['name'];
 
   fields?: FormGroupProps['fields'];
@@ -17,8 +17,12 @@ export class GroupStore extends BaseStore implements FormGroupProps {
   /** 是否自动换行 */
   wrap?: FormGroupProps['wrap'];
 
-  constructor(props: FormGroupProps, getFormStore: () => FormStore, forceUpdate: () => void) {
-    super(getFormStore);
+  constructor(
+    props: FormGroupProps,
+    getFormStore: () => FormStore<ValuesType>,
+    getGroupStore: () => GroupStore<ValuesType>
+  ) {
+    super(getFormStore, getGroupStore);
 
     Object.keys(props).forEach((key) => {
       // @ts-expect-error
