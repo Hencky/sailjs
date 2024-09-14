@@ -53,6 +53,20 @@ export interface BaseProps {
   push?: ColProps['push'];
   /** 栅格占位格数，为 0 时相当于 display: none */
   span?: ColProps['span'] | null;
+  /** 屏幕 < 576px 响应式栅格，可为栅格数或一个包含其他属性的对象 */
+  xs?: ColProps['xs'];
+  /** 屏幕 ≥ 576px 响应式栅格，可为栅格数或一个包含其他属性的对象 */
+  sm?: ColProps['sm'];
+  /** 屏幕 ≥ 768px 响应式栅格，可为栅格数或一个包含其他属性的对象 */
+  md?: ColProps['md'];
+  /** 屏幕 ≥ 992px 响应式栅格，可为栅格数或一个包含其他属性的对象 */
+  lg?: ColProps['lg'];
+  /** 屏幕 ≥ 1200px 响应式栅格，可为栅格数或一个包含其他属性的对象 */
+  xl?: ColProps['xl'];
+  /** 屏幕 ≥ 1600px 响应式栅格，可为栅格数或一个包含其他属性的对象 */
+  xxl?: ColProps['xxl'];
+
+
 
   // ===== 布局属性 =====
 

@@ -10,7 +10,7 @@ function Group() {
       <Button
         onClick={() => {
           const field = form.getField('a');
-          field.span -= 1;
+          field.span = field.span ? field.span - 1 : 24;
         }}
       >
         分组-
@@ -18,10 +18,39 @@ function Group() {
       <Button
         onClick={() => {
           const field = form.getField('a');
-          field.span += 1;
+          field.span = field.span ? field.span + 1 : 1;
         }}
       >
         分组+
+      </Button>
+
+      <Button
+        onClick={() => {
+          const group = form.getField('group1');
+          group.span = group.span ? group.span + 1 : 1;
+
+          console.log('group', group);
+        }}
+      >
+        实例
+      </Button>
+      <Button
+        onClick={() => {
+          form.span += 1;
+
+          console.log('group', form);
+        }}
+      >
+        表单 +
+      </Button>
+      <Button
+        onClick={() => {
+          const group = form.getField('group2');
+
+          group.span += 1;
+        }}
+      >
+        group +
       </Button>
 
       <Form
@@ -29,32 +58,41 @@ function Group() {
         onValuesChange={(_, values) => {
           console.log('values', values);
         }}
+        span={12}
       >
         <FormGroup
-          span={12}
+          name="group1"
           fields={[
             {
               name: 'a',
-              // span: 12,
+              span: 2,
               label: 'a',
               children: <Input />,
             },
             {
               name: 'b',
-              // span: 12,
               label: 'b',
               children: <Input />,
             },
             {
               name: 'c',
-              span: 12,
               label: 'c',
               children: <Input />,
             },
             {
               name: 'd',
-              span: 12,
               label: 'd',
+              children: <Input />,
+            },
+          ]}
+        />
+        <FormGroup
+          name="group2"
+          span={4}
+          fields={[
+            {
+              name: 'e',
+              label: 'e',
               children: <Input />,
             },
           ]}

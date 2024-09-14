@@ -1,11 +1,12 @@
 import { makeObservable, observable, runInAction } from 'mobx';
 import { isFunction, pick, isEqual } from 'radash';
-import { BaseStore } from '../Base';
+import { BaseProps, BaseRootStore } from '../Base';
 import { isFieldChange, toCompareName } from '../utils';
-import type { FieldStore, ReactionResultType, ReactionResultFunctionType, FormItemProps } from '../FormItem';
+import type { FieldStore, ReactionResultType, ReactionResultFunctionType } from '../FormItem';
 import type { FormInstance } from 'antd/lib/form';
 import type { NamePath } from 'antd/lib/form/interface';
 import type { FormProps } from './interface';
+import type { GroupStore } from '../FormGroup/store';
 
 export type InnerDependencyType = {
   name: NamePath;
@@ -15,7 +16,7 @@ export type InnerDependencyType = {
   _source: NamePath;
 };
 
-export class FormStore<ValuesType = any> extends BaseStore implements Omit<FormProps, 'form'> {
+export class FormStore<ValuesType = any> extends BaseRootStore implements Omit<FormProps, 'form'>, BaseProps {
   private store: Record<NamePath, FieldStore | null> = {};
   /** 表单实例 */
   form?: FormInstance<ValuesType>;
@@ -29,8 +30,6 @@ export class FormStore<ValuesType = any> extends BaseStore implements Omit<FormP
   loading: boolean = false;
   /** 获取表单值 */
   remoteValues?: () => Promise<any>;
-  /** 联动值设置 */
-  remoteOptionsDebounceProps?: FormItemProps<ValuesType>['remoteOptionsDebounceProps'] = { wait: 600 };
 
   // ===== 内置 =====
   autoComplete?: FormProps['autoComplete'];
@@ -77,24 +76,23 @@ export class FormStore<ValuesType = any> extends BaseStore implements Omit<FormP
 
   makeObservable() {
     makeObservable(this, {
-      loading: observable,
-      autoComplete: observable,
-      disabled: observable,
-      component: observable,
+      loading: observable.ref,
+      autoComplete: observable.ref,
+      disabled: observable.ref,
+      component: observable.ref,
       feedbackIcons: observable,
-      initialValues: observable,
-      labelWrap: observable,
-      name: observable,
-      preserve: observable,
+      labelWrap: observable.ref,
+      name: observable.ref,
+      preserve: observable.ref,
       requiredMark: observable,
       scrollToFirstError: observable,
-      size: observable,
+      size: observable.ref,
       validateMessages: observable,
       onFieldsChange: observable,
       onFinish: observable,
       onFinishFailed: observable,
       onValuesChange: observable,
-      clearOnDestroy: observable,
+      clearOnDestroy: observable.ref,
     });
   }
 
@@ -110,6 +108,11 @@ export class FormStore<ValuesType = any> extends BaseStore implements Omit<FormP
     this.addField(name, field);
 
     return field;
+  }
+
+  createGroup<NameType extends keyof ValuesType>(name: NameType, group: GroupStore) {
+    this.addField(name, group as unknown as FieldStore);
+    return group;
   }
 
   addField<NameType extends keyof ValuesType, OptionType>(
@@ -129,11 +132,13 @@ export class FormStore<ValuesType = any> extends BaseStore implements Omit<FormP
       const { dependencies, effects, result } = reaction;
       // 构建主动联动关系
       effects?.forEach((target) => {
+        // @ts-expect-error
         this.addToMap(this.effects, name, { name: target, result, _source: name });
       });
 
       // 构建被动联动关系成主动关联关系
       dependencies?.forEach((depName) => {
+        // @ts-expect-error
         this.addToMap(this.effects, depName, { name: name, result, dependencies, _soruce: name });
       });
     });
@@ -160,6 +165,10 @@ export class FormStore<ValuesType = any> extends BaseStore implements Omit<FormP
     });
 
     this.store[this.getName(name)] = null;
+  }
+
+  remoteGroup(name: NamePath) {
+    this.removeField(name);
   }
 
   getField<NameType extends keyof ValuesType>(name: NameType): FieldStore<ValuesType[NameType]> {

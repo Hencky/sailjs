@@ -17,19 +17,17 @@ export const FormItem: <ValuesType = any, OptionType = any>(
 
   const [updateKey, update] = useState({});
 
-  const { form: formStore, ...formCtx } = useFormContext();
+  const formStore = useFormContext();
+  const groupStore = useFormGroupContext();
 
-  const formGroupCtx = useFormGroupContext();
-
-  const realProps = Object.assign({}, formCtx, formGroupCtx, props);
+  const realProps = Object.assign({}, formStore, props);
 
   const form = useFormInstance();
 
   const forceUpdate = () => update({});
 
   const field = useMemo(() => {
-    // @ts-expect-error
-    return formStore!.createField(name, new FieldStore(realProps, { ...formStore, ...form }, forceUpdate));
+    return formStore.createField(name, new FieldStore(props, form, () => groupStore || formStore, forceUpdate));
   }, []);
 
   const { remoteOptionsDebounceProps } = realProps;

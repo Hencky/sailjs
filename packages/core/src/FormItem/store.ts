@@ -1,17 +1,19 @@
 import { makeObservable, observable, runInAction } from 'mobx';
-import { FormInstance } from 'antd';
-import { BaseStore, FieldMode } from '../Base';
+import { FieldMode, BaseProps, BaseStore } from '../Base';
+import type { FormInstance } from 'antd';
 import type { FormItemProps as AFormItemProps } from 'antd/lib/form/FormItem';
 import type { NamePath } from 'antd/lib/form/interface';
-import type { FormStore, FormProps } from '../Form';
+import type { FormStore } from '../Form';
 import type { FormItemProps, ReactionType } from './interface';
 
 export class FieldStore<ValuesType = any, OptionType = any>
   extends BaseStore
-  implements Omit<FormItemProps, 'validateStatus'>
+  implements Omit<FormItemProps, 'validateStatus'>, BaseProps
 {
+  commonProps: BaseProps = {};
+
   /** 表单实例 */
-  form: FormStore<ValuesType> & FormInstance<ValuesType>;
+  form: FormInstance<ValuesType>;
   /** 字段名，唯一路径标识 */
   name?: NamePath;
   /** 表单loading状态 */
@@ -25,6 +27,8 @@ export class FieldStore<ValuesType = any, OptionType = any>
 
   /** 主动关联 */
   reactions?: ReactionType[];
+  /** 获取store */
+  getFormStore: () => FormStore<ValuesType>;
 
   // ===== 内置 =====
   /** 样式 */
@@ -68,11 +72,17 @@ export class FieldStore<ValuesType = any, OptionType = any>
   /** 子节点的值的属性 */
   valuePropName?: FormItemProps['valuePropName'];
 
-  constructor(props: FormItemProps, form: FormStore & FormInstance, forceUpdate: () => void) {
-    super();
+  constructor(
+    props: FormItemProps,
+    form: FormInstance<ValuesType>,
+    getFormStore: () => FormStore<ValuesType>,
+    forceUpdate: () => void
+  ) {
+    super(getFormStore);
     this.mode = props.mode || FieldMode.EDIT;
     this.form = form;
     this.forceUpdate = forceUpdate;
+    this.getFormStore = getFormStore;
 
     Object.keys(props).forEach((key) => {
       // @ts-expect-error
@@ -86,25 +96,25 @@ export class FieldStore<ValuesType = any, OptionType = any>
 
   makeObservable() {
     makeObservable(this, {
-      validateStatus: observable,
-      optionsLoading: observable,
-      options: observable,
-      style: observable,
-      rules: observable,
+      validateStatus: observable.ref,
+      optionsLoading: observable.ref,
+      options: observable.shallow,
+      style: observable.shallow,
+      rules: observable.shallow,
       extra: observable,
       getValueFromEvent: observable,
       hasFeedback: observable,
-      help: observable,
-      htmlFor: observable,
+      help: observable.ref,
+      htmlFor: observable.ref,
       label: observable,
       normalize: observable,
-      noStyle: observable,
-      preserve: observable,
-      required: observable,
+      noStyle: observable.ref,
+      preserve: observable.ref,
+      required: observable.ref,
       shouldUpdate: observable,
       tooltip: observable,
-      trigger: observable,
-      valuePropName: observable,
+      trigger: observable.ref,
+      valuePropName: observable.ref,
       remoteOptions: observable,
     });
   }
@@ -156,7 +166,7 @@ export class FieldStore<ValuesType = any, OptionType = any>
 
   public get childProps() {
     const displayOptions: {
-      variant: FormProps['variant'];
+      variant: BaseProps['variant'];
       readOnly: boolean;
     } = {
       variant: 'outlined',
