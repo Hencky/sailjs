@@ -7,7 +7,7 @@ import type { FormStore } from '../Form';
 import type { FormItemProps, ReactionType } from './interface';
 import type { GroupStore } from '../FormGroup/store';
 
-export class FieldStore<ValuesType = any, OptionType = any>
+export class FieldStore<ValuesType = any, PluginsType = any>
   extends BaseStore
   implements Omit<FormItemProps, 'validateStatus'>, BaseProps
 {
@@ -18,18 +18,18 @@ export class FieldStore<ValuesType = any, OptionType = any>
   /** 表单loading状态 */
   optionsLoading: boolean = false;
   /** 数据源 */
-  options: OptionType[] = [];
+  options: any[] = [];
   /** 远程数据源 */
-  remoteOptions?: ((depValues?: any[]) => Promise<OptionType[]>) | undefined;
+  remoteOptions?: (depValues?: any[]) => Promise<any[] | undefined>;
   /** 强制刷新 */
   forceUpdate: () => void;
 
   /** 主动关联 */
   reactions?: ReactionType[];
   /** 获取formstore */
-  getFormStore: () => FormStore<ValuesType>;
+  getFormStore: () => FormStore<ValuesType, PluginsType>;
   /** 获取groupstore */
-  getGroupStore: () => GroupStore<ValuesType>;
+  getGroupStore: () => GroupStore<ValuesType, PluginsType>;
 
   // ===== 内置 =====
   /** 样式 */
@@ -74,10 +74,10 @@ export class FieldStore<ValuesType = any, OptionType = any>
   valuePropName?: FormItemProps['valuePropName'];
 
   constructor(
-    props: FormItemProps,
+    props: FormItemProps<ValuesType>,
     form: FormInstance<ValuesType>,
-    getFormStore: () => FormStore<ValuesType>,
-    getGroupStore: () => GroupStore<ValuesType>,
+    getFormStore: () => FormStore<ValuesType, PluginsType>,
+    getGroupStore: () => GroupStore<ValuesType, PluginsType>,
     forceUpdate: () => void
   ) {
     super(getFormStore, getGroupStore);
@@ -119,6 +119,9 @@ export class FieldStore<ValuesType = any, OptionType = any>
       trigger: observable.ref,
       valuePropName: observable.ref,
       remoteOptions: observable,
+
+      component: observable.ref,
+      componentProps: observable,
     });
   }
 
@@ -134,7 +137,7 @@ export class FieldStore<ValuesType = any, OptionType = any>
     return this.remoteOptions(deps)
       .then((data) => {
         runInAction(() => {
-          this.options = data;
+          this.options = data || [];
           this.optionsLoading = false;
         });
       })
@@ -216,5 +219,19 @@ export class FieldStore<ValuesType = any, OptionType = any>
       valuePropName: this.valuePropName,
       wrapperCol: this.wrapperCol,
     };
+  }
+
+  // ===== 插件 =====
+  component?: any;
+
+  componentProps?: any;
+
+  get plugin() {
+    if (this.component) {
+      // @ts-expect-error
+      return this.getFormStore().plugins[this.component];
+    }
+
+    return {};
   }
 }

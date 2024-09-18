@@ -1,8 +1,8 @@
 import { createContext, useContext } from 'react';
 import type { FormStore } from '../Form';
 
-export const FormContext = createContext(null as unknown as FormStore);
+export const FormContext = createContext(null as unknown as FormStore<any, any>);
 
-export const useFormContext = () => {
-  return useContext(FormContext);
+export const useFormContext = <ValuesType = any, PluginsType = any>() => {
+  return useContext<FormStore<ValuesType, PluginsType>>(FormContext);
 };

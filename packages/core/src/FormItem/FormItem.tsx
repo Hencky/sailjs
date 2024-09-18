@@ -2,77 +2,86 @@ import { PropsWithChildren, cloneElement, useEffect, useMemo, useState } from 'r
 import { Form, Col } from 'antd';
 import { useDebounceEffect } from 'ahooks';
 import { observer } from 'mobx-react-lite';
+import { FieldMode } from '../Base';
 import { FieldStore } from './store';
 import { useFormContext } from '../Form/context';
 import { useFormGroupContext } from '../FormGroup';
-import { FieldMode } from '../Base';
 import type { FormItemProps } from './interface';
+import type { DefaultComponentPluginsType } from '../plugins';
 
 const { Item, useFormInstance } = Form;
 
-export const FormItem: <ValuesType = any, OptionType = any>(
-  props: PropsWithChildren<FormItemProps<ValuesType, OptionType>>
-) => React.ReactNode = observer((props) => {
-  const { name, children } = props;
+export const FormItem = observer(
+  <ValuesType, P extends DefaultComponentPluginsType = DefaultComponentPluginsType>(
+    props: PropsWithChildren<FormItemProps<ValuesType, P>>
+  ): React.ReactNode => {
+    const { name, children } = props;
 
-  const [updateKey, update] = useState({});
+    const [updateKey, update] = useState({});
 
-  const formStore = useFormContext();
-  const groupStore = useFormGroupContext();
+    const formStore = useFormContext();
+    const groupStore = useFormGroupContext();
 
-  const form = useFormInstance();
+    const form = useFormInstance();
 
-  const forceUpdate = () => update({});
+    const forceUpdate = () => update({});
 
-  const field = useMemo(() => {
-    return formStore.createField(
-      name,
-      new FieldStore(
-        props,
-        form,
-        () => formStore,
-        () => groupStore,
-        forceUpdate
-      )
+    const field = useMemo(() => {
+      return formStore.createField(
+        name as string,
+        new FieldStore<ValuesType, P>(
+          props,
+          form,
+          () => formStore,
+          () => groupStore,
+          forceUpdate
+        )
+      );
+    }, []);
+
+    const { remoteOptionsDebounceProps } = field;
+
+    useDebounceEffect(
+      () => {
+        field.fetchRemoteOptions();
+      },
+      [updateKey],
+      remoteOptionsDebounceProps
     );
-  }, []);
 
-  const { remoteOptionsDebounceProps } = field;
+    useEffect(() => {
+      // @ts-expect-error
+      formStore.addField(name, field);
+      return () => {
+        formStore.removeField(name);
+      };
+    }, []);
 
-  useDebounceEffect(
-    () => {
-      field.fetchRemoteOptions();
-    },
-    [updateKey],
-    remoteOptionsDebounceProps
-  );
+    if (field.mode === FieldMode.NODE) {
+      return null;
+    }
 
-  useEffect(() => {
-    // @ts-expect-error
-    formStore.addField(name, field);
-    return () => {
-      formStore.removeField(name);
-    };
-  }, []);
+    const { defaultComponentProps, component: Com } = field.plugin;
 
-  if (field.mode === FieldMode.NODE) {
-    return null;
+    const element = (
+      <Item {...field.fieldProps} name={name}>
+        {Com ? (
+          <Com {...field.childProps} {...defaultComponentProps} {...field.componentProps} />
+        ) : (
+          // @ts-expect-error
+          cloneElement(children, { ...field.childProps })
+        )}
+      </Item>
+    );
+
+    if (field.colProps.span === null) {
+      return element;
+    }
+
+    return (
+      <Col {...field.colProps} span={field.colProps.span}>
+        {element}
+      </Col>
+    );
   }
-
-  const element = (
-    <Item {...field.fieldProps} name={name}>
-      {/* @ts-expect-error */}
-      {cloneElement(children, { ...field.childProps })}
-    </Item>
-  );
-
-  if (field.colProps.span === null) {
-    return element;
-  }
-
-  return (
-    <Col {...field.colProps} span={field.colProps.span}>
-      {element}
-    </Col>
-  );
-});
+);

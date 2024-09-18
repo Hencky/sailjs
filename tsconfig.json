@@ -22,7 +22,8 @@
 
     "baseUrl": "./",
     "paths": {
-      "@sailjs/core": ["packages/core/src/index.ts"]
+      "@sailjs/core": ["packages/core/src/index.ts"],
+      "@sailjs/register": ["packages/register/src/index.ts"],
     }
   }
 }

@@ -1,11 +1,13 @@
+import { pluginStore } from '@sailjs/register';
 import { makeObservable, observable, runInAction } from 'mobx';
 import { isFunction, pick, isEqual } from 'radash';
 import { BaseProps, BaseRootStore } from '../Base';
 import { isFieldChange, toCompareName } from '../utils';
+import { DEFAULT_COMPONENT_PLUGINS } from '../plugins';
 import type { FieldStore, ReactionResultType, ReactionResultFunctionType } from '../FormItem';
 import type { FormInstance } from 'antd/lib/form';
 import type { NamePath } from 'antd/lib/form/interface';
-import type { FormProps } from './interface';
+import type { FormOptions, FormProps } from './interface';
 import type { GroupStore } from '../FormGroup/store';
 
 export type InnerDependencyType = {
@@ -16,7 +18,10 @@ export type InnerDependencyType = {
   _source: NamePath;
 };
 
-export class FormStore<ValuesType = any> extends BaseRootStore implements Omit<FormProps, 'form'>, BaseProps {
+export class FormStore<ValuesType = any, PluginsType = any>
+  extends BaseRootStore
+  implements Omit<FormProps, 'form'>, BaseProps
+{
   private store: Record<NamePath, FieldStore | null> = {};
   /** 表单实例 */
   form?: FormInstance<ValuesType>;
@@ -68,10 +73,14 @@ export class FormStore<ValuesType = any> extends BaseRootStore implements Omit<F
   /** 当表单被卸载时清空表单值 5.18.0 */
   clearOnDestroy?: FormProps['clearOnDestroy'];
 
-  constructor() {
+  constructor(props?: FormOptions<any>) {
+    const { plugins } = props || {};
+
     super();
     super.makeObservable();
+    this.pluginStore = plugins;
     this.makeObservable();
+    this.registerPlugins();
   }
 
   makeObservable() {
@@ -101,10 +110,7 @@ export class FormStore<ValuesType = any> extends BaseRootStore implements Omit<F
     map[strName] = [...(map[strName] || []), value];
   }
 
-  createField<NameType extends keyof ValuesType, OptionType>(
-    name: NameType,
-    field: FieldStore<ValuesType[NameType], OptionType>
-  ) {
+  createField<NameType extends keyof ValuesType>(name: NameType, field: FieldStore<ValuesType[NameType]>) {
     this.addField(name, field);
 
     return field;
@@ -123,10 +129,7 @@ export class FormStore<ValuesType = any> extends BaseRootStore implements Omit<F
     this.removeField(name);
   }
 
-  addField<NameType extends keyof ValuesType, OptionType>(
-    name: NameType,
-    field: FieldStore<ValuesType[NameType], OptionType>
-  ) {
+  addField<NameType extends keyof ValuesType>(name: NameType, field: FieldStore<ValuesType[NameType]>) {
     if (this.getField(name)) return;
 
     this.store[this.getName(name)] = field;
@@ -272,8 +275,17 @@ export class FormStore<ValuesType = any> extends BaseRootStore implements Omit<F
   }
 
   // ===== 插件专栏 =====
+  pluginStore: typeof DEFAULT_COMPONENT_PLUGINS & PluginsType;
 
+  registerPlugins = () => {
+    pluginStore.registerPlugins(DEFAULT_COMPONENT_PLUGINS);
+    if (!this.pluginStore) return;
+    pluginStore.registerPlugins(this.pluginStore);
+  };
 
+  get plugins(): typeof this.pluginStore {
+    return pluginStore.getPlugins() as typeof this.pluginStore;
+  }
 
   // ===== 获取属性 =====
 

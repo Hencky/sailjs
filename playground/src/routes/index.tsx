@@ -3,6 +3,7 @@ import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 
 /** ===== pages ===== */
 import Group from '@/pages/group';
+import Plugins from '@/pages/plugins';
 import Desctoy from '@/pages/destroy';
 import Options from '@/pages/options';
 import Instance from '@/pages/instance';
@@ -52,6 +53,12 @@ const list = [
     key: 'group',
     path: '/group',
     element: <Group />,
+  },
+  {
+    label: '插件',
+    key: 'plugins',
+    path: '/plugins',
+    element: <Plugins />,
   },
 ];
 

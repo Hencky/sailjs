@@ -27,7 +27,6 @@ function Group() {
       <Button
         onClick={() => {
           const group = form.getField('group1');
-          group.span = group.span ? group.span + 1 : 1;
 
           console.log('group', group);
         }}

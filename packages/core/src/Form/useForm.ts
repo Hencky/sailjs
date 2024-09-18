@@ -1,20 +1,14 @@
 import { useRef } from 'react';
 import { FormStore } from './store';
+import type { FormOptions } from './interface';
 
-export type PluginType = {
-  component: any;
-  componentProps: any;
-};
-
-export type FormOptions = {
-  plugins?: Record<string, PluginType>;
-};
-
-export const useForm = (props) => {
-  const formRef = useRef<FormStore>();
+export const useForm = <ValuesType = any, PluginsType = any>(
+  props?: FormOptions<PluginsType>
+): [FormStore<ValuesType, PluginsType>] => {
+  const formRef = useRef<FormStore<ValuesType, PluginsType>>();
 
   if (!formRef.current) {
-    formRef.current = new FormStore();
+    formRef.current = new FormStore<ValuesType, PluginsType>(props);
   }
 
   return [formRef.current];

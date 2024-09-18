@@ -1,6 +1,7 @@
 import type { FormItemProps as AFormItemProps } from 'antd/lib/form/FormItem';
 import type { NamePath } from 'antd/es/form/interface';
 import type { BaseProps } from '../Base';
+import type { DefaultComponentPluginsType } from '../plugins';
 
 export type ReactionResultKeyType = keyof Omit<FormItemProps, 'reactions' | 'dependencies'> & 'value';
 
@@ -8,15 +9,23 @@ export type ReactionResultFunctionType<Key extends keyof FormItemProps> = (targe
 
 export type ReactionResultType<Key extends keyof FormItemProps> = ReactionResultFunctionType<Key> | string;
 
-export interface FormItemProps<ValuesType = any, OptionType = any>
-  extends Omit<AFormItemProps<ValuesType>, keyof BaseProps>,
+export interface FormItemProps<
+  ValuesType = any,
+  P extends DefaultComponentPluginsType = DefaultComponentPluginsType,
+  Key extends keyof P = keyof P
+> extends Omit<AFormItemProps<ValuesType>, keyof BaseProps>,
     BaseProps {
   /** 数据源类型 */
-  options?: OptionType[];
+  options?: any[];
   /** 远程数据源 */
-  remoteOptions?: (depValues?: any[]) => Promise<OptionType[]>;
+  remoteOptions?: (depValues?: any[]) => Promise<any[] | undefined>;
   /** 联动关系 */
   reactions?: ReactionType[];
+
+  /** 插件类型 */
+  component?: Key;
+  /** 插件属性 */
+  componentProps?: P[Key]['componentProps'];
 }
 
 export type ReactionType = {

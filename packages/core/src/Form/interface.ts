@@ -7,3 +7,12 @@ export interface FormProps<Values = any> extends Omit<AFormProps<Values>, 'form'
 
   remoteValues?: () => Promise<Values>;
 }
+
+export type PluginType = {
+  component: any;
+  defaultComponentProps: any;
+};
+
+export type FormOptions<PluginsType = any> = {
+  plugins?: PluginsType;
+};
