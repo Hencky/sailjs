@@ -59,7 +59,6 @@ function Plugins() {
         />
 
         <Divider />
-
         <FormGroup<any, CustomPluginsType>
           span={24}
           labelCol={{ style: { width: 60 } }}
@@ -82,6 +81,14 @@ function Plugins() {
                 placeholder: '请输入数字',
                 style: { width: '100%' },
               },
+              reactions: [
+                {
+                  dependencies: ['a1'],
+                  result: {
+                    value: `$deps[0]`,
+                  },
+                },
+              ],
             },
             {
               name: 'x3',

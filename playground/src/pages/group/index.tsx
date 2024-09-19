@@ -94,6 +94,11 @@ function Group() {
               label: 'e',
               children: <Input />,
             },
+            {
+              name: 'f',
+              label: 'f',
+              children: <Input />,
+            },
           ]}
         />
       </Form>

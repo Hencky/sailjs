@@ -3,6 +3,7 @@ import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 
 /** ===== pages ===== */
 import Group from '@/pages/group';
+import Modal from '@/pages/modal';
 import Plugins from '@/pages/plugins';
 import Desctoy from '@/pages/destroy';
 import Options from '@/pages/options';
@@ -59,6 +60,12 @@ const list = [
     key: 'plugins',
     path: '/plugins',
     element: <Plugins />,
+  },
+  {
+    label: '弹框',
+    key: 'modal',
+    path: '/modal',
+    element: <Modal />,
   },
 ];
 
