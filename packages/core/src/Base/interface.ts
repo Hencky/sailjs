@@ -14,19 +14,6 @@ export enum FieldMode {
   NODE = 'none',
 }
 
-export enum ValidateStatus {
-  /** 无校验 */
-  NONE = 'none',
-  /** 校验通过 */
-  SUCCESS = 'success',
-  /** 警告 */
-  WARNING = 'warning',
-  /** 校验失败 */
-  ERROR = 'error',
-  /** 校验中 */
-  VALIDATING = 'VALIDATING',
-}
-
 export interface BaseProps {
   // ===== 状态属性 =====
 
@@ -65,8 +52,6 @@ export interface BaseProps {
   xl?: ColProps['xl'];
   /** 屏幕 ≥ 1600px 响应式栅格，可为栅格数或一个包含其他属性的对象 */
   xxl?: ColProps['xxl'];
-
-
 
   // ===== 布局属性 =====
 

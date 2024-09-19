@@ -78,7 +78,7 @@ function Dependency() {
               {
                 effects: ['b'],
                 result: {
-                  mode(self) {
+                  mode(self: string) {
                     if (self === '1') {
                       return 'disabled';
                     }

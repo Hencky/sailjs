@@ -11,7 +11,7 @@ class PluginStore<T> {
       defaultComponentProps,
     };
 
-    return this;
+    return this as PluginStore<T & Record<Name, { component: Component; defaultComponentProps?: ComponentProps }>>;
   }
 
   registerPlugins<PluginsType>(plugins: PluginsType): PluginsType {

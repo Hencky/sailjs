@@ -1,15 +1,17 @@
 import { Fragment, useEffect } from 'react';
 import { Input } from 'antd';
-import { FormItem, Form, useForm } from '@sailjs/core';
+import { FormItem, Form, useForm, DEFAULT_COMPONENT_PLUGINS } from '@sailjs/core';
+
+const plugins = Object.assign({}, DEFAULT_COMPONENT_PLUGINS, {
+  input2: {
+    component: Input,
+    componentProps: { showCount: true },
+  },
+});
+
+type CustomPluginsType = typeof plugins;
 
 function Plugins() {
-  const plugins = {
-    input2: {
-      component: Input,
-      componentProps: { showCount: true },
-    },
-  } as const;
-
   const [form] = useForm<any, typeof plugins>({ plugins });
 
   useEffect(() => {
@@ -21,21 +23,21 @@ function Plugins() {
 
   return (
     <Fragment>
-      <Form
+      <Form<any>
         form={form}
         onValuesChange={(_, values) => {
           console.log('values', values);
         }}
       >
-        <FormItem<any, typeof plugins>
+        <FormItem<any, CustomPluginsType>
           name={'a1'}
           label="a1"
-          component="input2"
+          component="inputnumber"
           componentProps={{
-            showCount: true,
+            allowClear: true,
           }}
         />
-        <FormItem
+        <FormItem<any, CustomPluginsType>
           name={'a2'}
           label="a2"
           component="input"
@@ -44,7 +46,7 @@ function Plugins() {
           }}
         />
 
-        <FormItem
+        <FormItem<any, CustomPluginsType>
           name={'b'}
           label="b"
           component="select"

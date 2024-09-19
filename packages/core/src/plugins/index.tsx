@@ -1,6 +1,14 @@
 import { Input, Select, InputNumber } from 'antd';
 import type { InputNumberProps, InputProps, SelectProps } from 'antd';
 
+export type PluignsType = Record<
+  string,
+  {
+    component: any;
+    componentProps: any;
+  }
+>;
+
 export const DEFAULT_COMPONENT_PLUGINS = {
   input: {
     component: Input,

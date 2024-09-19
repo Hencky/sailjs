@@ -3,12 +3,11 @@ import { makeObservable, observable, runInAction } from 'mobx';
 import { isFunction, pick, isEqual } from 'radash';
 import { BaseProps, BaseRootStore } from '../Base';
 import { isFieldChange, toCompareName } from '../utils';
-import { DEFAULT_COMPONENT_PLUGINS } from '../plugins';
-import type { FieldStore, ReactionResultType, ReactionResultFunctionType } from '../FormItem';
 import type { FormInstance } from 'antd/lib/form';
+import type { GroupStore } from '../FormGroup/store';
 import type { NamePath } from 'antd/lib/form/interface';
 import type { FormOptions, FormProps } from './interface';
-import type { GroupStore } from '../FormGroup/store';
+import type { FieldStore, ReactionResultType, ReactionResultFunctionType } from '../FormItem';
 
 export type InnerDependencyType = {
   name: NamePath;
@@ -210,6 +209,7 @@ export class FormStore<ValuesType = any, PluginsType = any>
   triggerReactions(value: ValuesType) {
     runInAction(() => {
       this.triggerChange(this.effects, value, ({ name: effectName, result, dependencies }, changeName) => {
+        if (!result) return;
         // @ts-expect-error
         Object.keys(result).forEach((key: keyof typeof result) => {
           let resultValue;
@@ -275,10 +275,9 @@ export class FormStore<ValuesType = any, PluginsType = any>
   }
 
   // ===== 插件专栏 =====
-  pluginStore: typeof DEFAULT_COMPONENT_PLUGINS & PluginsType;
+  pluginStore: PluginsType;
 
   registerPlugins = () => {
-    pluginStore.registerPlugins(DEFAULT_COMPONENT_PLUGINS);
     if (!this.pluginStore) return;
     pluginStore.registerPlugins(this.pluginStore);
   };

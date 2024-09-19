@@ -9,7 +9,7 @@ import { useFormContext } from '../Form/context';
 import { useFormGroupContext } from './context';
 import type { FormGroupProps } from './interface';
 
-export const FormGroup = observer((props: FormGroupProps) => {
+export const FormGroup = observer(<ValuesType,>(props: FormGroupProps<ValuesType>) => {
   const { name } = props;
 
   const formStore = useFormContext();
