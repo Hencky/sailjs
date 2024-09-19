@@ -28,11 +28,13 @@ const SaveModal = () => {
 export default () => {
   const [modal, { open: openModal, close: closeModal }] = useModal();
   const [modalForm, { open: openModalForm, close: closeModalForm }] = useModalForm({ plugins });
+  const [modalForm2, { open: openModalForm2, close: closeModalForm2 }] = useModalForm({ plugins });
 
   return (
     <div>
       {modal}
       {modalForm}
+      {modalForm2}
 
       <Button
         onClick={() =>
@@ -57,14 +59,28 @@ export default () => {
         onClick={() =>
           openModalForm({
             title: '弹框表单',
-            width: 600,
+            width: 700,
             children: <SaveModal />,
             onCancel: () => {
               console.log('onCancel');
             },
             onOk: (e, ctx) => {
               console.log('onOk', e, ctx);
-              closeModalForm();
+              // closeModalForm();
+
+              openModalForm2({
+                title: '弹框表单2',
+                width: 600,
+                children: <SaveModal />,
+                onCancel: () => {
+                  console.log('onCancel');
+                },
+                onOk: (e, ctx) => {
+                  console.log('onOk', e, ctx);
+                  closeModalForm2();
+                  closeModalForm();
+                },
+              });
             },
           })
         }
