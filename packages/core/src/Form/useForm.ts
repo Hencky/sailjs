@@ -1,9 +1,9 @@
 import { useRef } from 'react';
 import { FormStore } from './store';
-import type { FormOptions } from './interface';
+import type { FormOptionProps } from './interface';
 
 export const useForm = <ValuesType = any, PluginsType = any>(
-  props?: FormOptions<PluginsType>
+  props?: FormOptionProps<PluginsType>
 ): [FormStore<ValuesType, PluginsType>] => {
   const formRef = useRef<FormStore<ValuesType, PluginsType>>();
 

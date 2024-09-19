@@ -6,13 +6,13 @@ import { FieldMode } from '../Base';
 import { FieldStore } from './store';
 import { useFormContext } from '../Form/context';
 import { useFormGroupContext } from '../FormGroup';
-import type { PluignsType } from '../plugins';
+import type { PluginsType } from '../plugins';
 import type { FormItemProps } from './interface';
 
 const { Item, useFormInstance } = Form;
 
 export const FormItem = observer(
-  <ValuesType, P extends PluignsType = any>(
+  <ValuesType, P extends PluginsType = any>(
     props: PropsWithChildren<FormItemProps<ValuesType, P>>
   ): React.ReactNode => {
     const { name, children } = props;

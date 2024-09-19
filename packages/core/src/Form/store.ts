@@ -6,7 +6,7 @@ import { isFieldChange, toCompareName } from '../utils';
 import type { FormInstance } from 'antd/lib/form';
 import type { GroupStore } from '../FormGroup/store';
 import type { NamePath } from 'antd/lib/form/interface';
-import type { FormOptions, FormProps } from './interface';
+import type { FormOptionProps, FormProps } from './interface';
 import type { FieldStore, ReactionResultType, ReactionResultFunctionType } from '../FormItem';
 
 export type InnerDependencyType = {
@@ -72,7 +72,7 @@ export class FormStore<ValuesType = any, PluginsType = any>
   /** 当表单被卸载时清空表单值 5.18.0 */
   clearOnDestroy?: FormProps['clearOnDestroy'];
 
-  constructor(props?: FormOptions<any>) {
+  constructor(props?: FormOptionProps<any>) {
     const { plugins } = props || {};
 
     super();

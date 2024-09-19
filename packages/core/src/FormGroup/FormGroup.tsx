@@ -7,9 +7,10 @@ import { toCompareName } from '../utils';
 import { FormGroupContext } from './context';
 import { useFormContext } from '../Form/context';
 import { useFormGroupContext } from './context';
+import type { PluginsType } from '../plugins';
 import type { FormGroupProps } from './interface';
 
-export const FormGroup = observer(<ValuesType,>(props: FormGroupProps<ValuesType>) => {
+export const FormGroup = observer(<ValuesType, P extends PluginsType = any>(props: FormGroupProps<ValuesType, P>) => {
   const { name } = props;
 
   const formStore = useFormContext();
@@ -18,7 +19,7 @@ export const FormGroup = observer(<ValuesType,>(props: FormGroupProps<ValuesType
   const group = useMemo(() => {
     return formStore!.createGroup(
       name,
-      new GroupStore(
+      new GroupStore<ValuesType, P>(
         props,
         () => formStore,
         () => groupStore
@@ -33,11 +34,11 @@ export const FormGroup = observer(<ValuesType,>(props: FormGroupProps<ValuesType
     };
   }, []);
 
-  const renderFields = (fields: FormGroupProps['fields']) => {
+  const renderFields = (fields: FormGroupProps<ValuesType, P>['fields']) => {
     return fields?.map((item) => {
       const { children } = item;
       return (
-        <FormItem key={toCompareName(item.name)} {...item}>
+        <FormItem<ValuesType, P> key={toCompareName(item.name as string)} {...item}>
           {/* @ts-expect-error */}
           {children}
         </FormItem>
@@ -47,7 +48,11 @@ export const FormGroup = observer(<ValuesType,>(props: FormGroupProps<ValuesType
 
   let element;
   if (group.groupProps.fields) {
-    element = <Row {...group.groupProps}>{renderFields(group.groupProps.fields)}</Row>;
+    element = (
+      <Row {...group.groupProps}>
+        {renderFields(group.groupProps.fields as FormGroupProps<ValuesType, P>['fields'])}
+      </Row>
+    );
   } else {
     element = props.children;
   }
