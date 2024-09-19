@@ -19,11 +19,11 @@ export type InnerDependencyType = {
 
 export class FormStore<ValuesType = any, PluginsType = any>
   extends BaseRootStore
-  implements Omit<FormProps, 'form'>, BaseProps
+  implements Omit<FormProps, 'form'>, BaseProps, FormInstance<ValuesType>
 {
   private store: Record<NamePath, FieldStore | null> = {};
   /** 表单实例 */
-  form?: FormInstance<ValuesType>;
+  form = {} as FormInstance<ValuesType>;
 
   /** 被动关联关系,dependencies关联关系 */
   private deps: Record<NamePath, InnerDependencyType[]> = {};
@@ -71,6 +71,25 @@ export class FormStore<ValuesType = any, PluginsType = any>
   onValuesChange?: FormProps['onValuesChange'];
   /** 当表单被卸载时清空表单值 5.18.0 */
   clearOnDestroy?: FormProps['clearOnDestroy'];
+
+  // ===== 表单实例 =====
+  scrollToField = this.form!.scrollToField;
+  getFieldInstance = this.form!.getFieldInstance;
+  getFieldValue = this.form!.getFieldValue;
+  getFieldsValue = this.form!.getFieldsValue;
+  getFieldError = this.form!.getFieldError;
+  getFieldsError = this.form!.getFieldsError;
+  getFieldWarning = this.form!.getFieldWarning;
+  isFieldsTouched = this.form!.isFieldsTouched;
+  isFieldTouched = this.form!.isFieldTouched;
+  isFieldValidating = this.form!.isFieldValidating;
+  isFieldsValidating = this.form!.isFieldsValidating;
+  resetFields = this.form!.resetFields;
+  setFields = this.form!.setFields;
+  setFieldValue = this.form!.setFieldValue;
+  setFieldsValue = this.form!.setFieldsValue;
+  submit = this.form!.submit;
+  validateFields = this.form!.validateFields;
 
   constructor(props?: FormOptionProps<any>) {
     const { plugins } = props || {};
@@ -241,6 +260,11 @@ export class FormStore<ValuesType = any, PluginsType = any>
 
   setFormInstance(form: FormInstance<ValuesType>) {
     this.form = form;
+
+    Object.keys(form).forEach((key) => {
+      // @ts-expect-error
+      this[key] = form[key];
+    });
   }
 
   init(props: FormProps) {

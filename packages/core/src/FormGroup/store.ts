@@ -9,7 +9,7 @@ export class GroupStore<ValuesType = any, P = any>
 {
   name?: FormGroupProps['name'];
 
-  fields?: FormGroupProps['fields'];
+  items?: FormGroupProps['items'];
 
   /** 垂直对齐方式 */
   align?: FormGroupProps['align'];
@@ -38,7 +38,7 @@ export class GroupStore<ValuesType = any, P = any>
 
   makeObservable() {
     makeObservable(this, {
-      fields: observable.shallow,
+      items: observable.shallow,
       align: observable.ref,
       gutter: observable,
       justify: observable.ref,
@@ -48,7 +48,7 @@ export class GroupStore<ValuesType = any, P = any>
 
   get groupProps() {
     return {
-      fields: this.fields,
+      items: this.items,
       align: this.align,
       gutter: this.gutter,
       justify: this.justify,

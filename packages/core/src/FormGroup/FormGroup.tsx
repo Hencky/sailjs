@@ -34,8 +34,8 @@ export const FormGroup = observer(<ValuesType, P extends PluginsType = any>(prop
     };
   }, []);
 
-  const renderFields = (fields: FormGroupProps<ValuesType, P>['fields']) => {
-    return fields?.map((item) => {
+  const renderFields = (items: FormGroupProps<ValuesType, P>['items']) => {
+    return items?.map((item) => {
       const { children } = item;
       return (
         <FormItem<ValuesType, P> key={toCompareName(item.name as string)} {...item}>
@@ -47,11 +47,9 @@ export const FormGroup = observer(<ValuesType, P extends PluginsType = any>(prop
   };
 
   let element;
-  if (group.groupProps.fields) {
+  if (group.groupProps.items) {
     element = (
-      <Row {...group.groupProps}>
-        {renderFields(group.groupProps.fields as FormGroupProps<ValuesType, P>['fields'])}
-      </Row>
+      <Row {...group.groupProps}>{renderFields(group.groupProps.items as FormGroupProps<ValuesType, P>['items'])}</Row>
     );
   } else {
     element = props.children;

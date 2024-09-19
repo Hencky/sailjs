@@ -10,5 +10,5 @@ export interface FormGroupProps<ValuesType = any, P extends PluginsType = any>
   /** 唯一标识 */
   name?: NamePath;
 
-  fields?: FormItemProps<ValuesType, P>[];
+  items?: FormItemProps<ValuesType, P>[];
 }

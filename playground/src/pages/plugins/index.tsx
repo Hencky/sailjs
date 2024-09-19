@@ -1,5 +1,5 @@
 import { Fragment, useEffect } from 'react';
-import { Divider, Input } from 'antd';
+import { Divider, Input, Button } from 'antd';
 import { FormItem, Form, FormGroup, useForm } from '@sailjs/core';
 import { DEFAULT_COMPONENT_PLUGINS } from '@sailjs/plugins';
 
@@ -64,11 +64,12 @@ function Plugins() {
           span={24}
           labelCol={{ style: { width: 60 } }}
           name="group1"
-          fields={[
+          items={[
             {
               name: 'x1',
               label: 'x1',
               component: 'input',
+              rules: [{ required: true, message: '请输入xx' }],
               componentProps: {
                 placeholder: '请输入xx',
               },
@@ -99,6 +100,15 @@ function Plugins() {
           ]}
         />
       </Form>
+
+      <Button
+        onClick={async () => {
+          const values = await form.validateFields();
+          console.log('values', values);
+        }}
+      >
+        修改
+      </Button>
     </Fragment>
   );
 }

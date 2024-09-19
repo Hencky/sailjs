@@ -61,7 +61,7 @@ function Group() {
       >
         <FormGroup
           name="group1"
-          fields={[
+          items={[
             {
               name: 'a',
               span: 2,
@@ -88,7 +88,7 @@ function Group() {
         <FormGroup
           name="group2"
           span={4}
-          fields={[
+          items={[
             {
               name: 'e',
               label: 'e',
