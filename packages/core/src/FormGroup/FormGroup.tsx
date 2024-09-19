@@ -10,7 +10,7 @@ import { useFormGroupContext } from './context';
 import type { PluginsType } from '@sailjs/shared';
 import type { FormGroupProps } from './interface';
 
-export const FormGroup = observer(<ValuesType, P extends PluginsType = any>(props: FormGroupProps<ValuesType, P>) => {
+export const FormGroup = observer(<Values, P extends PluginsType = any>(props: FormGroupProps<Values, P>) => {
   const { name } = props;
 
   const formStore = useFormContext();
@@ -19,7 +19,7 @@ export const FormGroup = observer(<ValuesType, P extends PluginsType = any>(prop
   const group = useMemo(() => {
     return formStore!.createGroup(
       name,
-      new GroupStore<ValuesType, P>(
+      new GroupStore<Values, P>(
         props,
         () => formStore,
         () => groupStore
@@ -34,11 +34,11 @@ export const FormGroup = observer(<ValuesType, P extends PluginsType = any>(prop
     };
   }, []);
 
-  const renderFields = (items: FormGroupProps<ValuesType, P>['items']) => {
+  const renderFields = (items: FormGroupProps<Values, P>['items']) => {
     return items?.map((item) => {
       const { children } = item;
       return (
-        <FormItem<ValuesType, P> key={toCompareName(item.name as string)} {...item}>
+        <FormItem<Values, P> key={toCompareName(item.name as string)} {...item}>
           {/* @ts-expect-error */}
           {children}
         </FormItem>
@@ -49,7 +49,7 @@ export const FormGroup = observer(<ValuesType, P extends PluginsType = any>(prop
   let element;
   if (group.groupProps.items) {
     element = (
-      <Row {...group.groupProps}>{renderFields(group.groupProps.items as FormGroupProps<ValuesType, P>['items'])}</Row>
+      <Row {...group.groupProps}>{renderFields(group.groupProps.items as FormGroupProps<Values, P>['items'])}</Row>
     );
   } else {
     element = props.children;

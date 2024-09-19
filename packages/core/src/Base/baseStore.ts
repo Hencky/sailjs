@@ -3,15 +3,15 @@ import { FormStore } from '../Form';
 import { BaseProps } from './interface';
 import { GroupStore } from '../FormGroup/store';
 
-export class BaseStore<ValuesType = any> implements BaseProps {
+export class BaseStore<Values = any> implements BaseProps {
   commonProps: BaseProps = {};
 
   /** 获取form */
-  getFormStore: () => FormStore<ValuesType>;
+  getFormStore: () => FormStore<Values>;
   /** 获取group */
-  getGroupStore: () => GroupStore<ValuesType>;
+  getGroupStore: () => GroupStore<Values>;
 
-  constructor(getFormStore: () => FormStore<ValuesType>, getGroupStore: () => GroupStore<ValuesType>) {
+  constructor(getFormStore: () => FormStore<Values>, getGroupStore: () => GroupStore<Values>) {
     this.getFormStore = getFormStore;
     this.getGroupStore = getGroupStore;
   }

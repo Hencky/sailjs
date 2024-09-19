@@ -17,13 +17,13 @@ export type InnerDependencyType = {
   _source: NamePath;
 };
 
-export class FormStore<ValuesType = any, PluginsType = any>
+export class FormStore<Values = any, PluginsType = any>
   extends BaseRootStore
-  implements Omit<FormProps, 'form'>, BaseProps, FormInstance<ValuesType>
+  implements Omit<FormProps, 'form'>, BaseProps, FormInstance<Values>
 {
   private store: Record<NamePath, FieldStore | null> = {};
   /** 表单实例 */
-  form = {} as FormInstance<ValuesType>;
+  form = {} as FormInstance<Values>;
 
   /** 被动关联关系,dependencies关联关系 */
   private deps: Record<NamePath, InnerDependencyType[]> = {};
@@ -128,18 +128,18 @@ export class FormStore<ValuesType = any, PluginsType = any>
     map[strName] = [...(map[strName] || []), value];
   }
 
-  createField<NameType extends keyof ValuesType>(name: NameType, field: FieldStore<ValuesType[NameType]>) {
+  createField<NameType extends keyof Values>(name: NameType, field: FieldStore<Values[NameType]>) {
     this.addField(name, field);
 
     return field;
   }
 
-  createGroup<NameType extends keyof ValuesType>(name: NameType, group: GroupStore<ValuesType>) {
+  createGroup<NameType extends keyof Values>(name: NameType, group: GroupStore<Values>) {
     this.addField(name, group as unknown as FieldStore);
     return group;
   }
 
-  addGroup<NameType extends keyof ValuesType>(name: NameType, group: GroupStore<ValuesType>) {
+  addGroup<NameType extends keyof Values>(name: NameType, group: GroupStore<Values>) {
     this.addField(name, group as unknown as any);
   }
 
@@ -147,7 +147,7 @@ export class FormStore<ValuesType = any, PluginsType = any>
     this.removeField(name);
   }
 
-  addField<NameType extends keyof ValuesType>(name: NameType, field: FieldStore<ValuesType[NameType]>) {
+  addField<NameType extends keyof Values>(name: NameType, field: FieldStore<Values[NameType]>) {
     if (this.getField(name)) return;
 
     this.store[this.getName(name)] = field;
@@ -200,13 +200,13 @@ export class FormStore<ValuesType = any, PluginsType = any>
     this.removeField(name);
   }
 
-  getField<NameType extends keyof ValuesType>(name: NameType): FieldStore<ValuesType[NameType]> {
+  getField<NameType extends keyof Values>(name: NameType): FieldStore<Values[NameType]> {
     return this.store[this.getName(name)]!;
   }
 
   triggerChange(
     list: Record<string, InnerDependencyType[]>,
-    value: ValuesType,
+    value: Values,
     callback: (config: InnerDependencyType, depName: NamePath) => void
   ) {
     Object.keys(list).forEach((depName) => {
@@ -216,7 +216,7 @@ export class FormStore<ValuesType = any, PluginsType = any>
     });
   }
 
-  innerValueChange = (value: ValuesType) => {
+  innerValueChange = (value: Values) => {
     // 被动关联触发组件更新
     this.triggerChange(this.deps, value, ({ name: effectName }) => {
       this.getField(effectName).forceUpdate();
@@ -225,7 +225,7 @@ export class FormStore<ValuesType = any, PluginsType = any>
     this.triggerReactions(value);
   };
 
-  triggerReactions(value: ValuesType) {
+  triggerReactions(value: Values) {
     runInAction(() => {
       this.triggerChange(this.effects, value, ({ name: effectName, result, dependencies }, changeName) => {
         if (!result) return;
@@ -251,14 +251,14 @@ export class FormStore<ValuesType = any, PluginsType = any>
 
           // 循环触发 a -> b -> c
           if (key === 'value') {
-            this.triggerReactions({ [effectName]: resultValue } as ValuesType);
+            this.triggerReactions({ [effectName]: resultValue } as Values);
           }
         });
       });
     });
   }
 
-  setFormInstance(form: FormInstance<ValuesType>) {
+  setFormInstance(form: FormInstance<Values>) {
     this.form = form;
 
     Object.keys(form).forEach((key) => {
@@ -286,11 +286,11 @@ export class FormStore<ValuesType = any, PluginsType = any>
     }
   }
 
-  get values(): ValuesType {
+  get values(): Values {
     return this.form!.getFieldsValue();
   }
 
-  set values(vals: ValuesType) {
+  set values(vals: Values) {
     this.form!.setFieldsValue(vals!);
   }
 

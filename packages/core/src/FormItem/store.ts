@@ -7,12 +7,12 @@ import type { FormStore } from '../Form';
 import type { FormItemProps, ReactionType } from './interface';
 import type { GroupStore } from '../FormGroup/store';
 
-export class FieldStore<ValuesType = any, P = any>
+export class FieldStore<Values = any, P = any>
   extends BaseStore
   implements Omit<FormItemProps, 'validateStatus'>, BaseProps
 {
   /** 表单实例 */
-  form: FormInstance<ValuesType>;
+  form: FormInstance<Values>;
   /** 字段名，唯一路径标识 */
   name?: NamePath;
   /** 表单loading状态 */
@@ -27,9 +27,9 @@ export class FieldStore<ValuesType = any, P = any>
   /** 主动关联 */
   reactions?: ReactionType[];
   /** 获取formstore */
-  getFormStore: () => FormStore<ValuesType, P>;
+  getFormStore: () => FormStore<Values, P>;
   /** 获取groupstore */
-  getGroupStore: () => GroupStore<ValuesType, P>;
+  getGroupStore: () => GroupStore<Values, P>;
 
   // ===== 内置 =====
   /** 样式 */
@@ -74,10 +74,10 @@ export class FieldStore<ValuesType = any, P = any>
   valuePropName?: FormItemProps['valuePropName'];
 
   constructor(
-    props: FormItemProps<ValuesType>,
-    form: FormInstance<ValuesType>,
-    getFormStore: () => FormStore<ValuesType, P>,
-    getGroupStore: () => GroupStore<ValuesType, P>,
+    props: FormItemProps<Values>,
+    form: FormInstance<Values>,
+    getFormStore: () => FormStore<Values, P>,
+    getGroupStore: () => GroupStore<Values, P>,
     forceUpdate: () => void
   ) {
     super(getFormStore, getGroupStore);

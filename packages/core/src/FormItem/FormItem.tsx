@@ -12,8 +12,8 @@ import type { FormItemProps } from './interface';
 const { Item, useFormInstance } = Form;
 
 export const FormItem = observer(
-  <ValuesType, P extends PluginsType = any>(
-    props: PropsWithChildren<FormItemProps<ValuesType, P>>
+  <Values, P extends PluginsType = any>(
+    props: PropsWithChildren<FormItemProps<Values, P>>
   ): React.ReactNode => {
     const { name, children } = props;
 
@@ -29,7 +29,7 @@ export const FormItem = observer(
     const field = useMemo(() => {
       return formStore.createField(
         name as string,
-        new FieldStore<ValuesType, P>(
+        new FieldStore<Values, P>(
           props,
           form,
           () => formStore,
@@ -64,7 +64,7 @@ export const FormItem = observer(
     const { defaultComponentProps, component: Com } = field.plugin;
 
     const element = (
-      <Item<ValuesType> {...field.fieldProps} name={name}>
+      <Item<Values> {...field.fieldProps} name={name}>
         {Com ? (
           <Com {...field.childProps} {...defaultComponentProps} {...field.componentProps} />
         ) : (

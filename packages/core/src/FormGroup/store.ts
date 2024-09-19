@@ -3,7 +3,7 @@ import { BaseStore, BaseProps } from '../Base';
 import type { FormStore } from '../Form/store';
 import type { FormGroupProps } from './interface';
 
-export class GroupStore<ValuesType = any, P = any>
+export class GroupStore<Values = any, P = any>
   extends BaseStore
   implements Omit<FormGroupProps, 'form'>, BaseProps
 {
@@ -22,8 +22,8 @@ export class GroupStore<ValuesType = any, P = any>
 
   constructor(
     props: FormGroupProps,
-    getFormStore: () => FormStore<ValuesType>,
-    getGroupStore: () => GroupStore<ValuesType, P>
+    getFormStore: () => FormStore<Values>,
+    getGroupStore: () => GroupStore<Values, P>
   ) {
     super(getFormStore, getGroupStore);
 

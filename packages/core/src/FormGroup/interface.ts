@@ -4,11 +4,11 @@ import type { PluginsType } from '@sailjs/shared';
 import type { BaseProps } from '../Base';
 import type { FormItemProps } from '../FormItem';
 
-export interface FormGroupProps<ValuesType = any, P extends PluginsType = any>
-  extends Pick<FormItemProps<ValuesType, P>, keyof BaseProps>,
+export interface FormGroupProps<Values = any, P extends PluginsType = any>
+  extends Pick<FormItemProps<Values, P>, keyof BaseProps>,
     RowProps {
   /** 唯一标识 */
   name?: NamePath;
 
-  items?: FormItemProps<ValuesType, P>[];
+  items?: FormItemProps<Values, P>[];
 }

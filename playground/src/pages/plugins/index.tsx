@@ -1,16 +1,7 @@
 import { Fragment, useEffect } from 'react';
-import { Divider, Input, Button } from 'antd';
+import { Divider, Button } from 'antd';
 import { FormItem, Form, FormGroup, useForm } from '@sailjs/core';
-import { DEFAULT_COMPONENT_PLUGINS } from '@sailjs/plugins';
-
-const plugins = Object.assign({}, DEFAULT_COMPONENT_PLUGINS, {
-  input2: {
-    component: Input,
-    defaultComponentProps: { showCount: true },
-  },
-});
-
-type CustomPluginsType = typeof plugins;
+import { plugins, type CustomPluginsType } from './plugins';
 
 function Plugins() {
   const [form] = useForm({ plugins });

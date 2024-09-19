@@ -9,8 +9,8 @@ export type ReactionResultFunctionType<Key extends keyof FormItemProps> = (targe
 
 export type ReactionResultType<Key extends keyof FormItemProps> = ReactionResultFunctionType<Key> | string;
 
-export interface FormItemProps<ValuesType = any, P extends PluginsType = any, CN extends keyof P = keyof P>
-  extends Omit<AFormItemProps<ValuesType>, keyof BaseProps>,
+export interface FormItemProps<Values = any, P extends PluginsType = any, CN extends keyof P = keyof P>
+  extends Omit<AFormItemProps<Values>, keyof BaseProps>,
     BaseProps {
   /** 数据源类型 */
   options?: any[];

@@ -8,7 +8,7 @@ import type { FormProps } from './interface';
 const { useForm: useAForm } = AForm;
 
 export const Form = observer(
-  <ValuesType, P extends PluginsType = any>(props: PropsWithChildren<FormProps<ValuesType, P>>) => {
+  <Values, P extends PluginsType = any>(props: PropsWithChildren<FormProps<Values, P>>) => {
     const { children, form: formStore, onValuesChange } = props;
 
     const [aForm] = useAForm();
@@ -26,7 +26,7 @@ export const Form = observer(
     return (
       <FormContext.Provider value={formContextValue}>
         <Spin spinning={formStore.loading}>
-          <AForm<ValuesType>
+          <AForm<Values>
             {...formStore.formProps}
             form={aForm}
             onValuesChange={(changeValues, values) => {
