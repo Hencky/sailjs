@@ -2,8 +2,8 @@ import { PropsWithChildren, useEffect, useMemo } from 'react';
 import { Form as AForm, Spin } from 'antd';
 import { observer } from 'mobx-react-lite';
 import { FormContext } from './context';
+import type { PluginsType } from '@sailjs/shared';
 import type { FormProps } from './interface';
-import type { PluginsType } from '../plugins';
 
 const { useForm: useAForm } = AForm;
 

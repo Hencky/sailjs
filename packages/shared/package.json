@@ -1,5 +1,5 @@
 {
-  "name": "@sailjs/register",
+  "name": "@sailjs/shared",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -10,10 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "antd": "^5.20.2",
-    "@sailjs/shared": "workspace:*"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@eslint/js": "^9.8.0",
     "eslint": "^9.8.0",

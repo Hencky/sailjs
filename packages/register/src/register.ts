@@ -14,7 +14,7 @@ class PluginStore<T> {
     return this as PluginStore<T & Record<Name, { component: Component; defaultComponentProps?: ComponentProps }>>;
   }
 
-  registerPlugins<PluginsType>(plugins: PluginsType): PluginsType {
+  registerPlugins<P>(plugins: P): P {
     this.plugins = Object.assign(this.plugins, plugins);
     return this.plugins;
   }

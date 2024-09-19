@@ -3,6 +3,6 @@ import type { FormStore } from '../Form';
 
 export const FormContext = createContext(null as unknown as FormStore<any, any>);
 
-export const useFormContext = <ValuesType = any, PluginsType = any>() => {
-  return useContext<FormStore<ValuesType, PluginsType>>(FormContext);
+export const useFormContext = <ValuesType = any, P = any>() => {
+  return useContext<FormStore<ValuesType, P>>(FormContext);
 };

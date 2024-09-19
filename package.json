@@ -13,7 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sailjs/core": "workspace:^0.0.1",
+    "@sailjs/core": "workspace:*",
     "antd": "^5.20.2",
     "radash": "^12.1.0",
     "react": "^18.3.1",

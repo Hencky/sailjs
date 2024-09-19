@@ -5,7 +5,7 @@ importers:
   .:
     specifiers:
       '@eslint/js': ^9.8.0
-      '@sailjs/core': workspace:^0.0.1
+      '@sailjs/core': workspace:*
       '@types/react': ^18.3.3
       '@types/react-dom': ^18.3.0
       '@vitejs/plugin-react': ^4.3.1
@@ -44,7 +44,8 @@ importers:
   packages/core:
     specifiers:
       '@eslint/js': ^9.8.0
-      '@sailjs/register': workspace:^0.0.1
+      '@sailjs/register': workspace:*
+      '@sailjs/shared': workspace:*
       '@types/react': ^18.3.3
       '@types/react-dom': ^18.3.0
       '@vitejs/plugin-react': ^4.3.1
@@ -64,6 +65,7 @@ importers:
       vite: ^5.4.0
     dependencies:
       '@sailjs/register': link:../register
+      '@sailjs/shared': link:../shared
       ahooks: registry.npmjs.org/ahooks/3.8.1_react@18.3.1
       antd: registry.npmjs.org/antd/5.20.2_react-dom@18.3.1+react@18.3.1
       mobx: registry.npmjs.org/mobx/6.13.1
@@ -84,9 +86,11 @@ importers:
       typescript-eslint: registry.npmjs.org/typescript-eslint/8.3.0_eslint@9.9.1+typescript@5.5.4
       vite: registry.npmjs.org/vite/5.4.2
 
-  packages/register:
+  packages/plugins:
     specifiers:
       '@eslint/js': ^9.8.0
+      '@sailjs/register': workspace:*
+      '@sailjs/shared': workspace:*
       antd: ^5.20.2
       eslint: ^9.8.0
       eslint-plugin-react-hooks: ^5.1.0-rc.0
@@ -95,7 +99,50 @@ importers:
       typescript: ^5.5.3
       typescript-eslint: ^8.0.0
     dependencies:
+      '@sailjs/register': link:../register
+      '@sailjs/shared': link:../shared
       antd: registry.npmjs.org/antd/5.20.2_react-dom@18.3.1+react@18.3.1
+    devDependencies:
+      '@eslint/js': registry.npmjs.org/@eslint/js/9.9.1
+      eslint: registry.npmjs.org/eslint/9.9.1
+      eslint-plugin-react-hooks: registry.npmjs.org/eslint-plugin-react-hooks/5.1.0-rc-fb9a90fa48-20240614_eslint@9.9.1
+      eslint-plugin-react-refresh: registry.npmjs.org/eslint-plugin-react-refresh/0.4.11_eslint@9.9.1
+      globals: registry.npmjs.org/globals/15.9.0
+      typescript: registry.npmjs.org/typescript/5.5.4
+      typescript-eslint: registry.npmjs.org/typescript-eslint/8.3.0_eslint@9.9.1+typescript@5.5.4
+
+  packages/register:
+    specifiers:
+      '@eslint/js': ^9.8.0
+      '@sailjs/shared': workspace:*
+      antd: ^5.20.2
+      eslint: ^9.8.0
+      eslint-plugin-react-hooks: ^5.1.0-rc.0
+      eslint-plugin-react-refresh: ^0.4.9
+      globals: ^15.9.0
+      typescript: ^5.5.3
+      typescript-eslint: ^8.0.0
+    dependencies:
+      '@sailjs/shared': link:../shared
+      antd: registry.npmjs.org/antd/5.20.2_react-dom@18.3.1+react@18.3.1
+    devDependencies:
+      '@eslint/js': registry.npmjs.org/@eslint/js/9.9.1
+      eslint: registry.npmjs.org/eslint/9.9.1
+      eslint-plugin-react-hooks: registry.npmjs.org/eslint-plugin-react-hooks/5.1.0-rc-fb9a90fa48-20240614_eslint@9.9.1
+      eslint-plugin-react-refresh: registry.npmjs.org/eslint-plugin-react-refresh/0.4.11_eslint@9.9.1
+      globals: registry.npmjs.org/globals/15.9.0
+      typescript: registry.npmjs.org/typescript/5.5.4
+      typescript-eslint: registry.npmjs.org/typescript-eslint/8.3.0_eslint@9.9.1+typescript@5.5.4
+
+  packages/shared:
+    specifiers:
+      '@eslint/js': ^9.8.0
+      eslint: ^9.8.0
+      eslint-plugin-react-hooks: ^5.1.0-rc.0
+      eslint-plugin-react-refresh: ^0.4.9
+      globals: ^15.9.0
+      typescript: ^5.5.3
+      typescript-eslint: ^8.0.0
     devDependencies:
       '@eslint/js': registry.npmjs.org/@eslint/js/9.9.1
       eslint: registry.npmjs.org/eslint/9.9.1
@@ -108,7 +155,9 @@ importers:
   playground:
     specifiers:
       '@eslint/js': ^9.8.0
-      '@sailjs/core': workspace:^0.0.1
+      '@sailjs/core': workspace:*
+      '@sailjs/plugins': workspace:*
+      '@sailjs/shared': workspace:*
       '@types/node': ^22.5.3
       '@types/react': ^18.3.3
       '@types/react-dom': ^18.3.0
@@ -127,6 +176,8 @@ importers:
       vite: ^5.4.0
     dependencies:
       '@sailjs/core': link:../packages/core
+      '@sailjs/plugins': link:../packages/plugins
+      '@sailjs/shared': link:../packages/shared
       antd: registry.npmjs.org/antd/5.20.2_react-dom@18.3.1+react@18.3.1
       react: registry.npmjs.org/react/18.3.1
       react-dom: registry.npmjs.org/react-dom/18.3.1_react@18.3.1

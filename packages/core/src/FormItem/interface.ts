@@ -1,7 +1,7 @@
 import type { FormItemProps as AFormItemProps } from 'antd/lib/form/FormItem';
 import type { NamePath } from 'antd/es/form/interface';
 import type { BaseProps } from '../Base';
-import type { PluginsType } from '../plugins';
+import type { PluginsType } from '@sailjs/shared';
 
 export type ReactionResultKeyType = keyof Omit<FormItemProps, 'reactions' | 'dependencies'> & 'value';
 

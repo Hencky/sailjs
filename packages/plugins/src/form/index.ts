@@ -1,14 +1,6 @@
 import { Input, Select, InputNumber } from 'antd';
 import type { InputNumberProps, InputProps, SelectProps } from 'antd';
 
-export type PluginsType = Record<
-  string,
-  {
-    component: any;
-    defaultComponentProps: any;
-  }
->;
-
 export const DEFAULT_COMPONENT_PLUGINS = {
   input: {
     component: Input,

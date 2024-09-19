@@ -6,7 +6,7 @@ import { FieldMode } from '../Base';
 import { FieldStore } from './store';
 import { useFormContext } from '../Form/context';
 import { useFormGroupContext } from '../FormGroup';
-import type { PluginsType } from '../plugins';
+import type { PluginsType } from '@sailjs/shared';
 import type { FormItemProps } from './interface';
 
 const { Item, useFormInstance } = Form;

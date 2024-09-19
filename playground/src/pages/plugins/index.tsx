@@ -1,6 +1,7 @@
 import { Fragment, useEffect } from 'react';
 import { Divider, Input } from 'antd';
-import { FormItem, Form, FormGroup, useForm, DEFAULT_COMPONENT_PLUGINS } from '@sailjs/core';
+import { FormItem, Form, FormGroup, useForm } from '@sailjs/core';
+import { DEFAULT_COMPONENT_PLUGINS } from '@sailjs/plugins';
 
 const plugins = Object.assign({}, DEFAULT_COMPONENT_PLUGINS, {
   input2: {

@@ -1,5 +1,5 @@
 {
-  "name": "@sailjs/register",
+  "name": "@sailjs/plugins",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "antd": "^5.20.2",
-    "@sailjs/shared": "workspace:*"
+    "@sailjs/shared": "workspace:*",
+    "@sailjs/register": "workspace:*"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",

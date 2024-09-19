@@ -11,7 +11,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sailjs/register": "workspace:^0.0.1",
+    "@sailjs/register": "workspace:*",
+    "@sailjs/shared": "workspace:*",
     "ahooks": "^3.8.1",
     "antd": "^5.20.2",
     "mobx": "^6.13.1",
