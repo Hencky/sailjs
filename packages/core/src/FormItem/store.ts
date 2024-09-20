@@ -94,7 +94,6 @@ export class FieldStore<Values = any, P = any>
 
     super.makeObservable();
     this.makeObservable();
-    this.fetchRemoteOptions();
   }
 
   makeObservable() {

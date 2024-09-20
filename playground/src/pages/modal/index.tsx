@@ -1,10 +1,24 @@
 import { useModal, useModalForm, FormGroup } from '@sailjs/core';
 import { Button } from 'antd';
 import { plugins, CustomPluginsType } from '../plugins/plugins';
+import { memo, useEffect } from 'react';
 
-const SaveModal = () => {
+const Content = () => {
+  useEffect(() => {
+    console.log('modal刷新');
+  }, []);
+
+  return <div>内容</div>;
+};
+
+const SaveModal = memo(() => {
+  useEffect(() => {
+    console.log('modalForm刷新');
+  }, []);
+
   return (
     <FormGroup<any, CustomPluginsType>
+      span={24}
       items={[
         {
           name: 'a1',
@@ -20,10 +34,23 @@ const SaveModal = () => {
           ],
         },
         { name: 'a2', label: 'a2', component: 'input', rules: [{ required: true, message: 'a2必填' }] },
+        {
+          name: 'a3',
+          label: 'a3',
+          component: 'select',
+          componentProps: { style: { width: '100%' } },
+          remoteOptions: async () => {
+            console.log('remoteOptions');
+            return Promise.resolve([
+              { label: 'a', value: 'a' },
+              { label: 'b', value: 'b' },
+            ]);
+          },
+        },
       ]}
     />
   );
-};
+});
 
 export default () => {
   const [modal, { open: openModal, close: closeModal }] = useModal();
@@ -41,7 +68,7 @@ export default () => {
           openModal({
             title: '弹框',
             width: 600,
-            children: '弹框内容',
+            children: <Content />,
             onCancel: () => {
               console.log('onCancel');
             },
