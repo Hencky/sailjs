@@ -14,7 +14,35 @@ const List = () => {
       <FormList name="list">
         {(fields, operation) => {
           const ele = fields.map((field, index) => {
-            return <FormItem key={field.key} name={[field.name, 'name']} label={`姓名${index}`} component={'input'} />;
+            return (
+              <Card key={field.key} title={index + 1}>
+                <FormItem name={[field.name, 'name']} label={`姓名${index}`} component={'input'} />
+
+                <FormList name={[field.name, 'childList']}>
+                  {(childFields, childOperation) => {
+                    const childEle = childFields.map((childField, childIndex) => {
+                      console.log('childField', childField);
+
+                      return (
+                        <FormItem
+                          key={childField.key}
+                          name={[childField.name, 'name']}
+                          label={`child ${childIndex}`}
+                          component={'input'}
+                        />
+                      );
+                    });
+
+                    return (
+                      <Card>
+                        {childEle}
+                        <Button onClick={() => childOperation.add()}>添加子元素</Button>
+                      </Card>
+                    );
+                  }}
+                </FormList>
+              </Card>
+            );
           });
 
           return (
@@ -38,8 +66,10 @@ const List = () => {
       <Button
         onClick={() => {
           form.values = {
-            list: [{ name: '1' }, { name: '2' }, { name: '3' }],
+            list: [{ name: '1', childList: [{ name: '11' }, { name: '12' }] }, { name: '2' }, { name: '3' }],
           };
+          // 不行，只给了values设置set方法，没有给list设置set方法
+          // form.values.list = [{ name: '1' }, { name: '2' }, { name: '3' }];
         }}
       >
         表单实例

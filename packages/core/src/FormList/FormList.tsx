@@ -13,7 +13,7 @@ export const FormList = (props: FormListProps) => {
 
   const contextValue = useMemo(() => {
     return {
-      name: listCtx.name ? [...toArray(listCtx.name), name] : name,
+      name: listCtx.name ? [...toArray(listCtx.name), ...toArray(name)] : name,
     };
   }, [listCtx.name, name]);
 

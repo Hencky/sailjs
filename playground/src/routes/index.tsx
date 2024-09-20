@@ -7,11 +7,12 @@ import Modal from '@/pages/modal';
 import Plugins from '@/pages/plugins';
 import Desctoy from '@/pages/destroy';
 import Options from '@/pages/options';
+import FormList from '@/pages/formlist';
+import FormItem from '@/pages/formitem';
 import Instance from '@/pages/instance';
 import ArrayName from '@/pages/arrayname';
 import Depdendency from '@/pages/dependency';
 import RemoteValues from '@/pages/remoteValues';
-import FormList from '@/pages/formlist';
 
 const list = [
   {
@@ -73,6 +74,12 @@ const list = [
     key: 'formlist',
     path: '/formlist',
     element: <FormList />,
+  },
+  {
+    label: '空ITEM',
+    key: 'formitem',
+    path: '/formitem',
+    element: <FormItem />,
   },
 ];
 

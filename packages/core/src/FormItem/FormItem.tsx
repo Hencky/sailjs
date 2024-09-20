@@ -1,4 +1,4 @@
-import { PropsWithChildren, cloneElement, useEffect, useMemo, useState } from 'react';
+import { PropsWithChildren, cloneElement, useEffect, useMemo, useState, isValidElement } from 'react';
 import { Form, Col } from 'antd';
 import { useDebounceEffect } from 'ahooks';
 import { observer } from 'mobx-react-lite';
@@ -70,9 +70,10 @@ export const FormItem = observer(
       <Item<Values> {...field.fieldProps} name={name}>
         {Com ? (
           <Com {...field.childProps} {...defaultComponentProps} {...field.componentProps} />
-        ) : (
-          // @ts-expect-error
+        ) : isValidElement(children) ? (
           cloneElement(children, { ...field.childProps })
+        ) : (
+          children
         )}
       </Item>
     );
