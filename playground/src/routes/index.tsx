@@ -11,6 +11,7 @@ import Instance from '@/pages/instance';
 import ArrayName from '@/pages/arrayname';
 import Depdendency from '@/pages/dependency';
 import RemoteValues from '@/pages/remoteValues';
+import FormList from '@/pages/formlist';
 
 const list = [
   {
@@ -66,6 +67,12 @@ const list = [
     key: 'modal',
     path: '/modal',
     element: <Modal />,
+  },
+  {
+    label: '列表',
+    key: 'formlist',
+    path: '/formlist',
+    element: <FormList />,
   },
 ];
 

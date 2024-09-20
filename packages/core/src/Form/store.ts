@@ -200,7 +200,7 @@ export class FormStore<Values = any, PluginsType = any>
     this.removeField(name);
   }
 
-  getField<NameType extends keyof Values>(name: NameType): FieldStore<Values[NameType]> {
+  getField<NameType>(name: NameType): FieldStore<any> {
     return this.store[this.getName(name)]!;
   }
 
