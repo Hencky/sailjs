@@ -1,5 +1,6 @@
 import { useModal, useModalForm, FormGroup } from '@sailjs/core';
 import { Button } from 'antd';
+import { sleep } from 'radash';
 import { plugins, CustomPluginsType } from '../plugins/plugins';
 import { memo, useEffect } from 'react';
 
@@ -72,8 +73,9 @@ export default () => {
             onCancel: () => {
               console.log('onCancel');
             },
-            onOk: () => {
+            onOk: async () => {
               console.log('onOk');
+              await sleep(2000);
               closeModal();
             },
           })

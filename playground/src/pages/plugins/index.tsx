@@ -7,13 +7,17 @@ function Plugins() {
   const [form] = useForm({ plugins });
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       const formA = form.getField('a1');
       formA.componentProps.placeholder = 'aabbcc';
 
       const x1 = form.getField('x1');
       x1.value = '123';
     }, 2000);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
@@ -58,8 +62,8 @@ function Plugins() {
             {
               name: 'x1',
               label: 'x1',
-              component: 'input',
               rules: [{ required: true, message: '请输入xx' }],
+              component: 'input',
               componentProps: {
                 placeholder: '请输入xx',
               },
