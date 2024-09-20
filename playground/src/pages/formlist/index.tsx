@@ -17,18 +17,23 @@ const List = () => {
             return (
               <Card key={field.key} title={index + 1}>
                 <FormItem name={[field.name, 'name']} label={`姓名${index}`} component={'input'} />
-
                 <FormList name={[field.name, 'childList']}>
                   {(childFields, childOperation) => {
                     const childEle = childFields.map((childField, childIndex) => {
-                      console.log('childField', childField);
-
                       return (
                         <FormItem
                           key={childField.key}
                           name={[childField.name, 'name']}
                           label={`child ${childIndex}`}
                           component={'input'}
+                          reactions={[
+                            {
+                              dependencies: [['list', index, 'name']],
+                              result: {
+                                value: `$deps[0]`,
+                              },
+                            },
+                          ]}
                         />
                       );
                     });
@@ -72,7 +77,15 @@ const List = () => {
           // form.values.list = [{ name: '1' }, { name: '2' }, { name: '3' }];
         }}
       >
-        表单实例
+        设置表单值
+      </Button>
+
+      <Button
+        onClick={() => {
+          form.getField(['list', 0, 'childList', 0, 'name']).value = '111';
+        }}
+      >
+        子表单设置值
       </Button>
     </Form>
   );
