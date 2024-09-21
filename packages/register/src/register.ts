@@ -29,17 +29,3 @@ class PluginStore<T> {
 }
 
 export const pluginStore = new PluginStore();
-
-// import { Input, InputProps, Select, SelectProps } from 'antd';
-
-// export const createStore = (plugins: any) => {
-//   return pluginStore
-//     .register<'input', typeof Input, InputProps>('input', Input)
-//     .register<'select', typeof Select, SelectProps>('select', Select)
-//     .register<'select1', typeof Select, SelectProps>('select1', Select)
-//     .register<'select2', typeof Select, SelectProps>('select2', Select)
-//     .register<'select3', typeof Select, SelectProps>('select3', Select)
-//     .getPlugins();
-// };
-
-// export const store = createStore();
