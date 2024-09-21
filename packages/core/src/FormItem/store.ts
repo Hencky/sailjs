@@ -34,6 +34,10 @@ export class FieldStore<Values = any, P = any>
   // ===== 内置 =====
   /** 样式 */
   style?: FormItemProps['style'];
+  /** id */
+  id?: FormItemProps['id'];
+  /** 类 */
+  className?: FormItemProps['className'];
   /** 设置依赖字段 */
   dependencies?: FormItemProps['dependencies'];
   /** 额外的提示信息，和 help 类似，当需要错误信息和提示文案同时出现时 */
@@ -101,7 +105,8 @@ export class FieldStore<Values = any, P = any>
       validateStatus: observable.ref,
       optionsLoading: observable.ref,
       options: observable.shallow,
-      style: observable.shallow,
+      style: observable,
+      className: observable.ref,
       rules: observable.shallow,
       extra: observable,
       getValueFromEvent: observable,
@@ -217,6 +222,11 @@ export class FieldStore<Values = any, P = any>
       validateTrigger: this.validateTrigger,
       valuePropName: this.valuePropName,
       wrapperCol: this.wrapperCol,
+      id: this.id,
+      style: this.style,
+      className: this.className,
+      // @ts-expect-error
+      ['data-testid']: this['data-testid'],
     };
   }
 

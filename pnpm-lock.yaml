@@ -46,6 +46,10 @@ importers:
       '@eslint/js': ^9.8.0
       '@sailjs/register': workspace:*
       '@sailjs/shared': workspace:*
+      '@testing-library/dom': ^10.4.0
+      '@testing-library/jest-dom': ^6.5.0
+      '@testing-library/react': ^16.0.1
+      '@testing-library/user-event': ^14.5.2
       '@types/react': ^18.3.3
       '@types/react-dom': ^18.3.0
       '@vitejs/plugin-react': ^4.3.1
@@ -56,6 +60,7 @@ importers:
       eslint-plugin-react-hooks: ^5.1.0-rc.0
       eslint-plugin-react-refresh: ^0.4.9
       globals: ^15.9.0
+      jsdom: ^25.0.0
       mobx: ^6.13.1
       mobx-react-lite: ^4.0.7
       radash: ^12.1.0
@@ -77,6 +82,10 @@ importers:
       react-dom: registry.npmjs.org/react-dom/18.3.1_react@18.3.1
     devDependencies:
       '@eslint/js': registry.npmjs.org/@eslint/js/9.9.1
+      '@testing-library/dom': registry.npmjs.org/@testing-library/dom/10.4.0
+      '@testing-library/jest-dom': registry.npmjs.org/@testing-library/jest-dom/6.5.0
+      '@testing-library/react': registry.npmjs.org/@testing-library/react/16.0.1_5feffc8fc296d97fa717ec7b23843284
+      '@testing-library/user-event': registry.npmjs.org/@testing-library/user-event/14.5.2_@testing-library+dom@10.4.0
       '@types/react': registry.npmjs.org/@types/react/18.3.5
       '@types/react-dom': registry.npmjs.org/@types/react-dom/18.3.0
       '@vitejs/plugin-react': registry.npmjs.org/@vitejs/plugin-react/4.3.1_vite@5.4.2
@@ -85,10 +94,11 @@ importers:
       eslint-plugin-react-hooks: registry.npmjs.org/eslint-plugin-react-hooks/5.1.0-rc-fb9a90fa48-20240614_eslint@9.9.1
       eslint-plugin-react-refresh: registry.npmjs.org/eslint-plugin-react-refresh/0.4.11_eslint@9.9.1
       globals: registry.npmjs.org/globals/15.9.0
+      jsdom: registry.npmjs.org/jsdom/25.0.0
       typescript: registry.npmjs.org/typescript/5.5.4
       typescript-eslint: registry.npmjs.org/typescript-eslint/8.3.0_eslint@9.9.1+typescript@5.5.4
       vite: registry.npmjs.org/vite/5.4.2
-      vitest: registry.npmjs.org/vitest/2.1.1
+      vitest: registry.npmjs.org/vitest/2.1.1_jsdom@25.0.0
 
   packages/plugins:
     specifiers:
@@ -202,6 +212,12 @@ importers:
       vite: registry.npmjs.org/vite/5.4.2_@types+node@22.5.3
 
 packages:
+
+  registry.npmjs.org/@adobe/css-tools/4.4.0:
+    resolution: {integrity: sha512-Ff9+ksdQQB3rMncgqDK78uLznstjyfIf2Arnh22pW8kBpLs6rpKDwgnZT46hin5Hl1WzazzK64DOrhSwYpS7bQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@adobe/css-tools/-/css-tools-4.4.0.tgz}
+    name: '@adobe/css-tools'
+    version: 4.4.0
+    dev: true
 
   registry.npmjs.org/@ampproject/remapping/2.3.0:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@ampproject/remapping/-/remapping-2.3.0.tgz}
@@ -509,7 +525,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: registry.npmjs.org/regenerator-runtime/0.14.1
-    dev: false
 
   registry.npmjs.org/@babel/template/7.25.0:
     resolution: {integrity: sha512-aOOgh1/5XzKvg1jvVz7AVrx2piJ2XBi227DHmbY6y+bM9H2FlN+IfecYu4Xl0cNiiVejlsCri89LUsbj8vJD9Q==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@babel/template/-/template-7.25.0.tgz}
@@ -1312,6 +1327,81 @@ packages:
     dev: true
     optional: true
 
+  registry.npmjs.org/@testing-library/dom/10.4.0:
+    resolution: {integrity: sha512-pemlzrSESWbdAloYml3bAJMEfNh1Z7EduzqPKprCH5S341frlpYnUEW0H72dLxa6IsYr+mPno20GiSm+h9dEdQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@testing-library/dom/-/dom-10.4.0.tgz}
+    name: '@testing-library/dom'
+    version: 10.4.0
+    engines: {node: '>=18'}
+    dependencies:
+      '@babel/code-frame': registry.npmjs.org/@babel/code-frame/7.24.7
+      '@babel/runtime': registry.npmjs.org/@babel/runtime/7.25.6
+      '@types/aria-query': registry.npmjs.org/@types/aria-query/5.0.4
+      aria-query: registry.npmjs.org/aria-query/5.3.0
+      chalk: registry.npmjs.org/chalk/4.1.2
+      dom-accessibility-api: registry.npmjs.org/dom-accessibility-api/0.5.16
+      lz-string: registry.npmjs.org/lz-string/1.5.0
+      pretty-format: registry.npmjs.org/pretty-format/27.5.1
+    dev: true
+
+  registry.npmjs.org/@testing-library/jest-dom/6.5.0:
+    resolution: {integrity: sha512-xGGHpBXYSHUUr6XsKBfs85TWlYKpTc37cSBBVrXcib2MkHLboWlkClhWF37JKlDb9KEq3dHs+f2xR7XJEWGBxA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@testing-library/jest-dom/-/jest-dom-6.5.0.tgz}
+    name: '@testing-library/jest-dom'
+    version: 6.5.0
+    engines: {node: '>=14', npm: '>=6', yarn: '>=1'}
+    dependencies:
+      '@adobe/css-tools': registry.npmjs.org/@adobe/css-tools/4.4.0
+      aria-query: registry.npmjs.org/aria-query/5.3.2
+      chalk: registry.npmjs.org/chalk/3.0.0
+      css.escape: registry.npmjs.org/css.escape/1.5.1
+      dom-accessibility-api: registry.npmjs.org/dom-accessibility-api/0.6.3
+      lodash: registry.npmjs.org/lodash/4.17.21
+      redent: registry.npmjs.org/redent/3.0.0
+    dev: true
+
+  registry.npmjs.org/@testing-library/react/16.0.1_5feffc8fc296d97fa717ec7b23843284:
+    resolution: {integrity: sha512-dSmwJVtJXmku+iocRhWOUFbrERC76TX2Mnf0ATODz8brzAZrMBbzLwQixlBSanZxR6LddK3eiwpSFZgDET1URg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@testing-library/react/-/react-16.0.1.tgz}
+    id: registry.npmjs.org/@testing-library/react/16.0.1
+    name: '@testing-library/react'
+    version: 16.0.1
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@testing-library/dom': ^10.0.0
+      '@types/react': ^18.0.0
+      '@types/react-dom': ^18.0.0
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+    dependencies:
+      '@babel/runtime': registry.npmjs.org/@babel/runtime/7.25.6
+      '@testing-library/dom': registry.npmjs.org/@testing-library/dom/10.4.0
+      '@types/react': registry.npmjs.org/@types/react/18.3.5
+      '@types/react-dom': registry.npmjs.org/@types/react-dom/18.3.0
+      react: registry.npmjs.org/react/18.3.1
+      react-dom: registry.npmjs.org/react-dom/18.3.1_react@18.3.1
+    dev: true
+
+  registry.npmjs.org/@testing-library/user-event/14.5.2_@testing-library+dom@10.4.0:
+    resolution: {integrity: sha512-YAh82Wh4TIrxYLmfGcixwD18oIjyC1pFQC2Y01F2lzV2HTMiYrI0nze0FD0ocB//CKS/7jIUgae+adPqxK5yCQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@testing-library/user-event/-/user-event-14.5.2.tgz}
+    id: registry.npmjs.org/@testing-library/user-event/14.5.2
+    name: '@testing-library/user-event'
+    version: 14.5.2
+    engines: {node: '>=12', npm: '>=6'}
+    peerDependencies:
+      '@testing-library/dom': '>=7.21.4'
+    dependencies:
+      '@testing-library/dom': registry.npmjs.org/@testing-library/dom/10.4.0
+    dev: true
+
+  registry.npmjs.org/@types/aria-query/5.0.4:
+    resolution: {integrity: sha512-rfT93uj5s0PRL7EzccGMs3brplhcrghnDoV26NqKhCAS1hVo+WdNsPvE/yb6ilfr5hi2MEk6d5EWJTKdxg8jVw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/aria-query/-/aria-query-5.0.4.tgz}
+    name: '@types/aria-query'
+    version: 5.0.4
+    dev: true
+
   registry.npmjs.org/@types/babel__core/7.20.5:
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/babel__core/-/babel__core-7.20.5.tgz}
     name: '@types/babel__core'
@@ -1576,7 +1666,7 @@ packages:
       std-env: registry.npmjs.org/std-env/3.7.0
       test-exclude: registry.npmjs.org/test-exclude/7.0.1
       tinyrainbow: registry.npmjs.org/tinyrainbow/1.2.0
-      vitest: registry.npmjs.org/vitest/2.1.1
+      vitest: registry.npmjs.org/vitest/2.1.1_jsdom@25.0.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1676,6 +1766,17 @@ packages:
     hasBin: true
     dev: true
 
+  registry.npmjs.org/agent-base/7.1.1:
+    resolution: {integrity: sha512-H0TSyFNDMomMNJQBn8wFV5YC/2eJ+VXECwOadZJT554xP6cODZHPX3H9QMQECxvrgiSOP1pHjy1sMWQVYJOUOA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/agent-base/-/agent-base-7.1.1.tgz}
+    name: agent-base
+    version: 7.1.1
+    engines: {node: '>= 14'}
+    dependencies:
+      debug: registry.npmjs.org/debug/4.3.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   registry.npmjs.org/ahooks/3.8.1_react@18.3.1:
     resolution: {integrity: sha512-JoP9+/RWO7MnI/uSKdvQ8WB10Y3oo1PjLv+4Sv4Vpm19Z86VUMdXh+RhWvMGxZZs06sq2p0xVtFk8Oh5ZObsoA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/ahooks/-/ahooks-3.8.1.tgz}
     id: registry.npmjs.org/ahooks/3.8.1
@@ -1738,6 +1839,13 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       color-convert: registry.npmjs.org/color-convert/2.0.1
+    dev: true
+
+  registry.npmjs.org/ansi-styles/5.2.0:
+    resolution: {integrity: sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/ansi-styles/-/ansi-styles-5.2.0.tgz}
+    name: ansi-styles
+    version: 5.2.0
+    engines: {node: '>=10'}
     dev: true
 
   registry.npmjs.org/ansi-styles/6.2.1:
@@ -1819,6 +1927,21 @@ packages:
     version: 2.0.1
     dev: true
 
+  registry.npmjs.org/aria-query/5.3.0:
+    resolution: {integrity: sha512-b0P0sZPKtyu8HkeRAfCq0IfURZK+SuwMjY1UXGBU27wpAiTwQAIlq56IbIO+ytk/JjS1fMR14ee5WBBfKi5J6A==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/aria-query/-/aria-query-5.3.0.tgz}
+    name: aria-query
+    version: 5.3.0
+    dependencies:
+      dequal: registry.npmjs.org/dequal/2.0.3
+    dev: true
+
+  registry.npmjs.org/aria-query/5.3.2:
+    resolution: {integrity: sha512-COROpnaoap1E2F000S62r6A60uHZnmlvomhfyT2DlTcrY1OrBKn2UhH7qn5wTC9zMvD0AY7csdPSNwKP+7WiQw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/aria-query/-/aria-query-5.3.2.tgz}
+    name: aria-query
+    version: 5.3.2
+    engines: {node: '>= 0.4'}
+    dev: true
+
   registry.npmjs.org/array-tree-filter/2.1.0:
     resolution: {integrity: sha512-4ROwICNlNw/Hqa9v+rk5h22KjmzB1JGTMVKP2AKJBOCgb0yL0ASf0+YvCcLNNwquOHNX48jkeZIJ3a+oOQqKcw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/array-tree-filter/-/array-tree-filter-2.1.0.tgz}
     name: array-tree-filter
@@ -1830,6 +1953,12 @@ packages:
     name: assertion-error
     version: 2.0.1
     engines: {node: '>=12'}
+    dev: true
+
+  registry.npmjs.org/asynckit/0.4.0:
+    resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz}
+    name: asynckit
+    version: 0.4.0
     dev: true
 
   registry.npmjs.org/balanced-match/1.0.2:
@@ -1921,6 +2050,16 @@ packages:
       supports-color: registry.npmjs.org/supports-color/5.5.0
     dev: true
 
+  registry.npmjs.org/chalk/3.0.0:
+    resolution: {integrity: sha512-4D3B6Wf41KOYRFdszmDqMCGq5VV/uMAB273JILmO+3jAlh8X4qDtdtgCR3fxtbLEMzSx22QdhnDcJvu2u1fVwg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/chalk/-/chalk-3.0.0.tgz}
+    name: chalk
+    version: 3.0.0
+    engines: {node: '>=8'}
+    dependencies:
+      ansi-styles: registry.npmjs.org/ansi-styles/4.3.0
+      supports-color: registry.npmjs.org/supports-color/7.2.0
+    dev: true
+
   registry.npmjs.org/chalk/4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz}
     name: chalk
@@ -1973,6 +2112,15 @@ packages:
     version: 1.1.4
     dev: true
 
+  registry.npmjs.org/combined-stream/1.0.8:
+    resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz}
+    name: combined-stream
+    version: 1.0.8
+    engines: {node: '>= 0.8'}
+    dependencies:
+      delayed-stream: registry.npmjs.org/delayed-stream/1.0.0
+    dev: true
+
   registry.npmjs.org/compute-scroll-into-view/3.1.0:
     resolution: {integrity: sha512-rj8l8pD4bJ1nx+dAkMhV1xB5RuZEyVysfxJqB1pRchh1KVvwOv9b7CGB8ZfjTImVv2oF+sYMUkMZq6Na5Ftmbg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/compute-scroll-into-view/-/compute-scroll-into-view-3.1.0.tgz}
     name: compute-scroll-into-view
@@ -2010,10 +2158,35 @@ packages:
       which: registry.npmjs.org/which/2.0.2
     dev: true
 
+  registry.npmjs.org/css.escape/1.5.1:
+    resolution: {integrity: sha512-YUifsXXuknHlUsmlgyY0PKzgPOr7/FjCePfHNt0jxm83wHZi44VDMQ7/fGNkjY3/jV1MC+1CmZbaHzugyeRtpg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/css.escape/-/css.escape-1.5.1.tgz}
+    name: css.escape
+    version: 1.5.1
+    dev: true
+
+  registry.npmjs.org/cssstyle/4.1.0:
+    resolution: {integrity: sha512-h66W1URKpBS5YMI/V8PyXvTMFT8SupJ1IzoIV8IeBC/ji8WVmrO8dGlTi+2dh6whmdk6BiKJLD/ZBkhWbcg6nA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/cssstyle/-/cssstyle-4.1.0.tgz}
+    name: cssstyle
+    version: 4.1.0
+    engines: {node: '>=18'}
+    dependencies:
+      rrweb-cssom: registry.npmjs.org/rrweb-cssom/0.7.1
+    dev: true
+
   registry.npmjs.org/csstype/3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/csstype/-/csstype-3.1.3.tgz}
     name: csstype
     version: 3.1.3
+
+  registry.npmjs.org/data-urls/5.0.0:
+    resolution: {integrity: sha512-ZYP5VBHshaDAiVZxjbRVcFJpc+4xGgT0bK3vzy1HLN8jTO975HEbuYzZJcHoQEY5K1a0z8YayJkyVETa08eNTg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/data-urls/-/data-urls-5.0.0.tgz}
+    name: data-urls
+    version: 5.0.0
+    engines: {node: '>=18'}
+    dependencies:
+      whatwg-mimetype: registry.npmjs.org/whatwg-mimetype/4.0.0
+      whatwg-url: registry.npmjs.org/whatwg-url/14.0.0
+    dev: true
 
   registry.npmjs.org/dayjs/1.11.13:
     resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/dayjs/-/dayjs-1.11.13.tgz}
@@ -2035,6 +2208,12 @@ packages:
       ms: registry.npmjs.org/ms/2.1.2
     dev: true
 
+  registry.npmjs.org/decimal.js/10.4.3:
+    resolution: {integrity: sha512-VBBaLc1MgL5XpzgIP7ny5Z6Nx3UrRkIViUkPUdtl9aya5amy3De1gsUUSB1g3+3sExYNjCAsAznmukyxCb1GRA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/decimal.js/-/decimal.js-10.4.3.tgz}
+    name: decimal.js
+    version: 10.4.3
+    dev: true
+
   registry.npmjs.org/deep-eql/5.0.2:
     resolution: {integrity: sha512-h5k/5U50IJJFpzfL6nO9jaaumfjO/f2NjK/oYB2Djzm4p9L+3T9qWpZqZ2hAbLPuuYq9wrU08WQyBTL5GbPk5Q==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/deep-eql/-/deep-eql-5.0.2.tgz}
     name: deep-eql
@@ -2046,6 +2225,32 @@ packages:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/deep-is/-/deep-is-0.1.4.tgz}
     name: deep-is
     version: 0.1.4
+    dev: true
+
+  registry.npmjs.org/delayed-stream/1.0.0:
+    resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz}
+    name: delayed-stream
+    version: 1.0.0
+    engines: {node: '>=0.4.0'}
+    dev: true
+
+  registry.npmjs.org/dequal/2.0.3:
+    resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/dequal/-/dequal-2.0.3.tgz}
+    name: dequal
+    version: 2.0.3
+    engines: {node: '>=6'}
+    dev: true
+
+  registry.npmjs.org/dom-accessibility-api/0.5.16:
+    resolution: {integrity: sha512-X7BJ2yElsnOJ30pZF4uIIDfBEVgF4XEBxL9Bxhy6dnrm5hkzqmsWHGTiHqRiITNhMyFLyAiWndIJP7Z1NTteDg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/dom-accessibility-api/-/dom-accessibility-api-0.5.16.tgz}
+    name: dom-accessibility-api
+    version: 0.5.16
+    dev: true
+
+  registry.npmjs.org/dom-accessibility-api/0.6.3:
+    resolution: {integrity: sha512-7ZgogeTnjuHbo+ct10G9Ffp0mif17idi0IyWNVA/wcwcm7NPOD/WEHVP3n7n3MhXqxoIYm8d6MuZohYWIZ4T3w==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/dom-accessibility-api/-/dom-accessibility-api-0.6.3.tgz}
+    name: dom-accessibility-api
+    version: 0.6.3
     dev: true
 
   registry.npmjs.org/eastasianwidth/0.2.0:
@@ -2070,6 +2275,13 @@ packages:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/emoji-regex/-/emoji-regex-9.2.2.tgz}
     name: emoji-regex
     version: 9.2.2
+    dev: true
+
+  registry.npmjs.org/entities/4.5.0:
+    resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/entities/-/entities-4.5.0.tgz}
+    name: entities
+    version: 4.5.0
+    engines: {node: '>=0.12'}
     dev: true
 
   registry.npmjs.org/esbuild/0.21.5:
@@ -2367,6 +2579,17 @@ packages:
       signal-exit: registry.npmjs.org/signal-exit/4.1.0
     dev: true
 
+  registry.npmjs.org/form-data/4.0.0:
+    resolution: {integrity: sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz}
+    name: form-data
+    version: 4.0.0
+    engines: {node: '>= 6'}
+    dependencies:
+      asynckit: registry.npmjs.org/asynckit/0.4.0
+      combined-stream: registry.npmjs.org/combined-stream/1.0.8
+      mime-types: registry.npmjs.org/mime-types/2.1.35
+    dev: true
+
   registry.npmjs.org/fsevents/2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz}
     name: fsevents
@@ -2463,10 +2686,52 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  registry.npmjs.org/html-encoding-sniffer/4.0.0:
+    resolution: {integrity: sha512-Y22oTqIU4uuPgEemfz7NDJz6OeKf12Lsu+QC+s3BVpda64lTiMYCyGwg5ki4vFxkMwQdeZDl2adZoqUgdFuTgQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/html-encoding-sniffer/-/html-encoding-sniffer-4.0.0.tgz}
+    name: html-encoding-sniffer
+    version: 4.0.0
+    engines: {node: '>=18'}
+    dependencies:
+      whatwg-encoding: registry.npmjs.org/whatwg-encoding/3.1.1
+    dev: true
+
   registry.npmjs.org/html-escaper/2.0.2:
     resolution: {integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/html-escaper/-/html-escaper-2.0.2.tgz}
     name: html-escaper
     version: 2.0.2
+    dev: true
+
+  registry.npmjs.org/http-proxy-agent/7.0.2:
+    resolution: {integrity: sha512-T1gkAiYYDWYx3V5Bmyu7HcfcvL7mUrTWiM6yOfa3PIphViJ/gFPbvidQ+veqSOHci/PxBcDabeUNCzpOODJZig==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/http-proxy-agent/-/http-proxy-agent-7.0.2.tgz}
+    name: http-proxy-agent
+    version: 7.0.2
+    engines: {node: '>= 14'}
+    dependencies:
+      agent-base: registry.npmjs.org/agent-base/7.1.1
+      debug: registry.npmjs.org/debug/4.3.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  registry.npmjs.org/https-proxy-agent/7.0.5:
+    resolution: {integrity: sha512-1e4Wqeblerz+tMKPIq2EMGiiWW1dIjZOksyHWSUm1rmuvw/how9hBHZ38lAGj5ID4Ik6EdkOw7NmWPy6LAwalw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/https-proxy-agent/-/https-proxy-agent-7.0.5.tgz}
+    name: https-proxy-agent
+    version: 7.0.5
+    engines: {node: '>= 14'}
+    dependencies:
+      agent-base: registry.npmjs.org/agent-base/7.1.1
+      debug: registry.npmjs.org/debug/4.3.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  registry.npmjs.org/iconv-lite/0.6.3:
+    resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz}
+    name: iconv-lite
+    version: 0.6.3
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      safer-buffer: registry.npmjs.org/safer-buffer/2.1.2
     dev: true
 
   registry.npmjs.org/ignore/5.3.2:
@@ -2491,6 +2756,13 @@ packages:
     name: imurmurhash
     version: 0.1.4
     engines: {node: '>=0.8.19'}
+    dev: true
+
+  registry.npmjs.org/indent-string/4.0.0:
+    resolution: {integrity: sha512-EdDDZu4A2OyIK7Lr/2zG+w5jmbuk1DVBnEwREQvBzspBJkCEbRa8GxU1lghYcaGJCnRWibjDXlq779X1/y5xwg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/indent-string/-/indent-string-4.0.0.tgz}
+    name: indent-string
+    version: 4.0.0
+    engines: {node: '>=8'}
     dev: true
 
   registry.npmjs.org/inherits/2.0.3:
@@ -2540,6 +2812,12 @@ packages:
     name: is-path-inside
     version: 3.0.3
     engines: {node: '>=8'}
+    dev: true
+
+  registry.npmjs.org/is-potential-custom-element-name/1.0.1:
+    resolution: {integrity: sha512-bCYeRA2rVibKZd+s2625gGnGF/t7DSqDs4dP7CrLA1m7jKWz6pps0LpYLJN8Q64HtmPKJ1hrN3nzPNKFEKOUiQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/is-potential-custom-element-name/-/is-potential-custom-element-name-1.0.1.tgz}
+    name: is-potential-custom-element-name
+    version: 1.0.1
     dev: true
 
   registry.npmjs.org/isexe/2.0.0:
@@ -2618,6 +2896,44 @@ packages:
     hasBin: true
     dependencies:
       argparse: registry.npmjs.org/argparse/2.0.1
+    dev: true
+
+  registry.npmjs.org/jsdom/25.0.0:
+    resolution: {integrity: sha512-OhoFVT59T7aEq75TVw9xxEfkXgacpqAhQaYgP9y/fDqWQCMB/b1H66RfmPm/MaeaAIU9nDwMOVTlPN51+ao6CQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/jsdom/-/jsdom-25.0.0.tgz}
+    name: jsdom
+    version: 25.0.0
+    engines: {node: '>=18'}
+    peerDependencies:
+      canvas: ^2.11.2
+    peerDependenciesMeta:
+      canvas:
+        optional: true
+    dependencies:
+      cssstyle: registry.npmjs.org/cssstyle/4.1.0
+      data-urls: registry.npmjs.org/data-urls/5.0.0
+      decimal.js: registry.npmjs.org/decimal.js/10.4.3
+      form-data: registry.npmjs.org/form-data/4.0.0
+      html-encoding-sniffer: registry.npmjs.org/html-encoding-sniffer/4.0.0
+      http-proxy-agent: registry.npmjs.org/http-proxy-agent/7.0.2
+      https-proxy-agent: registry.npmjs.org/https-proxy-agent/7.0.5
+      is-potential-custom-element-name: registry.npmjs.org/is-potential-custom-element-name/1.0.1
+      nwsapi: registry.npmjs.org/nwsapi/2.2.12
+      parse5: registry.npmjs.org/parse5/7.1.2
+      rrweb-cssom: registry.npmjs.org/rrweb-cssom/0.7.1
+      saxes: registry.npmjs.org/saxes/6.0.0
+      symbol-tree: registry.npmjs.org/symbol-tree/3.2.4
+      tough-cookie: registry.npmjs.org/tough-cookie/4.1.4
+      w3c-xmlserializer: registry.npmjs.org/w3c-xmlserializer/5.0.0
+      webidl-conversions: registry.npmjs.org/webidl-conversions/7.0.0
+      whatwg-encoding: registry.npmjs.org/whatwg-encoding/3.1.1
+      whatwg-mimetype: registry.npmjs.org/whatwg-mimetype/4.0.0
+      whatwg-url: registry.npmjs.org/whatwg-url/14.0.0
+      ws: registry.npmjs.org/ws/8.18.0
+      xml-name-validator: registry.npmjs.org/xml-name-validator/5.0.0
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
     dev: true
 
   registry.npmjs.org/jsesc/2.5.2:
@@ -2699,7 +3015,6 @@ packages:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz}
     name: lodash
     version: 4.17.21
-    dev: false
 
   registry.npmjs.org/loose-envify/1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz}
@@ -2708,7 +3023,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: registry.npmjs.org/js-tokens/4.0.0
-    dev: false
 
   registry.npmjs.org/loupe/3.1.1:
     resolution: {integrity: sha512-edNu/8D5MKVfGVFRhFf8aAxiTM6Wumfz5XsaatSxlD3w4R1d/WEKUTydCdPGbl9K7QG/Ca3GnDV2sIKIpXRQcw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/loupe/-/loupe-3.1.1.tgz}
@@ -2730,6 +3044,13 @@ packages:
     version: 5.1.1
     dependencies:
       yallist: registry.npmjs.org/yallist/3.1.1
+    dev: true
+
+  registry.npmjs.org/lz-string/1.5.0:
+    resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/lz-string/-/lz-string-1.5.0.tgz}
+    name: lz-string
+    version: 1.5.0
+    hasBin: true
     dev: true
 
   registry.npmjs.org/magic-string/0.30.11:
@@ -2774,6 +3095,29 @@ packages:
     dependencies:
       braces: registry.npmjs.org/braces/3.0.3
       picomatch: registry.npmjs.org/picomatch/2.3.1
+    dev: true
+
+  registry.npmjs.org/mime-db/1.52.0:
+    resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz}
+    name: mime-db
+    version: 1.52.0
+    engines: {node: '>= 0.6'}
+    dev: true
+
+  registry.npmjs.org/mime-types/2.1.35:
+    resolution: {integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz}
+    name: mime-types
+    version: 2.1.35
+    engines: {node: '>= 0.6'}
+    dependencies:
+      mime-db: registry.npmjs.org/mime-db/1.52.0
+    dev: true
+
+  registry.npmjs.org/min-indent/1.0.1:
+    resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/min-indent/-/min-indent-1.0.1.tgz}
+    name: min-indent
+    version: 1.0.1
+    engines: {node: '>=4'}
     dev: true
 
   registry.npmjs.org/minimatch/3.1.2:
@@ -2854,6 +3198,12 @@ packages:
     version: 2.0.18
     dev: true
 
+  registry.npmjs.org/nwsapi/2.2.12:
+    resolution: {integrity: sha512-qXDmcVlZV4XRtKFzddidpfVP4oMSGhga+xdMc25mv8kaLUHtgzCDhUxkrN8exkGdTlLNaXj7CV3GtON7zuGZ+w==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/nwsapi/-/nwsapi-2.2.12.tgz}
+    name: nwsapi
+    version: 2.2.12
+    dev: true
+
   registry.npmjs.org/optionator/0.9.4:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/optionator/-/optionator-0.9.4.tgz}
     name: optionator
@@ -2899,6 +3249,14 @@ packages:
     engines: {node: '>=6'}
     dependencies:
       callsites: registry.npmjs.org/callsites/3.1.0
+    dev: true
+
+  registry.npmjs.org/parse5/7.1.2:
+    resolution: {integrity: sha512-Czj1WaSVpaoj0wbhMzLmWD69anp2WH7FXMB9n1Sy8/ZFF9jolSQVMu1Ij5WIyGmcBmhk7EOndpO4mIpihVqAXw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/parse5/-/parse5-7.1.2.tgz}
+    name: parse5
+    version: 7.1.2
+    dependencies:
+      entities: registry.npmjs.org/entities/4.5.0
     dev: true
 
   registry.npmjs.org/path-exists/4.0.0:
@@ -2978,6 +3336,17 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
+  registry.npmjs.org/pretty-format/27.5.1:
+    resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/pretty-format/-/pretty-format-27.5.1.tgz}
+    name: pretty-format
+    version: 27.5.1
+    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
+    dependencies:
+      ansi-regex: registry.npmjs.org/ansi-regex/5.0.1
+      ansi-styles: registry.npmjs.org/ansi-styles/5.2.0
+      react-is: registry.npmjs.org/react-is/17.0.2
+    dev: true
+
   registry.npmjs.org/process/0.11.10:
     resolution: {integrity: sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/process/-/process-0.11.10.tgz}
     name: process
@@ -2985,11 +3354,23 @@ packages:
     engines: {node: '>= 0.6.0'}
     dev: true
 
+  registry.npmjs.org/psl/1.9.0:
+    resolution: {integrity: sha512-E/ZsdU4HLs/68gYzgGTkMicWTLPdAftJLfJFlLUAAKZGkStNU72sZjT66SnMDVOfOWY/YAoiD7Jxa9iHvngcag==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/psl/-/psl-1.9.0.tgz}
+    name: psl
+    version: 1.9.0
+    dev: true
+
   registry.npmjs.org/punycode/2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/punycode/-/punycode-2.3.1.tgz}
     name: punycode
     version: 2.3.1
     engines: {node: '>=6'}
+    dev: true
+
+  registry.npmjs.org/querystringify/2.2.0:
+    resolution: {integrity: sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/querystringify/-/querystringify-2.2.0.tgz}
+    name: querystringify
+    version: 2.2.0
     dev: true
 
   registry.npmjs.org/queue-microtask/1.2.3:
@@ -3630,13 +4011,18 @@ packages:
       loose-envify: registry.npmjs.org/loose-envify/1.4.0
       react: registry.npmjs.org/react/18.3.1
       scheduler: registry.npmjs.org/scheduler/0.23.2
-    dev: false
 
   registry.npmjs.org/react-fast-compare/3.2.2:
     resolution: {integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.2.tgz}
     name: react-fast-compare
     version: 3.2.2
     dev: false
+
+  registry.npmjs.org/react-is/17.0.2:
+    resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz}
+    name: react-is
+    version: 17.0.2
+    dev: true
 
   registry.npmjs.org/react-is/18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/react-is/-/react-is-18.3.1.tgz}
@@ -3687,13 +4073,27 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: registry.npmjs.org/loose-envify/1.4.0
-    dev: false
+
+  registry.npmjs.org/redent/3.0.0:
+    resolution: {integrity: sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/redent/-/redent-3.0.0.tgz}
+    name: redent
+    version: 3.0.0
+    engines: {node: '>=8'}
+    dependencies:
+      indent-string: registry.npmjs.org/indent-string/4.0.0
+      strip-indent: registry.npmjs.org/strip-indent/3.0.0
+    dev: true
 
   registry.npmjs.org/regenerator-runtime/0.14.1:
     resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.14.1.tgz}
     name: regenerator-runtime
     version: 0.14.1
-    dev: false
+
+  registry.npmjs.org/requires-port/1.0.0:
+    resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/requires-port/-/requires-port-1.0.0.tgz}
+    name: requires-port
+    version: 1.0.0
+    dev: true
 
   registry.npmjs.org/resize-observer-polyfill/1.5.1:
     resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz}
@@ -3743,6 +4143,12 @@ packages:
       fsevents: registry.npmjs.org/fsevents/2.3.3
     dev: true
 
+  registry.npmjs.org/rrweb-cssom/0.7.1:
+    resolution: {integrity: sha512-TrEMa7JGdVm0UThDJSx7ddw5nVm3UJS9o9CCIZ72B1vSyEZoziDqBYP3XIoi/12lKrJR8rE3jeFHMok2F/Mnsg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/rrweb-cssom/-/rrweb-cssom-0.7.1.tgz}
+    name: rrweb-cssom
+    version: 0.7.1
+    dev: true
+
   registry.npmjs.org/run-parallel/1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/run-parallel/-/run-parallel-1.2.0.tgz}
     name: run-parallel
@@ -3751,13 +4157,27 @@ packages:
       queue-microtask: registry.npmjs.org/queue-microtask/1.2.3
     dev: true
 
+  registry.npmjs.org/safer-buffer/2.1.2:
+    resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz}
+    name: safer-buffer
+    version: 2.1.2
+    dev: true
+
+  registry.npmjs.org/saxes/6.0.0:
+    resolution: {integrity: sha512-xAg7SOnEhrm5zI3puOOKyy1OMcMlIJZYNJY7xLBwSze0UjhPLnWfj2GF2EpT0jmzaJKIWKHLsaSSajf35bcYnA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/saxes/-/saxes-6.0.0.tgz}
+    name: saxes
+    version: 6.0.0
+    engines: {node: '>=v12.22.7'}
+    dependencies:
+      xmlchars: registry.npmjs.org/xmlchars/2.2.0
+    dev: true
+
   registry.npmjs.org/scheduler/0.23.2:
     resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/scheduler/-/scheduler-0.23.2.tgz}
     name: scheduler
     version: 0.23.2
     dependencies:
       loose-envify: registry.npmjs.org/loose-envify/1.4.0
-    dev: false
 
   registry.npmjs.org/screenfull/5.2.0:
     resolution: {integrity: sha512-9BakfsO2aUQN2K9Fdbj87RJIEZ82Q9IGim7FqM5OsebfoFC6ZHXgDq/KvniuLTPdeM8wY2o6Dj3WQ7KeQCj3cA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/screenfull/-/screenfull-5.2.0.tgz}
@@ -3883,6 +4303,15 @@ packages:
       ansi-regex: registry.npmjs.org/ansi-regex/6.1.0
     dev: true
 
+  registry.npmjs.org/strip-indent/3.0.0:
+    resolution: {integrity: sha512-laJTa3Jb+VQpaC6DseHhF7dXVqHTfJPCRDaEbid/drOhgitgYku/letMUqOXFoWV0zIIUbjpdH2t+tYj4bQMRQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/strip-indent/-/strip-indent-3.0.0.tgz}
+    name: strip-indent
+    version: 3.0.0
+    engines: {node: '>=8'}
+    dependencies:
+      min-indent: registry.npmjs.org/min-indent/1.0.1
+    dev: true
+
   registry.npmjs.org/strip-json-comments/3.1.1:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-3.1.1.tgz}
     name: strip-json-comments
@@ -3912,6 +4341,12 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       has-flag: registry.npmjs.org/has-flag/4.0.0
+    dev: true
+
+  registry.npmjs.org/symbol-tree/3.2.4:
+    resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/symbol-tree/-/symbol-tree-3.2.4.tgz}
+    name: symbol-tree
+    version: 3.2.4
     dev: true
 
   registry.npmjs.org/test-exclude/7.0.1:
@@ -3993,6 +4428,27 @@ packages:
     version: 1.0.6
     dev: false
 
+  registry.npmjs.org/tough-cookie/4.1.4:
+    resolution: {integrity: sha512-Loo5UUvLD9ScZ6jh8beX1T6sO1w2/MpCRpEP7V280GKMVUQ0Jzar2U3UJPsrdbziLEMMhu3Ujnq//rhiFuIeag==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/tough-cookie/-/tough-cookie-4.1.4.tgz}
+    name: tough-cookie
+    version: 4.1.4
+    engines: {node: '>=6'}
+    dependencies:
+      psl: registry.npmjs.org/psl/1.9.0
+      punycode: registry.npmjs.org/punycode/2.3.1
+      universalify: registry.npmjs.org/universalify/0.2.0
+      url-parse: registry.npmjs.org/url-parse/1.5.10
+    dev: true
+
+  registry.npmjs.org/tr46/5.0.0:
+    resolution: {integrity: sha512-tk2G5R2KRwBd+ZN0zaEXpmzdKyOYksXwywulIX95MBODjSzMIuQnQ3m8JxgbhnL1LeVo7lqQKsYa1O3Htl7K5g==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/tr46/-/tr46-5.0.0.tgz}
+    name: tr46
+    version: 5.0.0
+    engines: {node: '>=18'}
+    dependencies:
+      punycode: registry.npmjs.org/punycode/2.3.1
+    dev: true
+
   registry.npmjs.org/ts-api-utils/1.3.0_typescript@5.5.4:
     resolution: {integrity: sha512-UQMIo7pb8WRomKR1/+MFVLTroIvDVtMX3K6OUir8ynLyzB8Jeriont2bTAtmNPa1ekAgN7YPDyf6V+ygrdU+eQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/ts-api-utils/-/ts-api-utils-1.3.0.tgz}
     id: registry.npmjs.org/ts-api-utils/1.3.0
@@ -4055,6 +4511,13 @@ packages:
     version: 6.19.8
     dev: true
 
+  registry.npmjs.org/universalify/0.2.0:
+    resolution: {integrity: sha512-CJ1QgKmNg3CwvAv/kOFmtnEN05f0D/cn9QntgNOQlQF9dgvVTHj3t+8JPdjqawCHk7V/KA+fbUqzZ9XWhcqPUg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/universalify/-/universalify-0.2.0.tgz}
+    name: universalify
+    version: 0.2.0
+    engines: {node: '>= 4.0.0'}
+    dev: true
+
   registry.npmjs.org/update-browserslist-db/1.1.0_browserslist@4.23.3:
     resolution: {integrity: sha512-EdRAaAyk2cUE1wOf2DkEhzxqOQvFOoRJFNS6NeyJ01Gp2beMRpBAINjM2iDXE3KCuKhwnvHIQCJm6ThL2Z+HzQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/update-browserslist-db/-/update-browserslist-db-1.1.0.tgz}
     id: registry.npmjs.org/update-browserslist-db/1.1.0
@@ -4075,6 +4538,15 @@ packages:
     version: 4.4.1
     dependencies:
       punycode: registry.npmjs.org/punycode/2.3.1
+    dev: true
+
+  registry.npmjs.org/url-parse/1.5.10:
+    resolution: {integrity: sha512-WypcfiRhfeUP9vvF0j6rw0J3hrWrw6iZv3+22h6iRMJ/8z1Tj6XfLP4DsUix5MhMPnXpiHDoKyoZ/bdCkwBCiQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/url-parse/-/url-parse-1.5.10.tgz}
+    name: url-parse
+    version: 1.5.10
+    dependencies:
+      querystringify: registry.npmjs.org/querystringify/2.2.0
+      requires-port: registry.npmjs.org/requires-port/1.0.0
     dev: true
 
   registry.npmjs.org/use-sync-external-store/1.2.2_react@18.3.1:
@@ -4201,8 +4673,9 @@ packages:
       fsevents: registry.npmjs.org/fsevents/2.3.3
     dev: true
 
-  registry.npmjs.org/vitest/2.1.1:
+  registry.npmjs.org/vitest/2.1.1_jsdom@25.0.0:
     resolution: {integrity: sha512-97We7/VC0e9X5zBVkvt7SGQMGrRtn3KtySFQG5fpaMlS+l62eeXRQO633AYhSTC3z7IMebnPPNjGXVGNRFlxBA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/vitest/-/vitest-2.1.1.tgz}
+    id: registry.npmjs.org/vitest/2.1.1
     name: vitest
     version: 2.1.1
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -4237,6 +4710,7 @@ packages:
       '@vitest/utils': registry.npmjs.org/@vitest/utils/2.1.1
       chai: registry.npmjs.org/chai/5.1.1
       debug: registry.npmjs.org/debug/4.3.6
+      jsdom: registry.npmjs.org/jsdom/25.0.0
       magic-string: registry.npmjs.org/magic-string/0.30.11
       pathe: registry.npmjs.org/pathe/1.1.2
       std-env: registry.npmjs.org/std-env/3.7.0
@@ -4257,6 +4731,48 @@ packages:
       - sugarss
       - supports-color
       - terser
+    dev: true
+
+  registry.npmjs.org/w3c-xmlserializer/5.0.0:
+    resolution: {integrity: sha512-o8qghlI8NZHU1lLPrpi2+Uq7abh4GGPpYANlalzWxyWteJOCsr/P+oPBA49TOLu5FTZO4d3F9MnWJfiMo4BkmA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/w3c-xmlserializer/-/w3c-xmlserializer-5.0.0.tgz}
+    name: w3c-xmlserializer
+    version: 5.0.0
+    engines: {node: '>=18'}
+    dependencies:
+      xml-name-validator: registry.npmjs.org/xml-name-validator/5.0.0
+    dev: true
+
+  registry.npmjs.org/webidl-conversions/7.0.0:
+    resolution: {integrity: sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/webidl-conversions/-/webidl-conversions-7.0.0.tgz}
+    name: webidl-conversions
+    version: 7.0.0
+    engines: {node: '>=12'}
+    dev: true
+
+  registry.npmjs.org/whatwg-encoding/3.1.1:
+    resolution: {integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/whatwg-encoding/-/whatwg-encoding-3.1.1.tgz}
+    name: whatwg-encoding
+    version: 3.1.1
+    engines: {node: '>=18'}
+    dependencies:
+      iconv-lite: registry.npmjs.org/iconv-lite/0.6.3
+    dev: true
+
+  registry.npmjs.org/whatwg-mimetype/4.0.0:
+    resolution: {integrity: sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/whatwg-mimetype/-/whatwg-mimetype-4.0.0.tgz}
+    name: whatwg-mimetype
+    version: 4.0.0
+    engines: {node: '>=18'}
+    dev: true
+
+  registry.npmjs.org/whatwg-url/14.0.0:
+    resolution: {integrity: sha512-1lfMEm2IEr7RIV+f4lUNPOqfFL+pO+Xw3fJSqmjX9AbXcXcYOkCe1P6+9VBZB6n94af16NfZf+sSk0JCBZC9aw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/whatwg-url/-/whatwg-url-14.0.0.tgz}
+    name: whatwg-url
+    version: 14.0.0
+    engines: {node: '>=18'}
+    dependencies:
+      tr46: registry.npmjs.org/tr46/5.0.0
+      webidl-conversions: registry.npmjs.org/webidl-conversions/7.0.0
     dev: true
 
   registry.npmjs.org/which/2.0.2:
@@ -4307,6 +4823,34 @@ packages:
       ansi-styles: registry.npmjs.org/ansi-styles/6.2.1
       string-width: registry.npmjs.org/string-width/5.1.2
       strip-ansi: registry.npmjs.org/strip-ansi/7.1.0
+    dev: true
+
+  registry.npmjs.org/ws/8.18.0:
+    resolution: {integrity: sha512-8VbfWfHLbbwu3+N6OKsOMpBdT4kXPDDB9cJk2bJ6mh9ucxdlnNvH1e+roYkKmN9Nxw2yjz7VzeO9oOz2zJ04Pw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/ws/-/ws-8.18.0.tgz}
+    name: ws
+    version: 8.18.0
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: true
+
+  registry.npmjs.org/xml-name-validator/5.0.0:
+    resolution: {integrity: sha512-EvGK8EJ3DhaHfbRlETOWAS5pO9MZITeauHKJyb8wyajUfQUenkIg2MvLDTZ4T/TgIcm3HU0TFBgWWboAZ30UHg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/xml-name-validator/-/xml-name-validator-5.0.0.tgz}
+    name: xml-name-validator
+    version: 5.0.0
+    engines: {node: '>=18'}
+    dev: true
+
+  registry.npmjs.org/xmlchars/2.2.0:
+    resolution: {integrity: sha512-JZnDKK8B0RCDw84FNdDAIpZK+JuJw+s7Lz8nksI7SIuU3UXJJslUthsi+uWBUYOwPFwW7W7PRLRfUKpxjtjFCw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/xmlchars/-/xmlchars-2.2.0.tgz}
+    name: xmlchars
+    version: 2.2.0
     dev: true
 
   registry.npmjs.org/yallist/3.1.1:

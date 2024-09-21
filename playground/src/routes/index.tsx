@@ -9,10 +9,12 @@ import Desctoy from '@/pages/destroy';
 import Options from '@/pages/options';
 import FormList from '@/pages/formlist';
 import FormItem from '@/pages/formitem';
-import Instance from '@/pages/instance';
+// import Instance from '@/pages/instance';
 import ArrayName from '@/pages/arrayname';
 import Depdendency from '@/pages/dependency';
 import RemoteValues from '@/pages/remoteValues';
+
+import { Instance } from '@demos/core';
 
 const list = [
   {
