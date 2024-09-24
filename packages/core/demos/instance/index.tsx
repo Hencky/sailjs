@@ -65,6 +65,33 @@ export function Instance(props: any) {
           编辑
         </Button>
       </Card>
+      <Card title="值设置">
+        <Button
+          data-testid="setValue"
+          onClick={() => {
+            const field = form.getField('a');
+            field.value = field.value ? String(1 + Number(field.value)) : '1';
+          }}
+        >
+          设置值
+        </Button>
+        <Button
+          data-testid="setValues"
+          onClick={() => {
+            form.values = { a: '1', b: '2', c: '3', d: '4' };
+          }}
+        >
+          批量设置值
+        </Button>
+        <Button
+          data-testid="reset"
+          onClick={() => {
+            form.values = null;
+          }}
+        >
+          清空值
+        </Button>
+      </Card>
 
       <Button
         onClick={() => {
@@ -74,21 +101,6 @@ export function Instance(props: any) {
         取消冒号
       </Button>
 
-      <Button
-        onClick={() => {
-          const field = form.getField('a');
-          field.value = field.value ? field.value + 1 : 1;
-        }}
-      >
-        设置值
-      </Button>
-      <Button
-        onClick={() => {
-          form.values = { a: '1', c: '3', d: '4' };
-        }}
-      >
-        批量设置值
-      </Button>
       <Button
         onClick={() => {
           const field = form.getField('a');
@@ -144,6 +156,7 @@ export function Instance(props: any) {
         </FormItem>
         <FormItem name="b" label="b">
           <Input
+            data-testid="inputB"
             onChange={(e) => {
               const val = e.target.value;
               const field = form.getField('a');
@@ -152,10 +165,11 @@ export function Instance(props: any) {
           />
         </FormItem>
         <FormItem name="c" label="c">
-          <Select />
+          <Select data-testid="inputC" />
         </FormItem>
         <FormItem name="d" label="d">
           <Input
+            data-testid="inputD"
             onChange={(e) => {
               const val = e.target.value;
               const field = form.getField('c');

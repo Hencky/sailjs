@@ -1,6 +1,6 @@
 import { pluginStore } from '@sailjs/register';
 import { makeObservable, observable, runInAction } from 'mobx';
-import { isFunction, pick, isEqual } from 'radash';
+import { isFunction, pick, isEqual, isEmpty } from 'radash';
 import { BaseProps, BaseRootStore } from '../Base';
 import { isFieldChange, toCompareName } from '../utils';
 import type { FormInstance } from 'antd/lib/form';
@@ -291,7 +291,12 @@ export class FormStore<Values = any, PluginsType = any>
   }
 
   set values(vals: Values) {
-    this.form!.setFieldsValue(vals!);
+    if (isEmpty(vals)) {
+      console.log('isEmpty');
+      this.form!.resetFields();
+    } else {
+      this.form!.setFieldsValue(vals!);
+    }
   }
 
   getName(name: NamePath) {

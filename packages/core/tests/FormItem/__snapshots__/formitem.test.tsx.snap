@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`FormItem > FormItem 状态设置 1`] = `
+exports[`FormItem > item 状态设置 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -80,28 +80,60 @@ exports[`FormItem > FormItem 状态设置 1`] = `
           </button>
         </div>
       </div>
+      <div
+        class="ant-card ant-card-bordered css-dev-only-do-not-override-1gwfwyx"
+      >
+        <div
+          class="ant-card-head"
+        >
+          <div
+            class="ant-card-head-wrapper"
+          >
+            <div
+              class="ant-card-head-title"
+            >
+              值设置
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-card-body"
+        >
+          <button
+            class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+            data-testid="setValue"
+            type="button"
+          >
+            <span>
+              设置值
+            </span>
+          </button>
+          <button
+            class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+            data-testid="setValues"
+            type="button"
+          >
+            <span>
+              批量设置值
+            </span>
+          </button>
+          <button
+            class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+            data-testid="reset"
+            type="button"
+          >
+            <span>
+              清空值
+            </span>
+          </button>
+        </div>
+      </div>
       <button
         class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
         type="button"
       >
         <span>
           取消冒号
-        </span>
-      </button>
-      <button
-        class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
-        type="button"
-      >
-        <span>
-          设置值
-        </span>
-      </button>
-      <button
-        class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
-        type="button"
-      >
-        <span>
-          批量设置值
         </span>
       </button>
       <button
@@ -187,6 +219,7 @@ exports[`FormItem > FormItem 状态设置 1`] = `
                       >
                         <input
                           class="ant-input css-dev-only-do-not-override-1gwfwyx ant-input-outlined"
+                          data-testid="inputB"
                           id="b"
                           options=""
                           type="text"
@@ -228,6 +261,7 @@ exports[`FormItem > FormItem 状态设置 1`] = `
                       >
                         <div
                           class="ant-select ant-select-outlined ant-select-in-form-item css-dev-only-do-not-override-1gwfwyx ant-select-single ant-select-show-arrow"
+                          data-testid="inputC"
                         >
                           <div
                             class="ant-select-selector"
@@ -319,6 +353,7 @@ exports[`FormItem > FormItem 状态设置 1`] = `
                       >
                         <input
                           class="ant-input css-dev-only-do-not-override-1gwfwyx ant-input-outlined"
+                          data-testid="inputD"
                           id="d"
                           options=""
                           type="text"
@@ -411,28 +446,60 @@ exports[`FormItem > FormItem 状态设置 1`] = `
         </button>
       </div>
     </div>
+    <div
+      class="ant-card ant-card-bordered css-dev-only-do-not-override-1gwfwyx"
+    >
+      <div
+        class="ant-card-head"
+      >
+        <div
+          class="ant-card-head-wrapper"
+        >
+          <div
+            class="ant-card-head-title"
+          >
+            值设置
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-card-body"
+      >
+        <button
+          class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+          data-testid="setValue"
+          type="button"
+        >
+          <span>
+            设置值
+          </span>
+        </button>
+        <button
+          class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+          data-testid="setValues"
+          type="button"
+        >
+          <span>
+            批量设置值
+          </span>
+        </button>
+        <button
+          class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+          data-testid="reset"
+          type="button"
+        >
+          <span>
+            清空值
+          </span>
+        </button>
+      </div>
+    </div>
     <button
       class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
       type="button"
     >
       <span>
         取消冒号
-      </span>
-    </button>
-    <button
-      class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
-      type="button"
-    >
-      <span>
-        设置值
-      </span>
-    </button>
-    <button
-      class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
-      type="button"
-    >
-      <span>
-        批量设置值
       </span>
     </button>
     <button
@@ -518,6 +585,7 @@ exports[`FormItem > FormItem 状态设置 1`] = `
                     >
                       <input
                         class="ant-input css-dev-only-do-not-override-1gwfwyx ant-input-outlined"
+                        data-testid="inputB"
                         id="b"
                         options=""
                         type="text"
@@ -559,6 +627,7 @@ exports[`FormItem > FormItem 状态设置 1`] = `
                     >
                       <div
                         class="ant-select ant-select-outlined ant-select-in-form-item css-dev-only-do-not-override-1gwfwyx ant-select-single ant-select-show-arrow"
+                        data-testid="inputC"
                       >
                         <div
                           class="ant-select-selector"
@@ -650,6 +719,7 @@ exports[`FormItem > FormItem 状态设置 1`] = `
                     >
                       <input
                         class="ant-input css-dev-only-do-not-override-1gwfwyx ant-input-outlined"
+                        data-testid="inputD"
                         id="d"
                         options=""
                         type="text"
