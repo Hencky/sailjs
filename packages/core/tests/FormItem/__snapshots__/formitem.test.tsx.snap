@@ -17,6 +17,7 @@ exports[`FormItem > item 状态设置 1`] = `
       <div
         class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
         role="separator"
+        style="margin: 12px 0px;"
       />
       <div
         class="ant-space css-dev-only-do-not-override-1gwfwyx ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
@@ -90,6 +91,7 @@ exports[`FormItem > item 状态设置 1`] = `
       <div
         class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
         role="separator"
+        style="margin: 12px 0px;"
       />
       <div
         class="ant-space css-dev-only-do-not-override-1gwfwyx ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
@@ -137,6 +139,7 @@ exports[`FormItem > item 状态设置 1`] = `
       <div
         class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
         role="separator"
+        style="margin: 12px 0px;"
       />
       <div
         class="ant-space css-dev-only-do-not-override-1gwfwyx ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
@@ -196,6 +199,7 @@ exports[`FormItem > item 状态设置 1`] = `
       <div
         class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
         role="separator"
+        style="margin: 12px 0px;"
       />
       <button
         class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
@@ -218,6 +222,42 @@ exports[`FormItem > item 状态设置 1`] = `
       <div
         class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
         role="separator"
+        style="margin: 12px 0px;"
+      />
+      <div
+        class="ant-space css-dev-only-do-not-override-1gwfwyx ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
+      >
+        <div
+          class="ant-space-item"
+        >
+          <button
+            class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+            data-testid="obj.a"
+            type="button"
+          >
+            <span>
+              数组实例1
+            </span>
+          </button>
+        </div>
+        <div
+          class="ant-space-item"
+        >
+          <button
+            class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+            data-testid="array.0"
+            type="button"
+          >
+            <span>
+              数组实例2
+            </span>
+          </button>
+        </div>
+      </div>
+      <div
+        class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
+        role="separator"
+        style="margin: 12px 0px;"
       />
       <div
         class="ant-spin-nested-loading css-dev-only-do-not-override-1gwfwyx"
@@ -405,6 +445,90 @@ exports[`FormItem > item 状态设置 1`] = `
                 </div>
               </div>
             </div>
+            <div
+              class="ant-col css-dev-only-do-not-override-1gwfwyx"
+            >
+              <div
+                class="ant-form-item css-dev-only-do-not-override-1gwfwyx"
+              >
+                <div
+                  class="ant-row ant-form-item-row css-dev-only-do-not-override-1gwfwyx"
+                >
+                  <div
+                    class="ant-col ant-form-item-label css-dev-only-do-not-override-1gwfwyx"
+                  >
+                    <label
+                      class=""
+                      title="obj.a"
+                    >
+                      obj.a
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control css-dev-only-do-not-override-1gwfwyx"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <input
+                          class="ant-input css-dev-only-do-not-override-1gwfwyx ant-input-outlined"
+                          data-testid="inputObj"
+                          id="obj_a"
+                          options=""
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-col css-dev-only-do-not-override-1gwfwyx"
+            >
+              <div
+                class="ant-form-item css-dev-only-do-not-override-1gwfwyx"
+              >
+                <div
+                  class="ant-row ant-form-item-row css-dev-only-do-not-override-1gwfwyx"
+                >
+                  <div
+                    class="ant-col ant-form-item-label css-dev-only-do-not-override-1gwfwyx"
+                  >
+                    <label
+                      class=""
+                      title="array[0]"
+                    >
+                      array[0]
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control css-dev-only-do-not-override-1gwfwyx"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <input
+                          class="ant-input css-dev-only-do-not-override-1gwfwyx ant-input-outlined"
+                          data-testid="inputArr"
+                          id="array_0"
+                          options=""
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </form>
         </div>
       </div>
@@ -423,6 +547,7 @@ exports[`FormItem > item 状态设置 1`] = `
     <div
       class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
       role="separator"
+      style="margin: 12px 0px;"
     />
     <div
       class="ant-space css-dev-only-do-not-override-1gwfwyx ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
@@ -496,6 +621,7 @@ exports[`FormItem > item 状态设置 1`] = `
     <div
       class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
       role="separator"
+      style="margin: 12px 0px;"
     />
     <div
       class="ant-space css-dev-only-do-not-override-1gwfwyx ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
@@ -543,6 +669,7 @@ exports[`FormItem > item 状态设置 1`] = `
     <div
       class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
       role="separator"
+      style="margin: 12px 0px;"
     />
     <div
       class="ant-space css-dev-only-do-not-override-1gwfwyx ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
@@ -602,6 +729,7 @@ exports[`FormItem > item 状态设置 1`] = `
     <div
       class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
       role="separator"
+      style="margin: 12px 0px;"
     />
     <button
       class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
@@ -624,6 +752,42 @@ exports[`FormItem > item 状态设置 1`] = `
     <div
       class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
       role="separator"
+      style="margin: 12px 0px;"
+    />
+    <div
+      class="ant-space css-dev-only-do-not-override-1gwfwyx ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
+    >
+      <div
+        class="ant-space-item"
+      >
+        <button
+          class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+          data-testid="obj.a"
+          type="button"
+        >
+          <span>
+            数组实例1
+          </span>
+        </button>
+      </div>
+      <div
+        class="ant-space-item"
+      >
+        <button
+          class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+          data-testid="array.0"
+          type="button"
+        >
+          <span>
+            数组实例2
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
+      role="separator"
+      style="margin: 12px 0px;"
     />
     <div
       class="ant-spin-nested-loading css-dev-only-do-not-override-1gwfwyx"
@@ -801,6 +965,90 @@ exports[`FormItem > item 状态设置 1`] = `
                         class="ant-input css-dev-only-do-not-override-1gwfwyx ant-input-outlined"
                         data-testid="inputD"
                         id="d"
+                        options=""
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-col css-dev-only-do-not-override-1gwfwyx"
+          >
+            <div
+              class="ant-form-item css-dev-only-do-not-override-1gwfwyx"
+            >
+              <div
+                class="ant-row ant-form-item-row css-dev-only-do-not-override-1gwfwyx"
+              >
+                <div
+                  class="ant-col ant-form-item-label css-dev-only-do-not-override-1gwfwyx"
+                >
+                  <label
+                    class=""
+                    title="obj.a"
+                  >
+                    obj.a
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-form-item-control css-dev-only-do-not-override-1gwfwyx"
+                >
+                  <div
+                    class="ant-form-item-control-input"
+                  >
+                    <div
+                      class="ant-form-item-control-input-content"
+                    >
+                      <input
+                        class="ant-input css-dev-only-do-not-override-1gwfwyx ant-input-outlined"
+                        data-testid="inputObj"
+                        id="obj_a"
+                        options=""
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-col css-dev-only-do-not-override-1gwfwyx"
+          >
+            <div
+              class="ant-form-item css-dev-only-do-not-override-1gwfwyx"
+            >
+              <div
+                class="ant-row ant-form-item-row css-dev-only-do-not-override-1gwfwyx"
+              >
+                <div
+                  class="ant-col ant-form-item-label css-dev-only-do-not-override-1gwfwyx"
+                >
+                  <label
+                    class=""
+                    title="array[0]"
+                  >
+                    array[0]
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-form-item-control css-dev-only-do-not-override-1gwfwyx"
+                >
+                  <div
+                    class="ant-form-item-control-input"
+                  >
+                    <div
+                      class="ant-form-item-control-input-content"
+                    >
+                      <input
+                        class="ant-input css-dev-only-do-not-override-1gwfwyx ant-input-outlined"
+                        data-testid="inputArr"
+                        id="array_0"
                         options=""
                         type="text"
                         value=""

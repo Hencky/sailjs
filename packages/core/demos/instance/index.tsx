@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Input, Button, Divider, Select, Card, Space } from 'antd';
+import { Input, Button, Divider, Select, Space } from 'antd';
 import { FormItem, Form, useForm, FieldMode } from '@sailjs/core';
 
 export function Instance(props: any) {
@@ -17,7 +17,7 @@ export function Instance(props: any) {
       >
         获取实例
       </Button>
-      <Divider />
+      <Divider style={{ margin: '12px 0' }} />
       <Space>
         <Button
           data-testid="disabled"
@@ -65,7 +65,7 @@ export function Instance(props: any) {
           编辑
         </Button>
       </Space>
-      <Divider />
+      <Divider style={{ margin: '12px 0' }} />
       <Space>
         <Button
           data-testid="setValue"
@@ -93,7 +93,7 @@ export function Instance(props: any) {
           清空值
         </Button>
       </Space>
-      <Divider />
+      <Divider style={{ margin: '12px 0' }} />
       <Space>
         <Button
           onClick={() => {
@@ -131,7 +131,7 @@ export function Instance(props: any) {
           更换label
         </Button>
       </Space>
-      <Divider />
+      <Divider style={{ margin: '12px 0' }} />
       <Button
         data-testid="options"
         onClick={() => {
@@ -150,8 +150,30 @@ export function Instance(props: any) {
       >
         刷新
       </Button>
-
-      <Divider type="horizontal" />
+      <Divider type="horizontal" style={{ margin: '12px 0' }} />
+      <Space>
+        <Button
+          data-testid="obj.a"
+          onClick={() => {
+            const field = form.getField(['obj', 'a']);
+            field.value = 'a';
+            field.mode = FieldMode.DISABLED;
+          }}
+        >
+          数组实例1
+        </Button>
+        <Button
+          data-testid="array.0"
+          onClick={() => {
+            const field = form.getField(['array', 0]);
+            field.value = 'a';
+            field.mode = FieldMode.DISABLED;
+          }}
+        >
+          数组实例2
+        </Button>
+      </Space>
+      <Divider type="horizontal" style={{ margin: '12px 0' }} />
 
       <Form
         form={form}
@@ -195,6 +217,13 @@ export function Instance(props: any) {
               }
             }}
           />
+        </FormItem>
+
+        <FormItem name={['obj', 'a']} label="obj.a">
+          <Input data-testid="inputObj" />
+        </FormItem>
+        <FormItem name={['array', 0]} label="array[0]">
+          <Input data-testid="inputArr" />
         </FormItem>
       </Form>
     </Fragment>

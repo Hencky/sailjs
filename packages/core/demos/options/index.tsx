@@ -8,7 +8,12 @@ export function Options(props) {
   const { onGetRemoteValues } = props;
 
   return (
-    <Form form={form} onValuesChange={(_, values) => {}}>
+    <Form
+      form={form}
+      onValuesChange={(_, values) => {
+        console.log('values', values);
+      }}
+    >
       <FormItem
         name="a"
         label="a"
@@ -57,6 +62,35 @@ export function Options(props) {
         }}
       >
         <Select />
+      </FormItem>
+
+      <FormItem name={['obj', 'a']} label="obj.a" data-testid="obj.a">
+        <Input data-testid="inputObj" />
+      </FormItem>
+
+      <FormItem
+        name={['obj', 'b']}
+        label="obj.b"
+        data-testid="obj.b"
+        dependencies={[['obj', 'a']]}
+        remoteOptions={async ([dep0]) => {
+          console.log('remoteOptions', dep0);
+          onGetRemoteValues?.(dep0);
+
+          if (!dep0) return [];
+
+          return new Array(dep0?.length).fill(0).map((_, i) => ({
+            label: `${dep0}`,
+            value: i,
+          }));
+        }}
+      >
+        <Select
+          data-testid="selectObj"
+          getPopupContainer={(node) => {
+            return node.parentElement;
+          }}
+        />
       </FormItem>
     </Form>
   );

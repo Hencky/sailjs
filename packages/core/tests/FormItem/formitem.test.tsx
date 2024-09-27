@@ -87,4 +87,14 @@ describe('FormItem', () => {
     await sleep(200);
     expect(getSelectDropDownNodes('inputC')?.length).toBe(1);
   });
+
+  test('数组实例', async () => {
+    render(<Instance />);
+
+    await clickByTestId('obj.a');
+    expect(getInputValue('inputObj')).toBe('a');
+
+    await clickByTestId('array.0');
+    expect(getInputValue('inputArr')).toBe('a');
+  });
 });

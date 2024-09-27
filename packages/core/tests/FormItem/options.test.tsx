@@ -33,7 +33,22 @@ describe('Options', () => {
 
     await sleep(1000);
     expect(onGetRemoteValues).toHaveBeenCalledWith(['abc']);
-    // TODO: 初始不生效
-    expect(onGetRemoteValues).toHaveBeenCalledTimes(1);
+    expect(onGetRemoteValues).toHaveBeenCalledTimes(2);
+  });
+
+  test('array name remoteOptions deps', async () => {
+    render(<Options />);
+
+    await triggerInput('inputObj', 'abc');
+
+    await sleep(1000);
+    await clickSelectDom('selectObj');
+    expect(getSelectDropDownNodes('obj.b')!.length).toBe(3);
+
+    await triggerInput('inputObj', 'def');
+
+    await sleep(1000);
+    await clickSelectDom('selectObj');
+    expect(getSelectDropDownNodes('obj.b')!.length).toBe(6);
   });
 });
