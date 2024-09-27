@@ -136,22 +136,54 @@ exports[`FormItem > item 状态设置 1`] = `
           取消冒号
         </span>
       </button>
-      <button
-        class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
-        type="button"
+      <div
+        class="ant-card ant-card-bordered css-dev-only-do-not-override-1gwfwyx"
       >
-        <span>
-          必 填
-        </span>
-      </button>
-      <button
-        class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
-        type="button"
-      >
-        <span>
-          非必填
-        </span>
-      </button>
+        <div
+          class="ant-card-head"
+        >
+          <div
+            class="ant-card-head-wrapper"
+          >
+            <div
+              class="ant-card-head-title"
+            >
+              校验
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-card-body"
+        >
+          <button
+            class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+            data-testid="required"
+            type="button"
+          >
+            <span>
+              必 填
+            </span>
+          </button>
+          <button
+            class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+            data-testid="unRequired"
+            type="button"
+          >
+            <span>
+              非必填
+            </span>
+          </button>
+          <button
+            class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+            data-testid="unRequired2"
+            type="button"
+          >
+            <span>
+              非必填2
+            </span>
+          </button>
+        </div>
+      </div>
       <button
         class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
         type="button"
@@ -502,22 +534,54 @@ exports[`FormItem > item 状态设置 1`] = `
         取消冒号
       </span>
     </button>
-    <button
-      class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
-      type="button"
+    <div
+      class="ant-card ant-card-bordered css-dev-only-do-not-override-1gwfwyx"
     >
-      <span>
-        必 填
-      </span>
-    </button>
-    <button
-      class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
-      type="button"
-    >
-      <span>
-        非必填
-      </span>
-    </button>
+      <div
+        class="ant-card-head"
+      >
+        <div
+          class="ant-card-head-wrapper"
+        >
+          <div
+            class="ant-card-head-title"
+          >
+            校验
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-card-body"
+      >
+        <button
+          class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+          data-testid="required"
+          type="button"
+        >
+          <span>
+            必 填
+          </span>
+        </button>
+        <button
+          class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+          data-testid="unRequired"
+          type="button"
+        >
+          <span>
+            非必填
+          </span>
+        </button>
+        <button
+          class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+          data-testid="unRequired2"
+          type="button"
+        >
+          <span>
+            非必填2
+          </span>
+        </button>
+      </div>
+    </div>
     <button
       class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
       type="button"

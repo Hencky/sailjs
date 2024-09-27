@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Input, Button, Divider, Select, Card } from 'antd';
+import { Input, Button, Divider, Select, Card, Space } from 'antd';
 import { FormItem, Form, useForm, FieldMode } from '@sailjs/core';
 
 export function Instance(props: any) {
@@ -17,8 +17,8 @@ export function Instance(props: any) {
       >
         获取实例
       </Button>
-
-      <Card title="状态设置">
+      <Divider />
+      <Space>
         <Button
           data-testid="disabled"
           onClick={() => {
@@ -64,8 +64,9 @@ export function Instance(props: any) {
         >
           编辑
         </Button>
-      </Card>
-      <Card title="值设置">
+      </Space>
+      <Divider />
+      <Space>
         <Button
           data-testid="setValue"
           onClick={() => {
@@ -91,33 +92,48 @@ export function Instance(props: any) {
         >
           清空值
         </Button>
-      </Card>
+      </Space>
+      <Divider />
+      <Space>
+        <Button
+          onClick={() => {
+            form.colon = false;
+          }}
+        >
+          取消冒号
+        </Button>
+        <Button
+          data-testid="required"
+          onClick={() => {
+            const field = form.getField('a');
+            field.rules = [{ required: true, message: '请输入' }];
+          }}
+        >
+          必填
+        </Button>
+        <Button
+          data-testid="unRequired"
+          onClick={() => {
+            const field = form.getField('a');
+            field.rules = [{ required: false, message: '请输入' }];
+          }}
+        >
+          非必填
+        </Button>
 
+        <Button
+          data-testid="replaceLabel"
+          onClick={() => {
+            const field = form.getField('a');
+            field.label = 'replaced';
+          }}
+        >
+          更换label
+        </Button>
+      </Space>
+      <Divider />
       <Button
-        onClick={() => {
-          form.colon = false;
-        }}
-      >
-        取消冒号
-      </Button>
-
-      <Button
-        onClick={() => {
-          const field = form.getField('a');
-          field.rules = [{ required: true, message: '请输入' }];
-        }}
-      >
-        必填
-      </Button>
-      <Button
-        onClick={() => {
-          const field = form.getField('a');
-          field.rules = [{ required: false, message: '请输入' }];
-        }}
-      >
-        非必填
-      </Button>
-      <Button
+        data-testid="options"
         onClick={() => {
           const field = form.getField('c');
           field.options = [{ label: 'a', value: 'a' }];
@@ -125,16 +141,8 @@ export function Instance(props: any) {
       >
         数据源
       </Button>
-
       <Button
-        onClick={() => {
-          const field = form.getField('a');
-          field.label = '更新';
-        }}
-      >
-        更换label
-      </Button>
-      <Button
+        data-testid="forceUpdate"
         onClick={() => {
           const field = form.getField('c');
           field.forceUpdate();
@@ -164,8 +172,13 @@ export function Instance(props: any) {
             }}
           />
         </FormItem>
-        <FormItem name="c" label="c">
-          <Select data-testid="inputC" />
+        <FormItem name="c" label="c" data-testid="labelC">
+          <Select
+            data-testid="inputC"
+            getPopupContainer={(p) => {
+              return document.querySelector('[data-testid=inputC]');
+            }}
+          />
         </FormItem>
         <FormItem name="d" label="d">
           <Input
