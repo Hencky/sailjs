@@ -1,9 +1,8 @@
 import { sleep } from 'radash';
-import { describe, test, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { userEvent } from '@testing-library/user-event';
-import { Instance } from '../../demos/instance';
-import { clickByTestId, getByTestId, getInputValue } from '../utils';
+import { describe, test, expect, vi, beforeEach } from 'vitest';
+import { Instance } from '../../demos';
+import { clickByTestId, getByTestId, getInputValue, clickSelectDom, getSelectDropDownNodes } from '../utils';
 
 const fn = {
   onGetForm: (a: any, b: any) => {
@@ -39,8 +38,8 @@ describe('FormItem', () => {
     await clickByTestId('hidden');
     expect(getByTestId('labelA').parentNode).toHaveClass('ant-form-item-hidden');
 
-    // await click('remove');
-    // expect(container).toMatchSnapshot();
+    await clickByTestId('remove');
+    expect(container).toMatchSnapshot();
   });
 
   test('item 值设置', async () => {
@@ -76,8 +75,8 @@ describe('FormItem', () => {
 
     /** 数据源设置生效 */
     await clickByTestId('options');
+    await clickSelectDom('inputC');
     await sleep(200);
-    await userEvent.click(getByTestId('inputC').querySelector('.ant-select-selector')!);
-    expect(getByTestId('inputC').querySelector('.ant-select-dropdown')?.childNodes.length).toBe(1);
+    expect(getSelectDropDownNodes('inputC')?.length).toBe(1);
   });
 });

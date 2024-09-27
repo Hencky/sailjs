@@ -6,7 +6,7 @@ import Group from '@/pages/group';
 import Modal from '@/pages/modal';
 import Plugins from '@/pages/plugins';
 import Desctoy from '@/pages/destroy';
-import Options from '@/pages/options';
+// import Options from '@/pages/options';
 import FormList from '@/pages/formlist';
 import FormItem from '@/pages/formitem';
 // import Instance from '@/pages/instance';
@@ -14,7 +14,7 @@ import ArrayName from '@/pages/arrayname';
 import Depdendency from '@/pages/dependency';
 import RemoteValues from '@/pages/remoteValues';
 
-import { Instance } from '@demos/core';
+import { Instance, Options } from '@demos/core';
 
 const list = [
   {

@@ -15,23 +15,14 @@ exports[`FormItem > item 状态设置 1`] = `
         </span>
       </button>
       <div
-        class="ant-card ant-card-bordered css-dev-only-do-not-override-1gwfwyx"
+        class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
+        role="separator"
+      />
+      <div
+        class="ant-space css-dev-only-do-not-override-1gwfwyx ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
       >
         <div
-          class="ant-card-head"
-        >
-          <div
-            class="ant-card-head-wrapper"
-          >
-            <div
-              class="ant-card-head-title"
-            >
-              状态设置
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-card-body"
+          class="ant-space-item"
         >
           <button
             class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
@@ -42,6 +33,10 @@ exports[`FormItem > item 状态设置 1`] = `
               禁 用
             </span>
           </button>
+        </div>
+        <div
+          class="ant-space-item"
+        >
           <button
             class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
             data-testid="readonly"
@@ -51,6 +46,10 @@ exports[`FormItem > item 状态设置 1`] = `
               只 读
             </span>
           </button>
+        </div>
+        <div
+          class="ant-space-item"
+        >
           <button
             class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
             data-testid="hidden"
@@ -60,6 +59,10 @@ exports[`FormItem > item 状态设置 1`] = `
               隐 藏
             </span>
           </button>
+        </div>
+        <div
+          class="ant-space-item"
+        >
           <button
             class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
             data-testid="remove"
@@ -69,6 +72,10 @@ exports[`FormItem > item 状态设置 1`] = `
               移 除
             </span>
           </button>
+        </div>
+        <div
+          class="ant-space-item"
+        >
           <button
             class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
             data-testid="edit"
@@ -81,23 +88,14 @@ exports[`FormItem > item 状态设置 1`] = `
         </div>
       </div>
       <div
-        class="ant-card ant-card-bordered css-dev-only-do-not-override-1gwfwyx"
+        class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
+        role="separator"
+      />
+      <div
+        class="ant-space css-dev-only-do-not-override-1gwfwyx ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
       >
         <div
-          class="ant-card-head"
-        >
-          <div
-            class="ant-card-head-wrapper"
-          >
-            <div
-              class="ant-card-head-title"
-            >
-              值设置
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-card-body"
+          class="ant-space-item"
         >
           <button
             class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
@@ -108,6 +106,10 @@ exports[`FormItem > item 状态设置 1`] = `
               设置值
             </span>
           </button>
+        </div>
+        <div
+          class="ant-space-item"
+        >
           <button
             class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
             data-testid="setValues"
@@ -117,6 +119,10 @@ exports[`FormItem > item 状态设置 1`] = `
               批量设置值
             </span>
           </button>
+        </div>
+        <div
+          class="ant-space-item"
+        >
           <button
             class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
             data-testid="reset"
@@ -128,32 +134,27 @@ exports[`FormItem > item 状态设置 1`] = `
           </button>
         </div>
       </div>
-      <button
-        class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
-        type="button"
-      >
-        <span>
-          取消冒号
-        </span>
-      </button>
       <div
-        class="ant-card ant-card-bordered css-dev-only-do-not-override-1gwfwyx"
+        class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
+        role="separator"
+      />
+      <div
+        class="ant-space css-dev-only-do-not-override-1gwfwyx ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
       >
         <div
-          class="ant-card-head"
+          class="ant-space-item"
         >
-          <div
-            class="ant-card-head-wrapper"
+          <button
+            class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+            type="button"
           >
-            <div
-              class="ant-card-head-title"
-            >
-              校验
-            </div>
-          </div>
+            <span>
+              取消冒号
+            </span>
+          </button>
         </div>
         <div
-          class="ant-card-body"
+          class="ant-space-item"
         >
           <button
             class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
@@ -164,6 +165,10 @@ exports[`FormItem > item 状态设置 1`] = `
               必 填
             </span>
           </button>
+        </div>
+        <div
+          class="ant-space-item"
+        >
           <button
             class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
             data-testid="unRequired"
@@ -173,19 +178,28 @@ exports[`FormItem > item 状态设置 1`] = `
               非必填
             </span>
           </button>
+        </div>
+        <div
+          class="ant-space-item"
+        >
           <button
             class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
-            data-testid="unRequired2"
+            data-testid="replaceLabel"
             type="button"
           >
             <span>
-              非必填2
+              更换label
             </span>
           </button>
         </div>
       </div>
+      <div
+        class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
+        role="separator"
+      />
       <button
         class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+        data-testid="options"
         type="button"
       >
         <span>
@@ -194,14 +208,7 @@ exports[`FormItem > item 状态设置 1`] = `
       </button>
       <button
         class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
-        type="button"
-      >
-        <span>
-          更换label
-        </span>
-      </button>
-      <button
-        class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+        data-testid="forceUpdate"
         type="button"
       >
         <span>
@@ -271,6 +278,7 @@ exports[`FormItem > item 状态设置 1`] = `
               >
                 <div
                   class="ant-row ant-form-item-row css-dev-only-do-not-override-1gwfwyx"
+                  data-testid="labelC"
                 >
                   <div
                     class="ant-col ant-form-item-label css-dev-only-do-not-override-1gwfwyx"
@@ -413,23 +421,14 @@ exports[`FormItem > item 状态设置 1`] = `
       </span>
     </button>
     <div
-      class="ant-card ant-card-bordered css-dev-only-do-not-override-1gwfwyx"
+      class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
+      role="separator"
+    />
+    <div
+      class="ant-space css-dev-only-do-not-override-1gwfwyx ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
     >
       <div
-        class="ant-card-head"
-      >
-        <div
-          class="ant-card-head-wrapper"
-        >
-          <div
-            class="ant-card-head-title"
-          >
-            状态设置
-          </div>
-        </div>
-      </div>
-      <div
-        class="ant-card-body"
+        class="ant-space-item"
       >
         <button
           class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
@@ -440,6 +439,10 @@ exports[`FormItem > item 状态设置 1`] = `
             禁 用
           </span>
         </button>
+      </div>
+      <div
+        class="ant-space-item"
+      >
         <button
           class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
           data-testid="readonly"
@@ -449,6 +452,10 @@ exports[`FormItem > item 状态设置 1`] = `
             只 读
           </span>
         </button>
+      </div>
+      <div
+        class="ant-space-item"
+      >
         <button
           class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
           data-testid="hidden"
@@ -458,6 +465,10 @@ exports[`FormItem > item 状态设置 1`] = `
             隐 藏
           </span>
         </button>
+      </div>
+      <div
+        class="ant-space-item"
+      >
         <button
           class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
           data-testid="remove"
@@ -467,6 +478,10 @@ exports[`FormItem > item 状态设置 1`] = `
             移 除
           </span>
         </button>
+      </div>
+      <div
+        class="ant-space-item"
+      >
         <button
           class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
           data-testid="edit"
@@ -479,23 +494,14 @@ exports[`FormItem > item 状态设置 1`] = `
       </div>
     </div>
     <div
-      class="ant-card ant-card-bordered css-dev-only-do-not-override-1gwfwyx"
+      class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
+      role="separator"
+    />
+    <div
+      class="ant-space css-dev-only-do-not-override-1gwfwyx ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
     >
       <div
-        class="ant-card-head"
-      >
-        <div
-          class="ant-card-head-wrapper"
-        >
-          <div
-            class="ant-card-head-title"
-          >
-            值设置
-          </div>
-        </div>
-      </div>
-      <div
-        class="ant-card-body"
+        class="ant-space-item"
       >
         <button
           class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
@@ -506,6 +512,10 @@ exports[`FormItem > item 状态设置 1`] = `
             设置值
           </span>
         </button>
+      </div>
+      <div
+        class="ant-space-item"
+      >
         <button
           class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
           data-testid="setValues"
@@ -515,6 +525,10 @@ exports[`FormItem > item 状态设置 1`] = `
             批量设置值
           </span>
         </button>
+      </div>
+      <div
+        class="ant-space-item"
+      >
         <button
           class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
           data-testid="reset"
@@ -526,32 +540,27 @@ exports[`FormItem > item 状态设置 1`] = `
         </button>
       </div>
     </div>
-    <button
-      class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
-      type="button"
-    >
-      <span>
-        取消冒号
-      </span>
-    </button>
     <div
-      class="ant-card ant-card-bordered css-dev-only-do-not-override-1gwfwyx"
+      class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
+      role="separator"
+    />
+    <div
+      class="ant-space css-dev-only-do-not-override-1gwfwyx ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
     >
       <div
-        class="ant-card-head"
+        class="ant-space-item"
       >
-        <div
-          class="ant-card-head-wrapper"
+        <button
+          class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+          type="button"
         >
-          <div
-            class="ant-card-head-title"
-          >
-            校验
-          </div>
-        </div>
+          <span>
+            取消冒号
+          </span>
+        </button>
       </div>
       <div
-        class="ant-card-body"
+        class="ant-space-item"
       >
         <button
           class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
@@ -562,6 +571,10 @@ exports[`FormItem > item 状态设置 1`] = `
             必 填
           </span>
         </button>
+      </div>
+      <div
+        class="ant-space-item"
+      >
         <button
           class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
           data-testid="unRequired"
@@ -571,19 +584,28 @@ exports[`FormItem > item 状态设置 1`] = `
             非必填
           </span>
         </button>
+      </div>
+      <div
+        class="ant-space-item"
+      >
         <button
           class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
-          data-testid="unRequired2"
+          data-testid="replaceLabel"
           type="button"
         >
           <span>
-            非必填2
+            更换label
           </span>
         </button>
       </div>
     </div>
+    <div
+      class="ant-divider css-dev-only-do-not-override-1gwfwyx ant-divider-horizontal"
+      role="separator"
+    />
     <button
       class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+      data-testid="options"
       type="button"
     >
       <span>
@@ -592,14 +614,7 @@ exports[`FormItem > item 状态设置 1`] = `
     </button>
     <button
       class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
-      type="button"
-    >
-      <span>
-        更换label
-      </span>
-    </button>
-    <button
-      class="ant-btn css-dev-only-do-not-override-1gwfwyx ant-btn-default"
+      data-testid="forceUpdate"
       type="button"
     >
       <span>
@@ -669,6 +684,7 @@ exports[`FormItem > item 状态设置 1`] = `
             >
               <div
                 class="ant-row ant-form-item-row css-dev-only-do-not-override-1gwfwyx"
+                data-testid="labelC"
               >
                 <div
                   class="ant-col ant-form-item-label css-dev-only-do-not-override-1gwfwyx"

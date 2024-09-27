@@ -16,7 +16,7 @@ export class FieldStore<Values = any, P = any>
   /** 字段名，唯一路径标识 */
   name?: NamePath;
   /** 表单loading状态 */
-  optionsLoading: boolean = false;
+  optionsLoading?: boolean;
   /** 数据源 */
   options: any[] = [];
   /** 远程数据源 */
@@ -192,6 +192,7 @@ export class FieldStore<Values = any, P = any>
       disabled: this.mode === FieldMode.DISABLED,
       options: this.options,
       ...displayOptions,
+      loading: this.optionsLoading,
     };
   }
 
