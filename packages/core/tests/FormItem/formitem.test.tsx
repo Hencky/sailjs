@@ -1,8 +1,16 @@
 import { sleep } from 'radash';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { describe, test, expect, vi, beforeEach } from 'vitest';
 import { Instance } from '../../demos';
-import { clickByTestId, getByTestId, getInputValue, clickSelectDom, getSelectDropDownNodes } from '../utils';
+import {
+  getByTestId,
+  clickByTestId,
+  getInputValue,
+  clickSelectDom,
+  getSelectValue,
+  getRequiredLabel,
+  getSelectDropDownNodes,
+} from '../utils';
 
 const fn = {
   onGetForm: (a: any, b: any) => {
@@ -57,7 +65,7 @@ describe('FormItem', () => {
     await clickByTestId('setValues');
     expect(getInputValue('inputA')).toBe('1');
     expect(getInputValue('inputB')).toBe('2');
-    expect(screen.getByTestId('inputC').querySelector('.ant-select-selection-item')?.textContent).toBe('3');
+    expect(getSelectValue('inputC')).toBe('3');
     expect(getInputValue('inputD')).toBe('4');
   });
 
@@ -65,10 +73,10 @@ describe('FormItem', () => {
     render(<Instance />);
 
     await clickByTestId('required');
-    expect(getByTestId('labelA').querySelector('label')?.getAttribute('class')?.includes('required')).toBeTruthy();
+    expect(getRequiredLabel('labelA')).toBeTruthy();
 
     await clickByTestId('unRequired');
-    expect(getByTestId('labelA').querySelector('label')?.getAttribute('class')?.includes('required')).toBeFalsy();
+    expect(getRequiredLabel('labelA')).toBeFalsy();
 
     await clickByTestId('replaceLabel');
     expect(getByTestId('labelA').querySelector('label')?.textContent).toBe('replaced');

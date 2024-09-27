@@ -14,7 +14,7 @@ import ArrayName from '@/pages/arrayname';
 import Depdendency from '@/pages/dependency';
 import RemoteValues from '@/pages/remoteValues';
 
-import { Instance, Options } from '@demos/core';
+import { Instance, Options, ValueEffects, PropEffects } from '@demos/core';
 
 const list = [
   {
@@ -27,7 +27,12 @@ const list = [
     label: '联动',
     key: 'dependency',
     path: '/dependency',
-    element: <Depdendency />,
+    element: (
+      <div>
+        <ValueEffects />
+        <PropEffects />
+      </div>
+    ),
   },
   {
     label: '数据源',
