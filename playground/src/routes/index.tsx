@@ -11,10 +11,10 @@ import FormList from '@/pages/formlist';
 import FormItem from '@/pages/formitem';
 // import Instance from '@/pages/instance';
 import ArrayName from '@/pages/arrayname';
-import Depdendency from '@/pages/dependency';
+// import Depdendency from '@/pages/dependency';
 import RemoteValues from '@/pages/remoteValues';
 
-import { Instance, Options, ValueEffects, PropEffects } from '@demos/core';
+import { Instance, Options, ValueEffects, PropEffects, ValueDependency, PropDependency } from '@demos/core';
 
 const list = [
   {
@@ -31,6 +31,8 @@ const list = [
       <div>
         <ValueEffects />
         <PropEffects />
+        <ValueDependency />
+        <PropDependency />
       </div>
     ),
   },
