@@ -1,3 +1,4 @@
+import type { SpinProps } from 'antd';
 import type { FormProps as AFormProps } from 'antd/lib/form';
 import type { FormStore } from './store';
 import type { BaseProps, BaseRootStore } from '../Base';
@@ -12,6 +13,8 @@ export interface FormProps<Values = any, P = any>
   items?: FormItemProps[];
   /** 远程表单值 */
   remoteValues?: () => Promise<Values>;
+
+  spinProps?: Omit<SpinProps, 'spinning'>;
 }
 
 export type FormOptionProps<P = any> = {

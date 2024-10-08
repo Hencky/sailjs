@@ -12,7 +12,7 @@ import FormItem from '@/pages/formitem';
 // import Instance from '@/pages/instance';
 import ArrayName from '@/pages/arrayname';
 // import Depdendency from '@/pages/dependency';
-import RemoteValues from '@/pages/remoteValues';
+// import RemoteValues from '@/pages/remoteValues';
 
 import {
   Instance,
@@ -22,6 +22,7 @@ import {
   ValueDependency,
   ValueDependencyObj,
   PropDependency,
+  RemoteValues,
 } from '@demos/core';
 
 const list = [

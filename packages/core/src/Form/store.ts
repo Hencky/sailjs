@@ -32,6 +32,8 @@ export class FormStore<Values = any, PluginsType = any>
 
   /** 表单loading状态 */
   loading: boolean = false;
+  /** 表单loading属性配置 */
+  spinProps?: FormProps['spinProps'];
   /** 获取表单值 */
   remoteValues?: () => Promise<any>;
 
@@ -120,6 +122,7 @@ export class FormStore<Values = any, PluginsType = any>
       onFinishFailed: observable,
       onValuesChange: observable,
       clearOnDestroy: observable.ref,
+      spinProps: observable,
     });
   }
 
