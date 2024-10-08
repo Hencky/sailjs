@@ -2,7 +2,7 @@ import { Menu } from 'antd';
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 
 /** ===== pages ===== */
-import Group from '@/pages/group';
+// import Group from '@/pages/group';
 import Modal from '@/pages/modal';
 import Plugins from '@/pages/plugins';
 import Desctoy from '@/pages/destroy';
@@ -24,11 +24,13 @@ import {
   PropDependency,
   RemoteValues,
   Simplify,
+  GroupInstance,
+  GroupDependency,
 } from '@demos/core';
 
 const list = [
   {
-    label: '实例方法',
+    label: 'Item实例',
     key: 'instance',
     path: '/instance',
     element: <Instance />,
@@ -72,10 +74,16 @@ const list = [
     element: <Desctoy />,
   },
   {
-    label: '分组',
-    key: 'group',
-    path: '/group',
-    element: <Group />,
+    label: '分组实例',
+    key: 'groupInstance',
+    path: '/groupInstance',
+    element: <GroupInstance />,
+  },
+  {
+    label: '分组实例',
+    key: 'groupDependency',
+    path: '/groupDependency',
+    element: <GroupDependency />,
   },
   {
     label: '插件',

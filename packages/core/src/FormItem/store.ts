@@ -85,7 +85,7 @@ export class FieldStore<Values = any, P = any>
     forceUpdate: () => void
   ) {
     super(getFormStore, getGroupStore);
-    this.mode = props.mode || FieldMode.EDIT;
+    // this.mode = props.mode || FieldMode.EDIT;
     this.form = form;
     this.forceUpdate = forceUpdate;
     this.getFormStore = getFormStore;

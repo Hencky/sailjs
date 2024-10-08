@@ -143,11 +143,16 @@ export class FormStore<Values = any, PluginsType = any>
   }
 
   addGroup<NameType extends keyof Values>(name: NameType, group: GroupStore<Values>) {
+    if (!name) return;
     this.addField(name, group as unknown as any);
   }
 
   removeGroup(name: NamePath) {
     this.removeField(name);
+  }
+
+  getGroup(name: NamePath): GroupStore<Values> {
+    return this.getField(name) as unknown as GroupStore<Values>;
   }
 
   addField<NameType extends keyof Values>(name: NameType, field: FieldStore<Values[NameType]>) {
@@ -197,10 +202,6 @@ export class FormStore<Values = any, PluginsType = any>
     });
 
     this.store[this.getName(name)] = null;
-  }
-
-  remoteGroup(name: NamePath) {
-    this.removeField(name);
   }
 
   getField<NameType>(name: NameType): FieldStore<any> {
