@@ -1,8 +1,8 @@
 import { sleep } from 'radash';
 import { describe, test, expect, vi, beforeEach } from 'vitest';
 import { render } from '@testing-library/react';
-import { Options } from '../../demos';
-import { clickSelectDom, getSelectDropDownNodes, triggerInput } from '../utils';
+import { Options } from '../..';
+import { clickSelectDom, getSelectDropDownNodes, triggerInput } from '../../../tests/utils';
 
 const fn = {
   onGetRemoteValues: (deps: any) => {

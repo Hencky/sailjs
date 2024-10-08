@@ -14,7 +14,15 @@ import ArrayName from '@/pages/arrayname';
 // import Depdendency from '@/pages/dependency';
 import RemoteValues from '@/pages/remoteValues';
 
-import { Instance, Options, ValueEffects, PropEffects, ValueDependency, PropDependency } from '@demos/core';
+import {
+  Instance,
+  Options,
+  ValueEffects,
+  PropEffects,
+  ValueDependency,
+  ValueDependencyObj,
+  PropDependency,
+} from '@demos/core';
 
 const list = [
   {
@@ -32,6 +40,7 @@ const list = [
         <ValueEffects />
         <PropEffects />
         <ValueDependency />
+        <ValueDependencyObj />
         <PropDependency />
       </div>
     ),

@@ -1,7 +1,7 @@
 import { sleep } from 'radash';
 import { render } from '@testing-library/react';
 import { describe, test, expect, vi, beforeEach } from 'vitest';
-import { Instance } from '../../demos';
+import { Instance } from '../..';
 import {
   getByTestId,
   clickByTestId,
@@ -10,7 +10,7 @@ import {
   getSelectValue,
   getRequiredLabel,
   getSelectDropDownNodes,
-} from '../utils';
+} from '../../../tests/utils';
 
 const fn = {
   onGetForm: (a: any, b: any) => {

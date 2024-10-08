@@ -1,7 +1,7 @@
 import { describe, test, expect, vi, beforeEach } from 'vitest';
 import { render } from '@testing-library/react';
-import { ValueEffects, PropEffects, ValueDependency, PropDependency } from '../../demos';
-import { getInputValue, triggerInput, clearInput, getRequiredLabel, getByTestId } from '../utils';
+import { ValueEffects, PropEffects, ValueDependency, PropDependency, ValueDependencyObj } from '../..';
+import { getInputValue, triggerInput, clearInput, getRequiredLabel, getByTestId } from '../../../tests/utils';
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -91,7 +91,7 @@ describe('reactions', () => {
 
     await clearInput('inputA');
     expect(getInputValue('inputB')).toBe('');
-    expect(getInputValue('inputC')).toBe('-');
+    expect(getInputValue('inputC')).toBe('');
 
     await triggerInput('inputA', '2');
     expect(getInputValue('inputB')).toBe('2');
@@ -99,11 +99,36 @@ describe('reactions', () => {
 
     await clearInput('inputB');
     expect(getInputValue('inputB')).toBe('');
-    expect(getInputValue('inputC')).toBe('2-');
+    expect(getInputValue('inputC')).toBe('');
 
     await triggerInput('inputB', '1');
     expect(getInputValue('inputB')).toBe('1');
     expect(getInputValue('inputC')).toBe('2-1');
+  });
+
+  test('reactions dependencies object name value', async () => {
+    render(<ValueDependencyObj />);
+
+    await triggerInput('inputObjA', '1');
+    expect(getInputValue('inputObjA')).toBe('1');
+    expect(getInputValue('inputObjB')).toBe('1');
+    expect(getInputValue('inputObjC')).toBe('1-1');
+
+    await clearInput('inputObjA');
+    expect(getInputValue('inputObjB')).toBe('');
+    expect(getInputValue('inputObjC')).toBe('');
+
+    await triggerInput('inputObjA', '2');
+    expect(getInputValue('inputObjB')).toBe('2');
+    expect(getInputValue('inputObjC')).toBe('2-2');
+
+    await clearInput('inputObjB');
+    expect(getInputValue('inputObjB')).toBe('');
+    expect(getInputValue('inputObjC')).toBe('');
+
+    await triggerInput('inputObjB', '1');
+    expect(getInputValue('inputObjB')).toBe('1');
+    expect(getInputValue('inputObjC')).toBe('2-1');
   });
 
   test('reactions dependencies prop', async () => {

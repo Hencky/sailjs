@@ -1,47 +1,50 @@
 import { Card, Input, Space } from 'antd';
 import { FormItem, Form, useForm } from '@sailjs/core';
 
-export function ValueDependency() {
+export function ValueDependencyObj() {
   const [form] = useForm();
 
   return (
-    <Card title="被动-值联动">
+    <Card title="被动-值联动-对象name">
       <Form
         form={form}
         onValuesChange={(_, values) => {
           console.log('values', values);
         }}
       >
-        <FormItem name="a" label="a">
-          <Input data-testid="inputA" />
+        <FormItem name={['obj', 'a']} label="obj.a">
+          <Input data-testid="inputObjA" />
         </FormItem>
         <FormItem
-          name="b"
-          label="b"
+          name={['obj', 'b']}
+          label="obj.b"
           reactions={[
             {
-              dependencies: ['a'],
+              dependencies: [['obj', 'a']],
               result: {
                 value: `$deps[0]`,
               },
             },
           ]}
         >
-          <Input data-testid="inputB" />
+          <Input data-testid="inputObjB" />
         </FormItem>
         <FormItem
-          name="c"
-          label="c"
+          name={['obj', 'c']}
+          label="obj.c"
           reactions={[
             {
-              dependencies: ['a', 'b'],
+              dependencies: [
+                ['obj', 'a'],
+                ['obj', 'b'],
+              ],
               result: {
                 value: `$deps[0] && $deps[1] ? $deps[0] + '-' + $deps[1] : ""`,
               },
             },
           ]}
         >
-          <Input data-testid="inputC" />
+          <Input data-testid="inputObjC" />
         </FormItem>
       </Form>
     </Card>

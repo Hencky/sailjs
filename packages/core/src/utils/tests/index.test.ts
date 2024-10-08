@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { toCompareName, isFieldChange } from '../src/utils';
+import { toCompareName, isFieldChange } from '..';
 
 describe('toCompareName', () => {
   it('should convert string to compare name', () => {
