@@ -1,69 +1,72 @@
-import { Fragment } from 'react';
-import { Button, Divider, Input } from 'antd';
+import { Input, Select } from 'antd';
 import { Form, useForm, FormGroup, FieldMode } from '@sailjs/core';
 
 export function GroupDependency() {
   const [form] = useForm();
 
   return (
-    <Fragment>
-      <Button
-        onClick={() => {
-          console.log('form', form.span);
-          console.log('group', form.getGroup('group2').span);
-          console.log('item', form.getField('b').span);
-        }}
-      >
-        实例
-      </Button>
-      <Divider />
-      <Form
-        form={form}
-        onValuesChange={(_, values) => {
-          console.log('values', values);
-        }}
-      >
-        <FormGroup
-          name="group1"
-          items={[
-            {
-              name: 'a',
-              label: 'a',
-              children: <Input />,
+    <Form
+      form={form}
+      onValuesChange={(_, values) => {
+        console.log('values', values);
+      }}
+    >
+      <FormGroup
+        name="group1"
+        items={[
+          {
+            name: 'mode',
+            label: '状态',
+            options: [
+              { label: '编辑', value: FieldMode.EDIT },
+              { label: '禁用', value: FieldMode.DISABLED },
+              { label: '查看', value: FieldMode.VIEW },
+              { label: '隐藏', value: FieldMode.HIDDEN },
+            ],
+            children: <Select />,
+          },
+          {
+            name: 'span',
+            label: '栅格',
+            children: <Input />,
+          },
+        ]}
+      />
+      <FormGroup
+        name="group2"
+        mode={FieldMode.DISABLED}
+        reactions={[
+          {
+            dependencies: ['mode'],
+            result: {
+              mode: `$deps[0]`,
             },
-          ]}
-        />
-        <FormGroup
-          name="group2"
-          mode={FieldMode.DISABLED}
-          reactions={[
-            {
-              dependencies: ['a'],
-              result: {
-                mode: `$deps[0] ? '${FieldMode.EDIT}' : '${FieldMode.DISABLED}'`,
-                span: `$deps[0] || undefined`,
-              },
+          },
+          {
+            dependencies: ['span'],
+            result: {
+              span: `$deps[0]`,
             },
-          ]}
-          items={[
-            {
-              name: 'b',
-              label: 'b',
-              children: <Input style={{ width: '100%' }} />,
-            },
-            {
-              name: 'c',
-              label: 'c',
-              children: <Input style={{ width: '100%' }} />,
-            },
-            {
-              name: 'd',
-              label: 'd',
-              children: <Input style={{ width: '100%' }} />,
-            },
-          ]}
-        />
-      </Form>
-    </Fragment>
+          },
+        ]}
+        items={[
+          {
+            name: 'b',
+            label: 'b',
+            children: <Input style={{ width: '100%' }} />,
+          },
+          {
+            name: 'c',
+            label: 'c',
+            children: <Input style={{ width: '100%' }} />,
+          },
+          {
+            name: 'd',
+            label: 'd',
+            children: <Input style={{ width: '100%' }} />,
+          },
+        ]}
+      />
+    </Form>
   );
 }

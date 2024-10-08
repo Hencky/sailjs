@@ -1,7 +1,7 @@
 import { useModal, useModalForm, FormGroup } from '@sailjs/core';
 import { Button } from 'antd';
 import { sleep } from 'radash';
-import { plugins, CustomPluginsType } from '../plugins/plugins';
+import { plugins, CustomPluginsType } from '../plugins';
 import { memo, useEffect } from 'react';
 
 const Content = () => {
@@ -53,7 +53,7 @@ const SaveModal = memo(() => {
   );
 });
 
-export default () => {
+export const Modal = () => {
   const [modal, { open: openModal, close: closeModal }] = useModal();
   const [modalForm, { open: openModalForm, close: closeModalForm }] = useModalForm({ plugins });
   const [modalForm2, { open: openModalForm2, close: closeModalForm2 }] = useModalForm({ plugins });

@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react';
 import { Input, Button, Divider, Card } from 'antd';
 import { FormItem, Form, useForm, FieldMode } from '@sailjs/core';
 
-function Destroy() {
+export function Destroy() {
   const [form] = useForm();
 
   const [visibleA, setVisibleA] = useState(true);
@@ -188,5 +188,3 @@ function Destroy() {
     </Fragment>
   );
 }
-
-export default Destroy;

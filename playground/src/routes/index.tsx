@@ -1,25 +1,23 @@
 import { Menu } from 'antd';
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 
-/** ===== pages ===== */
-import Modal from '@/pages/modal';
-import Plugins from '@/pages/plugins';
-import Desctoy from '@/pages/destroy';
-import FormList from '@/pages/formlist';
-import FormItem from '@/pages/formitem';
-
 import {
-  ItemInstance,
+  List,
+  Modal,
+  Plugins,
   Options,
-  ValueEffects,
-  PropEffects,
-  ValueDependency,
-  ValueDependencyObj,
-  PropDependency,
-  RemoteValues,
+  Destroy,
   Simplify,
+  EmptyItem,
+  PropEffects,
+  ItemInstance,
+  ValueEffects,
+  RemoteValues,
   GroupInstance,
+  PropDependency,
+  ValueDependency,
   GroupDependency,
+  ValueDependencyObj,
 } from '@demos/core';
 
 const list = [
@@ -59,7 +57,7 @@ const list = [
     label: '卸载',
     key: 'destroy',
     path: '/destroy',
-    element: <Desctoy />,
+    element: <Destroy />,
   },
   {
     label: '分组实例',
@@ -68,7 +66,7 @@ const list = [
     element: <GroupInstance />,
   },
   {
-    label: '分组实例',
+    label: '分组联动',
     key: 'groupDependency',
     path: '/groupDependency',
     element: <GroupDependency />,
@@ -89,13 +87,13 @@ const list = [
     label: '列表',
     key: 'formlist',
     path: '/formlist',
-    element: <FormList />,
+    element: <List />,
   },
   {
     label: '空ITEM',
-    key: 'formitem',
-    path: '/formitem',
-    element: <FormItem />,
+    key: 'emptyitem',
+    path: '/emptyitem',
+    element: <EmptyItem />,
   },
   {
     label: '简化取值',

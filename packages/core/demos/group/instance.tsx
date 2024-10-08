@@ -129,5 +129,3 @@ export function GroupInstance() {
     </Fragment>
   );
 }
-
-export default GroupInstance;

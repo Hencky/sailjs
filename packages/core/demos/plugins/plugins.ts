@@ -1,5 +1,5 @@
 import { Input } from 'antd';
-import { DEFAULT_COMPONENT_PLUGINS } from '@sailjs/plugins';
+import { DEFAULT_COMPONENT_PLUGINS } from '../../../plugins/src/index';
 
 export const plugins = Object.assign({}, DEFAULT_COMPONENT_PLUGINS, {
   input2: {
@@ -9,3 +9,5 @@ export const plugins = Object.assign({}, DEFAULT_COMPONENT_PLUGINS, {
 });
 
 export type CustomPluginsType = typeof plugins;
+
+export { DEFAULT_COMPONENT_PLUGINS };

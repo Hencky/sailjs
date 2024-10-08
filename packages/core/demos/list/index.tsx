@@ -1,8 +1,8 @@
 import { FormList, Form, useForm, FormItem } from '@sailjs/core';
-import { DEFAULT_COMPONENT_PLUGINS } from '@sailjs/plugins';
+import { DEFAULT_COMPONENT_PLUGINS } from '../plugins';
 import { Card, Button } from 'antd';
 
-const List = () => {
+export const List = () => {
   const [form] = useForm<typeof DEFAULT_COMPONENT_PLUGINS>({ plugins: DEFAULT_COMPONENT_PLUGINS });
   return (
     <Form
@@ -90,5 +90,3 @@ const List = () => {
     </Form>
   );
 };
-
-export default List;
