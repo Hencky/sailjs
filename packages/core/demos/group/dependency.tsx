@@ -41,7 +41,7 @@ export function GroupDependency() {
               dependencies: ['a'],
               result: {
                 mode: `$deps[0] ? '${FieldMode.EDIT}' : '${FieldMode.DISABLED}'`,
-                span: `$deps[0] || 24`,
+                span: `$deps[0] || undefined`,
               },
             },
           ]}
