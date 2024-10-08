@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { Input, Button, Divider, Select, Space } from 'antd';
 import { FormItem, Form, useForm, FieldMode } from '@sailjs/core';
 
-export function Instance(props: any) {
+export function ItemInstance(props: any) {
   const [form] = useForm();
 
   return (

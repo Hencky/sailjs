@@ -2,20 +2,14 @@ import { Menu } from 'antd';
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 
 /** ===== pages ===== */
-// import Group from '@/pages/group';
 import Modal from '@/pages/modal';
 import Plugins from '@/pages/plugins';
 import Desctoy from '@/pages/destroy';
-// import Options from '@/pages/options';
 import FormList from '@/pages/formlist';
 import FormItem from '@/pages/formitem';
-// import Instance from '@/pages/instance';
-import ArrayName from '@/pages/arrayname';
-// import Depdendency from '@/pages/dependency';
-// import RemoteValues from '@/pages/remoteValues';
 
 import {
-  Instance,
+  ItemInstance,
   Options,
   ValueEffects,
   PropEffects,
@@ -33,7 +27,7 @@ const list = [
     label: 'Item实例',
     key: 'instance',
     path: '/instance',
-    element: <Instance />,
+    element: <ItemInstance />,
   },
   {
     label: '联动',
@@ -54,12 +48,6 @@ const list = [
     key: 'options',
     path: '/options',
     element: <Options />,
-  },
-  {
-    label: '数组name',
-    key: 'arrayname',
-    path: '/arrayname',
-    element: <ArrayName />,
   },
   {
     label: '远程值',

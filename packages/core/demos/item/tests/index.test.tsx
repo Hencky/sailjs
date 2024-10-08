@@ -1,7 +1,7 @@
 import { sleep } from 'radash';
 import { render } from '@testing-library/react';
 import { describe, test, expect, vi, beforeEach } from 'vitest';
-import { Instance } from '../..';
+import { ItemInstance } from '../..';
 import {
   getByTestId,
   clickByTestId,
@@ -26,7 +26,7 @@ describe('FormItem', () => {
   test('FormItem 渲染正确', async () => {
     const onGetForm = vi.spyOn(fn, 'onGetForm');
 
-    render(<Instance onGetForm={onGetForm} />);
+    render(<ItemInstance onGetForm={onGetForm} />);
 
     await clickByTestId('instance');
 
@@ -34,7 +34,7 @@ describe('FormItem', () => {
   });
 
   test('item 状态设置', async () => {
-    const container = render(<Instance />);
+    const container = render(<ItemInstance />);
 
     await clickByTestId('disabled');
     expect(getByTestId('inputA')).toHaveClass('ant-input-disabled');
@@ -51,7 +51,7 @@ describe('FormItem', () => {
   });
 
   test('item 值设置', async () => {
-    render(<Instance />);
+    render(<ItemInstance />);
 
     await clickByTestId('setValue');
     expect(getInputValue('inputA')).toBe('1');
@@ -70,7 +70,7 @@ describe('FormItem', () => {
   });
 
   test('属性更新', async () => {
-    render(<Instance />);
+    render(<ItemInstance />);
 
     await clickByTestId('required');
     expect(getRequiredLabel('labelA')).toBeTruthy();
@@ -89,7 +89,7 @@ describe('FormItem', () => {
   });
 
   test('数组实例', async () => {
-    render(<Instance />);
+    render(<ItemInstance />);
 
     await clickByTestId('obj.a');
     expect(getInputValue('inputObj')).toBe('a');
