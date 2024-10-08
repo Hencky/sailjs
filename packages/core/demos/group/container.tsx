@@ -1,8 +1,9 @@
 import { Input, Card, Button } from 'antd';
 import { Form, useForm, FormGroup } from '@sailjs/core';
+import { plugins } from '../plugins';
 
 export function GroupContainer() {
-  const [form] = useForm();
+  const [form] = useForm({ plugins });
 
   return (
     <Form
@@ -23,7 +24,8 @@ export function GroupContainer() {
         ]}
       />
       <FormGroup
-        container={<Card title="分组容器" />}
+        container="card"
+        containerProps={{ title: '容器插件' }}
         name="group2"
         items={[
           {

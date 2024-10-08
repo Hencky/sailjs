@@ -61,7 +61,10 @@ export const FormGroup = observer(<Values, P extends PluginsType = any>(props: F
   // ===== 容器, 默认为Row  ======
   let container: React.ReactNode = <Row {...group.groupProps}></Row>;
 
-  if (group.container) {
+  if (group.containerPlugin) {
+    const { component: Com, defaultComponentProps } = group.containerPlugin;
+    container = <Com {...defaultComponentProps} {...group.containerProps} />;
+  } else if (group.container) {
     container = group.container;
   }
 

@@ -1,7 +1,8 @@
-import { makeObservable, observable } from 'mobx';
+import { computed, makeObservable, observable } from 'mobx';
 import { BaseStore, BaseProps } from '../Base';
 import type { FormStore } from '../Form/store';
 import type { FormGroupProps } from './interface';
+import { isString } from 'radash';
 
 export class GroupStore<Values = any, P = any> extends BaseStore implements Omit<FormGroupProps, 'form'>, BaseProps {
   name?: FormGroupProps['name'];
@@ -47,6 +48,7 @@ export class GroupStore<Values = any, P = any> extends BaseStore implements Omit
       wrap: observable.ref,
       container: observable,
       containerProps: observable.shallow,
+      containerPlugin: computed,
     });
   }
 
@@ -58,5 +60,14 @@ export class GroupStore<Values = any, P = any> extends BaseStore implements Omit
       justify: this.justify,
       wrap: this.wrap,
     };
+  }
+
+  // 插件
+  get containerPlugin() {
+    if (isString(this.container)) {
+      return this.getFormStore().plugins[this.container];
+    }
+
+    return null;
   }
 }
