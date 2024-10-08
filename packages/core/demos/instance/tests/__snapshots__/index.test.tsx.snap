@@ -269,7 +269,7 @@ exports[`FormItem > item 状态设置 1`] = `
             class="ant-form ant-form-horizontal css-dev-only-do-not-override-1gwfwyx"
           >
             <div
-              class="ant-col css-dev-only-do-not-override-1gwfwyx"
+              class="ant-col ant-col-24 css-dev-only-do-not-override-1gwfwyx"
             >
               <div
                 class="ant-form-item css-dev-only-do-not-override-1gwfwyx"
@@ -311,7 +311,7 @@ exports[`FormItem > item 状态设置 1`] = `
               </div>
             </div>
             <div
-              class="ant-col css-dev-only-do-not-override-1gwfwyx"
+              class="ant-col ant-col-24 css-dev-only-do-not-override-1gwfwyx"
             >
               <div
                 class="ant-form-item css-dev-only-do-not-override-1gwfwyx"
@@ -404,7 +404,7 @@ exports[`FormItem > item 状态设置 1`] = `
               </div>
             </div>
             <div
-              class="ant-col css-dev-only-do-not-override-1gwfwyx"
+              class="ant-col ant-col-24 css-dev-only-do-not-override-1gwfwyx"
             >
               <div
                 class="ant-form-item css-dev-only-do-not-override-1gwfwyx"
@@ -446,7 +446,7 @@ exports[`FormItem > item 状态设置 1`] = `
               </div>
             </div>
             <div
-              class="ant-col css-dev-only-do-not-override-1gwfwyx"
+              class="ant-col ant-col-24 css-dev-only-do-not-override-1gwfwyx"
             >
               <div
                 class="ant-form-item css-dev-only-do-not-override-1gwfwyx"
@@ -488,7 +488,7 @@ exports[`FormItem > item 状态设置 1`] = `
               </div>
             </div>
             <div
-              class="ant-col css-dev-only-do-not-override-1gwfwyx"
+              class="ant-col ant-col-24 css-dev-only-do-not-override-1gwfwyx"
             >
               <div
                 class="ant-form-item css-dev-only-do-not-override-1gwfwyx"
@@ -799,7 +799,7 @@ exports[`FormItem > item 状态设置 1`] = `
           class="ant-form ant-form-horizontal css-dev-only-do-not-override-1gwfwyx"
         >
           <div
-            class="ant-col css-dev-only-do-not-override-1gwfwyx"
+            class="ant-col ant-col-24 css-dev-only-do-not-override-1gwfwyx"
           >
             <div
               class="ant-form-item css-dev-only-do-not-override-1gwfwyx"
@@ -841,7 +841,7 @@ exports[`FormItem > item 状态设置 1`] = `
             </div>
           </div>
           <div
-            class="ant-col css-dev-only-do-not-override-1gwfwyx"
+            class="ant-col ant-col-24 css-dev-only-do-not-override-1gwfwyx"
           >
             <div
               class="ant-form-item css-dev-only-do-not-override-1gwfwyx"
@@ -934,7 +934,7 @@ exports[`FormItem > item 状态设置 1`] = `
             </div>
           </div>
           <div
-            class="ant-col css-dev-only-do-not-override-1gwfwyx"
+            class="ant-col ant-col-24 css-dev-only-do-not-override-1gwfwyx"
           >
             <div
               class="ant-form-item css-dev-only-do-not-override-1gwfwyx"
@@ -976,7 +976,7 @@ exports[`FormItem > item 状态设置 1`] = `
             </div>
           </div>
           <div
-            class="ant-col css-dev-only-do-not-override-1gwfwyx"
+            class="ant-col ant-col-24 css-dev-only-do-not-override-1gwfwyx"
           >
             <div
               class="ant-form-item css-dev-only-do-not-override-1gwfwyx"
@@ -1018,7 +1018,7 @@ exports[`FormItem > item 状态设置 1`] = `
             </div>
           </div>
           <div
-            class="ant-col css-dev-only-do-not-override-1gwfwyx"
+            class="ant-col ant-col-24 css-dev-only-do-not-override-1gwfwyx"
           >
             <div
               class="ant-form-item css-dev-only-do-not-override-1gwfwyx"

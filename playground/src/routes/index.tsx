@@ -23,6 +23,7 @@ import {
   ValueDependencyObj,
   PropDependency,
   RemoteValues,
+  Simplify,
 } from '@demos/core';
 
 const list = [
@@ -99,6 +100,12 @@ const list = [
     key: 'formitem',
     path: '/formitem',
     element: <FormItem />,
+  },
+  {
+    label: '简化取值',
+    key: 'simplify',
+    path: '/simplify',
+    element: <Simplify />,
   },
 ];
 

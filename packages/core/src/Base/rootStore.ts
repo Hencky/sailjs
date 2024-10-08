@@ -35,7 +35,7 @@ export class BaseRootStore implements BaseProps {
   order?: BaseProps['order'];
   pull?: BaseProps['pull'];
   push?: BaseProps['push'];
-  span?: BaseProps['span'];
+  span?: BaseProps['span'] = 24;
   xs?: BaseProps['xs'];
   sm?: BaseProps['sm'];
   md?: BaseProps['md'];

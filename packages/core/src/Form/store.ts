@@ -272,6 +272,7 @@ export class FormStore<Values = any, PluginsType = any>
 
   init(props: FormProps) {
     Object.keys(props).forEach((key) => {
+      if (key === 'form') return;
       // @ts-expect-error
       this[key] = props[key];
     });
@@ -347,5 +348,9 @@ export class FormStore<Values = any, PluginsType = any>
       'onFinishFailed',
       'clearOnDestroy',
     ]);
+  }
+
+  get formInstance() {
+    return this.form;
   }
 }
