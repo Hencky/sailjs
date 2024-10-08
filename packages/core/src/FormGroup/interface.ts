@@ -10,5 +10,10 @@ export interface FormGroupProps<Values = any, P extends PluginsType = any>
   /** 唯一标识 */
   name?: NamePath;
 
+  /** 容器 */
+  container?: React.ReactNode;
+  /** 容器属性 */
+  containerProps?: any;
+
   items?: FormItemProps<Values, P>[];
 }

@@ -15,6 +15,7 @@ import {
   RemoteValues,
   GroupInstance,
   PropDependency,
+  GroupContainer,
   ValueDependency,
   GroupDependency,
   ValueDependencyObj,
@@ -70,6 +71,12 @@ const list = [
     key: 'groupDependency',
     path: '/groupDependency',
     element: <GroupDependency />,
+  },
+  {
+    label: '分组容器',
+    key: 'groupContainer',
+    path: '/groupContainer',
+    element: <GroupContainer />,
   },
   {
     label: '插件',

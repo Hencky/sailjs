@@ -1,4 +1,4 @@
-import { useMemo, useEffect } from 'react';
+import { cloneElement, useMemo, useEffect, Fragment } from 'react';
 import { Row } from 'antd';
 import { observer } from 'mobx-react-lite';
 import { FormItem } from '../FormItem';
@@ -35,25 +35,37 @@ export const FormGroup = observer(<Values, P extends PluginsType = any>(props: F
   }, []);
 
   const renderFields = (items: FormGroupProps<Values, P>['items']) => {
-    return items?.map((item) => {
-      const { children } = item;
-      return (
-        <FormItem<Values, P> key={toCompareName(item.name as string)} {...item}>
-          {/* @ts-expect-error */}
-          {children}
-        </FormItem>
-      );
-    });
+    return (
+      <Fragment>
+        {items?.map((item) => {
+          const { children } = item;
+          return (
+            <FormItem<Values, P> key={toCompareName(item.name as string)} {...item}>
+              {/* @ts-expect-error */}
+              {children}
+            </FormItem>
+          );
+        })}
+      </Fragment>
+    );
   };
 
+  // ===== children =====
   let element;
   if (group.groupProps.items) {
-    element = (
-      <Row {...group.groupProps}>{renderFields(group.groupProps.items as FormGroupProps<Values, P>['items'])}</Row>
-    );
+    element = renderFields(group.groupProps.items as FormGroupProps<Values, P>['items']);
   } else {
     element = props.children;
   }
 
-  return <FormGroupContext.Provider value={group}>{element}</FormGroupContext.Provider>;
+  // ===== 容器, 默认为Row  ======
+  let container: React.ReactNode = <Row {...group.groupProps}></Row>;
+
+  if (group.container) {
+    container = group.container;
+  }
+
+  const child = group.container === null ? element : cloneElement(container as any, group.containerProps, element);
+
+  return <FormGroupContext.Provider value={group}>{child}</FormGroupContext.Provider>;
 });

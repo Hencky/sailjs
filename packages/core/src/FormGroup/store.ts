@@ -3,10 +3,7 @@ import { BaseStore, BaseProps } from '../Base';
 import type { FormStore } from '../Form/store';
 import type { FormGroupProps } from './interface';
 
-export class GroupStore<Values = any, P = any>
-  extends BaseStore
-  implements Omit<FormGroupProps, 'form'>, BaseProps
-{
+export class GroupStore<Values = any, P = any> extends BaseStore implements Omit<FormGroupProps, 'form'>, BaseProps {
   name?: FormGroupProps['name'];
 
   items?: FormGroupProps['items'];
@@ -19,6 +16,11 @@ export class GroupStore<Values = any, P = any>
   justify?: FormGroupProps['justify'];
   /** 是否自动换行 */
   wrap?: FormGroupProps['wrap'];
+
+  /** 容器 */
+  container?: FormGroupProps['container'];
+  /** 容器属性 */
+  containerProps?: FormGroupProps['containerProps'];
 
   constructor(
     props: FormGroupProps,
@@ -43,6 +45,8 @@ export class GroupStore<Values = any, P = any>
       gutter: observable,
       justify: observable.ref,
       wrap: observable.ref,
+      container: observable,
+      containerProps: observable.shallow,
     });
   }
 
