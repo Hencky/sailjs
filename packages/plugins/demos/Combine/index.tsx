@@ -23,7 +23,7 @@ export function CombineDemo() {
             name: 'group1',
             container: 'card',
             span: 12,
-            labelCol: { style: { width: 120 } },
+            labelCol: { style: { width: 40 } },
             items: [
               {
                 name: 'group1-1',
