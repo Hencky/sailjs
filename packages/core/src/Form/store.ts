@@ -1,5 +1,5 @@
 import { pluginStore } from '@sailjs/register';
-import { makeObservable, observable, runInAction } from 'mobx';
+import { makeObservable, observable, runInAction, configure } from 'mobx';
 import { isFunction, pick, isEqual, isEmpty } from 'radash';
 import { BaseProps, BaseRootStore } from '../Base';
 import { isFieldChange, toCompareName } from '../utils';
@@ -8,6 +8,10 @@ import type { GroupStore } from '../FormGroup/store';
 import type { NamePath } from 'antd/lib/form/interface';
 import type { FormOptionProps, FormProps } from './interface';
 import type { FieldStore, ReactionResultType, ReactionResultFunctionType } from '../FormItem';
+
+configure({
+  enforceActions: 'never',
+});
 
 export type InnerDependencyType = {
   name: NamePath;
