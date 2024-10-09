@@ -20,7 +20,7 @@ import {
   GroupDependency,
   ValueDependencyObj,
 } from '@demos/core';
-import { CollapsePlugin, SpacePlugin, FlexPlugin, CardPlugin } from '@demos/plugins';
+import { CollapsePlugin, SpacePlugin, FlexPlugin, CardPlugin, CombineDemo } from '@demos/plugins';
 
 const list = [
   {
@@ -70,17 +70,17 @@ const list = [
     path: '/group',
     children: [
       {
-        label: '分组实例',
+        label: '实例',
         path: '/instance',
         element: <GroupInstance />,
       },
       {
-        label: '分组联动',
+        label: '联动',
         path: '/deps',
         element: <GroupDependency />,
       },
       {
-        label: '分组容器',
+        label: '容器',
         path: '/container',
         element: <GroupContainer />,
       },
@@ -134,13 +134,18 @@ const list = [
     path: '/containerPlugins',
     children: [
       {
+        path: '/combine',
+        label: 'Combine',
+        element: <CombineDemo />,
+      },
+      {
         path: '/card',
-        label: 'Card 卡片',
+        label: 'Card',
         element: <CardPlugin />,
       },
       {
         path: '/collapse',
-        label: 'Collapse 折叠卡片',
+        label: 'Collapse',
         element: <CollapsePlugin />,
       },
       {

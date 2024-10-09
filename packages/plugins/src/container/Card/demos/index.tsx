@@ -22,16 +22,30 @@ export function CardPlugin() {
             label: 'a',
             component: 'input',
           },
+        ]}
+      />
+
+      <FormGroup
+        container="card"
+        containerProps={{
+          title: '嵌套卡片',
+        }}
+        items={[
+          {
+            name: 'b',
+            label: 'b',
+            component: 'input',
+          },
           {
             name: 'g-1',
             container: 'card',
             containerProps: {
-              title: '嵌套容器-1',
+              title: '嵌套卡片-1',
             },
             items: [
               {
-                name: 'b',
-                label: 'b',
+                name: 'c',
+                label: 'c',
                 component: 'input',
               },
             ],

@@ -18,38 +18,41 @@ export function SpacePlugin() {
           size: 'middle',
           style: { display: 'flex' },
         }}
-      >
-        <FormGroup
-          span={12}
-          items={[
-            {
-              name: 'a',
-              label: 'a',
-              component: 'input',
-            },
-            {
-              name: 'b',
-              label: 'b',
-              component: 'input',
-            },
-          ]}
-        />
-        <FormGroup
-          span={12}
-          items={[
-            {
-              name: 'c',
-              label: 'c',
-              component: 'input',
-            },
-            {
-              name: 'd',
-              label: 'd',
-              component: 'input',
-            },
-          ]}
-        />
-      </FormGroup>
+        items={[
+          {
+            name: 'group1',
+            span: 24,
+            items: [
+              {
+                name: 'a',
+                label: 'a',
+                component: 'input',
+              },
+              {
+                name: 'b',
+                label: 'b',
+                component: 'input',
+              },
+            ],
+          },
+          {
+            name: 'group2',
+            span: 24,
+            items: [
+              {
+                name: 'c',
+                label: 'c',
+                component: 'input',
+              },
+              {
+                name: 'd',
+                label: 'd',
+                component: 'input',
+              },
+            ],
+          },
+        ]}
+      />
     </Form>
   );
 }

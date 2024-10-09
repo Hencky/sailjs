@@ -1,6 +1,6 @@
-import { Card, Flex, Space } from 'antd';
+import { Card, Flex, Space, Row } from 'antd';
 import { Collapse } from './Collapse';
-import type { CardProps, FlexProps, SpaceProps } from 'antd';
+import type { CardProps, FlexProps, SpaceProps, RowProps } from 'antd';
 import type { CollapseProps } from './Collapse';
 
 export const DEFAULT_CONTAINER_PLUGINS = {
@@ -19,6 +19,10 @@ export const DEFAULT_CONTAINER_PLUGINS = {
   flex: {
     component: Flex,
     defaultComponentProps: {} as FlexProps,
+  },
+  row: {
+    component: Row,
+    defaultComponentProps: {} as RowProps,
   },
 } as const;
 

@@ -16,38 +16,41 @@ export function FlexPlugin() {
         containerProps={{
           vertical: false,
         }}
-      >
-        <FormGroup
-          name="group1"
-          items={[
-            {
-              name: 'a',
-              label: 'flexA',
-              component: 'input',
-            },
-            {
-              name: 'b',
-              label: 'flexB',
-              component: 'input',
-            },
-          ]}
-        />
-        <FormGroup
-          name="group2"
-          items={[
-            {
-              name: 'c',
-              label: 'c',
-              component: 'input',
-            },
-            {
-              name: 'd',
-              label: 'd',
-              component: 'input',
-            },
-          ]}
-        />
-      </FormGroup>
+        items={[
+          {
+            name: 'group1',
+            span: 24,
+            items: [
+              {
+                name: 'a',
+                label: 'a',
+                component: 'input',
+              },
+              {
+                name: 'b',
+                label: 'b',
+                component: 'input',
+              },
+            ],
+          },
+          {
+            name: 'group2',
+            span: 24,
+            items: [
+              {
+                name: 'c',
+                label: 'c',
+                component: 'input',
+              },
+              {
+                name: 'd',
+                label: 'd',
+                component: 'input',
+              },
+            ],
+          },
+        ]}
+      />
     </Form>
   );
 }
