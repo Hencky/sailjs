@@ -1,5 +1,5 @@
-import { Input, Select, InputNumber, Card } from 'antd';
-import type { CardProps, InputNumberProps, InputProps, SelectProps } from 'antd';
+import { Input, Select, InputNumber } from 'antd';
+import type { InputNumberProps, InputProps, SelectProps } from 'antd';
 
 export const DEFAULT_COMPONENT_PLUGINS = {
   input: {
@@ -19,11 +19,6 @@ export const DEFAULT_COMPONENT_PLUGINS = {
   inputnumber: {
     component: InputNumber,
     defaultComponentProps: {} as InputNumberProps,
-  },
-
-  card: {
-    component: Card,
-    defaultComponentProps: {} as CardProps,
   },
 } as const;
 

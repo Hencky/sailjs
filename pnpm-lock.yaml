@@ -64,7 +64,6 @@ importers:
       mobx: ^6.13.1
       mobx-react-lite: ^4.0.7
       radash: ^12.1.0
-      rc-collapse: ^3.8.0
       react: ^18.3.1
       react-dom: ^18.3.1
       typescript: ^5.5.3
@@ -96,7 +95,6 @@ importers:
       eslint-plugin-react-refresh: registry.npmjs.org/eslint-plugin-react-refresh/0.4.11_eslint@9.9.1
       globals: registry.npmjs.org/globals/15.9.0
       jsdom: registry.npmjs.org/jsdom/25.0.0
-      rc-collapse: registry.npmjs.org/rc-collapse/3.8.0_react-dom@18.3.1+react@18.3.1
       typescript: registry.npmjs.org/typescript/5.5.4
       typescript-eslint: registry.npmjs.org/typescript-eslint/8.3.0_eslint@9.9.1+typescript@5.5.4
       vite: registry.npmjs.org/vite/5.4.2
@@ -105,6 +103,7 @@ importers:
   packages/plugins:
     specifiers:
       '@eslint/js': ^9.8.0
+      '@sailjs/core': workspace:*
       '@sailjs/register': workspace:*
       '@sailjs/shared': workspace:*
       antd: ^5.20.2
@@ -112,9 +111,11 @@ importers:
       eslint-plugin-react-hooks: ^5.1.0-rc.0
       eslint-plugin-react-refresh: ^0.4.9
       globals: ^15.9.0
+      rc-collapse: ^3.8.0
       typescript: ^5.5.3
       typescript-eslint: ^8.0.0
     dependencies:
+      '@sailjs/core': link:../core
       '@sailjs/register': link:../register
       '@sailjs/shared': link:../shared
       antd: registry.npmjs.org/antd/5.20.2_react-dom@18.3.1+react@18.3.1
@@ -124,6 +125,7 @@ importers:
       eslint-plugin-react-hooks: registry.npmjs.org/eslint-plugin-react-hooks/5.1.0-rc-fb9a90fa48-20240614_eslint@9.9.1
       eslint-plugin-react-refresh: registry.npmjs.org/eslint-plugin-react-refresh/0.4.11_eslint@9.9.1
       globals: registry.npmjs.org/globals/15.9.0
+      rc-collapse: registry.npmjs.org/rc-collapse/3.8.0_react-dom@18.3.1+react@18.3.1
       typescript: registry.npmjs.org/typescript/5.5.4
       typescript-eslint: registry.npmjs.org/typescript-eslint/8.3.0_eslint@9.9.1+typescript@5.5.4
 
