@@ -215,8 +215,6 @@ export class FieldStore<Values = any, P = any>
       id: this.id,
       style: this.style,
       className: this.className,
-      // @ts-expect-error
-      ['data-testid']: this['data-testid'],
     };
   }
 
