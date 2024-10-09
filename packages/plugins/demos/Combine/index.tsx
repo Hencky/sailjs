@@ -1,8 +1,8 @@
 import { Form, useForm, FormGroup } from '@sailjs/core';
-import { DEFAULT_COMPONENT_PLUGINS, DEFAULT_CONTAINER_PLUGINS } from '../../src';
+import { DEFAULT_PLUGINS, DefaultPluginsType } from '../../src';
 
 export function CombineDemo() {
-  const [form] = useForm({ plugins: Object.assign({}, DEFAULT_COMPONENT_PLUGINS, DEFAULT_CONTAINER_PLUGINS) });
+  const [form] = useForm({ plugins: DEFAULT_PLUGINS });
 
   return (
     <Form
@@ -11,7 +11,7 @@ export function CombineDemo() {
         console.log('values', values);
       }}
     >
-      <FormGroup
+      <FormGroup<any, DefaultPluginsType>
         container="space"
         containerProps={{
           direction: 'vertical',
@@ -22,6 +22,9 @@ export function CombineDemo() {
           {
             name: 'group1',
             container: 'card',
+            containerProps: {
+              title: '卡片',
+            },
             span: 12,
             labelCol: { style: { width: 40 } },
             items: [
@@ -36,7 +39,9 @@ export function CombineDemo() {
                     name: 'a',
                     label: 'a',
                     component: 'input',
-                    componentProps: {},
+                    componentProps: {
+                      allowClear: true,
+                    },
                   },
                   {
                     name: 'b',

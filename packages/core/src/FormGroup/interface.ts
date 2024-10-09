@@ -4,15 +4,15 @@ import type { PluginsType } from '@sailjs/shared';
 import type { BaseProps } from '../Base';
 import type { FormItemProps } from '../FormItem';
 
-export interface FormGroupProps<Values = any, P extends PluginsType = any>
+export interface FormGroupProps<Values = any, P extends PluginsType = any, PN extends keyof P = keyof P>
   extends Pick<FormItemProps<Values, P>, keyof BaseProps | 'reactions'> {
   /** 唯一标识 */
   name?: NamePath;
 
   /** 容器 */
-  container?: React.ReactNode;
+  container?: React.ReactNode | PN;
   /** 容器属性 */
-  containerProps?: any;
+  containerProps?: P[PN]['defaultComponentProps'];
 
   rowProps?: RowProps;
 

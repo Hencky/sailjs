@@ -74,7 +74,7 @@ export const FormItem = observer(
       return null;
     }
 
-    const { defaultComponentProps, component: Com } = field.plugin;
+    const { defaultComponentProps, component: Com } = field.plugin || {};
 
     const element = (
       <Item<Values> {...restProps} {...field.fieldProps} name={name}>

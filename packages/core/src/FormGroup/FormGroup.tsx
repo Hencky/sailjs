@@ -47,7 +47,10 @@ export const FormGroup = observer(<Values, P extends PluginsType = any>(props: F
 
           if (isGroup(item)) {
             return (
-              <FormGroup key={toCompareName(item.name as string) || idx} {...(item as FormGroupProps<Values, P>)} />
+              <FormGroup<Values, P>
+                key={toCompareName(item.name as string) || idx}
+                {...(item as FormGroupProps<Values, P>)}
+              />
             );
           }
 

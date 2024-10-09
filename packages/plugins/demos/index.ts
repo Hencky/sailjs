@@ -1,2 +1,2 @@
 export * from './container';
-export * from './Combine'
+export * from './Combine';
