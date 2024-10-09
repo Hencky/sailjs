@@ -50,12 +50,10 @@ export const FormGroup = observer(<Values, P extends PluginsType = any>(props: F
     );
   };
 
-  // ===== children，默认被Row包裹 =====
+  // ===== children =====
   const element = group.groupProps.items
     ? renderFields(group.groupProps.items as FormGroupProps<Values, P>['items'])
     : props.children;
-
-  const children = group.container === null ? element : <Row {...group.rowProps}>{element}</Row>;
 
   // ===== 容器  ======
   let container;
@@ -64,11 +62,13 @@ export const FormGroup = observer(<Values, P extends PluginsType = any>(props: F
     container = <Com {...defaultComponentProps} {...group.containerProps} />;
   } else if (group.container) {
     container = group.container;
+  } else {
+    container = <Row {...group.rowProps}></Row>;
   }
 
   return (
     <FormGroupContext.Provider value={group}>
-      {container ? cloneElement(container as any, group.containerProps, children) : children}
+      {container ? cloneElement(container as any, group.containerProps, element) : element}
     </FormGroupContext.Provider>
   );
 });

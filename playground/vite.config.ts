@@ -9,6 +9,7 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, '/src'),
       '@demos/core': path.resolve(__dirname, '../packages/core/demos'),
+      '@demos/plugins': path.resolve(__dirname, '../packages/plugins/demos'),
     },
   },
 });

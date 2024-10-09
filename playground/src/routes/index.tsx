@@ -20,6 +20,7 @@ import {
   GroupDependency,
   ValueDependencyObj,
 } from '@demos/core';
+import { CollapsePlugin, SpacePlugin, FlexPlugin } from '@demos/plugins';
 
 const list = [
   {
@@ -79,10 +80,22 @@ const list = [
     element: <GroupContainer />,
   },
   {
-    label: '插件',
+    label: '表单插件',
     key: 'plugins',
     path: '/plugins',
     element: <Plugins />,
+  },
+  {
+    label: '容器插件',
+    key: 'containerPlugins',
+    path: '/containerPlugins',
+    element: (
+      <div>
+        <CollapsePlugin />
+        <SpacePlugin />
+        <FlexPlugin />
+      </div>
+    ),
   },
   {
     label: '弹框',

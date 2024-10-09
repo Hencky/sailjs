@@ -148,6 +148,7 @@ export class FormStore<Values = any, PluginsType = any>
   }
 
   removeGroup(name: NamePath) {
+    if (!name) return;
     this.removeField(name);
   }
 

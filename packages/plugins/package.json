@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "antd": "^5.20.2",
+    "@sailjs/core": "workspace:*",
     "@sailjs/shared": "workspace:*",
     "@sailjs/register": "workspace:*"
   },

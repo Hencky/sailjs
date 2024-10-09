@@ -26,7 +26,8 @@
       "@sailjs/register": ["packages/register/src/index.ts"],
       "@sailjs/plugins": ["packages/plugins/src/index.ts"],
       "@sailjs/shared": ["packages/shared/src/index.ts"],
-      "@demos/core": ["packages/core/demos/index.ts"]
+      "@demos/core": ["packages/core/demos/index.ts"],
+      "@demos/plugins": ["packages/plugins/demos/index.ts"],
     }
   }
 }

@@ -23,7 +23,8 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
-      "@demos/core": ["../packages/core/demos/index.ts"]
+      "@demos/core": ["../packages/core/demos/index.ts"],
+      "@demos/plugins": ["../packages/plugins/demos/index.ts"],
     },
   }
 }

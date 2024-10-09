@@ -64,6 +64,7 @@ importers:
       mobx: ^6.13.1
       mobx-react-lite: ^4.0.7
       radash: ^12.1.0
+      rc-collapse: ^3.8.0
       react: ^18.3.1
       react-dom: ^18.3.1
       typescript: ^5.5.3
@@ -95,6 +96,7 @@ importers:
       eslint-plugin-react-refresh: registry.npmjs.org/eslint-plugin-react-refresh/0.4.11_eslint@9.9.1
       globals: registry.npmjs.org/globals/15.9.0
       jsdom: registry.npmjs.org/jsdom/25.0.0
+      rc-collapse: registry.npmjs.org/rc-collapse/3.8.0_react-dom@18.3.1+react@18.3.1
       typescript: registry.npmjs.org/typescript/5.5.4
       typescript-eslint: registry.npmjs.org/typescript-eslint/8.3.0_eslint@9.9.1+typescript@5.5.4
       vite: registry.npmjs.org/vite/5.4.2
@@ -2081,7 +2083,6 @@ packages:
     resolution: {integrity: sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/classnames/-/classnames-2.5.1.tgz}
     name: classnames
     version: 2.5.1
-    dev: false
 
   registry.npmjs.org/color-convert/1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/color-convert/-/color-convert-1.9.3.tgz}
@@ -3438,6 +3439,23 @@ packages:
       react-dom: registry.npmjs.org/react-dom/18.3.1_react@18.3.1
     dev: false
 
+  registry.npmjs.org/rc-collapse/3.8.0_react-dom@18.3.1+react@18.3.1:
+    resolution: {integrity: sha512-YVBkssrKPBG09TGfcWWGj8zJBYD9G3XuTy89t5iUmSXrIXEAnO1M+qjUxRW6b4Qi0+wNWG6MHJF/+US+nmIlzA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/rc-collapse/-/rc-collapse-3.8.0.tgz}
+    id: registry.npmjs.org/rc-collapse/3.8.0
+    name: rc-collapse
+    version: 3.8.0
+    peerDependencies:
+      react: '>=16.9.0'
+      react-dom: '>=16.9.0'
+    dependencies:
+      '@babel/runtime': registry.npmjs.org/@babel/runtime/7.25.6
+      classnames: registry.npmjs.org/classnames/2.5.1
+      rc-motion: registry.npmjs.org/rc-motion/2.9.2_react-dom@18.3.1+react@18.3.1
+      rc-util: registry.npmjs.org/rc-util/5.43.0_react-dom@18.3.1+react@18.3.1
+      react: registry.npmjs.org/react/18.3.1
+      react-dom: registry.npmjs.org/react-dom/18.3.1_react@18.3.1
+    dev: true
+
   registry.npmjs.org/rc-dialog/9.5.2_react-dom@18.3.1+react@18.3.1:
     resolution: {integrity: sha512-qVUjc8JukG+j/pNaHVSRa2GO2/KbV2thm7yO4hepQ902eGdYK913sGkwg/fh9yhKYV1ql3BKIN2xnud3rEXAPw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/rc-dialog/-/rc-dialog-9.5.2.tgz}
     id: registry.npmjs.org/rc-dialog/9.5.2
@@ -3614,7 +3632,6 @@ packages:
       rc-util: registry.npmjs.org/rc-util/5.43.0_react-dom@18.3.1+react@18.3.1
       react: registry.npmjs.org/react/18.3.1
       react-dom: registry.npmjs.org/react-dom/18.3.1_react@18.3.1
-    dev: false
 
   registry.npmjs.org/rc-notification/5.6.0_react-dom@18.3.1+react@18.3.1:
     resolution: {integrity: sha512-TGQW5T7waOxLwgJG7fXcw8l7AQiFOjaZ7ISF5PrU526nunHRNcTMuzKihQHaF4E/h/KfOCDk3Mv8eqzbu2e28w==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/rc-notification/-/rc-notification-5.6.0.tgz}
@@ -3980,7 +3997,6 @@ packages:
       react: registry.npmjs.org/react/18.3.1
       react-dom: registry.npmjs.org/react-dom/18.3.1_react@18.3.1
       react-is: registry.npmjs.org/react-is/18.3.1
-    dev: false
 
   registry.npmjs.org/rc-virtual-list/3.14.5_react-dom@18.3.1+react@18.3.1:
     resolution: {integrity: sha512-ZMOnkCLv2wUN8Jz7yI4XiSLa9THlYvf00LuMhb1JlsQCewuU7ydPuHw1rGVPhe9VZYl/5UqODtNd7QKJ2DMGfg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/rc-virtual-list/-/rc-virtual-list-3.14.5.tgz}
@@ -4028,7 +4044,6 @@ packages:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/react-is/-/react-is-18.3.1.tgz}
     name: react-is
     version: 18.3.1
-    dev: false
 
   registry.npmjs.org/react-refresh/0.14.2:
     resolution: {integrity: sha512-jCvmsr+1IUSMUyzOkRcvnVbX3ZYC6g9TDrDbFuFmRDq7PD4yaGbLKNQL6k2jnArV8hjYxh7hVhAZB6s9HDGpZA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.2.tgz}
