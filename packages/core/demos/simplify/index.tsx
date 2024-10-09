@@ -19,7 +19,6 @@ export const Simplify = () => {
 
       <Group
         name="group"
-        span={12}
         items={[
           {
             name: 'groupA',

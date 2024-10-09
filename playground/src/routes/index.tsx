@@ -24,125 +24,172 @@ import { CollapsePlugin, SpacePlugin, FlexPlugin, CardPlugin } from '@demos/plug
 
 const list = [
   {
-    label: 'Item实例',
-    key: 'instance',
-    path: '/instance',
-    element: <ItemInstance />,
+    label: 'Item 表单项',
+    path: '/item',
+    children: [
+      {
+        path: '/instance',
+        label: '实例',
+        element: <ItemInstance />,
+      },
+      {
+        path: '/options',
+        label: '数据源',
+        element: <Options />,
+      },
+      {
+        path: '/destroy',
+        label: '卸载',
+        element: <Destroy />,
+      },
+      {
+        path: '/empty',
+        label: '空Item',
+        element: <EmptyItem />,
+      },
+    ],
   },
   {
-    label: '联动',
-    key: 'dependency',
+    label: 'Form 表单',
+    path: '/form',
+    children: [
+      {
+        path: '/remotevalues',
+        label: '异步数据源',
+        element: <RemoteValues />,
+      },
+      {
+        label: '简化取值',
+        path: '/simplify',
+        element: <Simplify />,
+      },
+    ],
+  },
+  {
+    label: 'Group 表单组',
+    path: '/group',
+    children: [
+      {
+        label: '分组实例',
+        path: '/instance',
+        element: <GroupInstance />,
+      },
+      {
+        label: '分组联动',
+        path: '/deps',
+        element: <GroupDependency />,
+      },
+      {
+        label: '分组容器',
+        path: '/container',
+        element: <GroupContainer />,
+      },
+    ],
+  },
+  {
+    label: 'List 列表',
+    path: '/formlist',
+    element: <List />,
+  },
+
+  {
+    label: '表单项联动',
     path: '/dependency',
-    element: (
-      <div>
-        <ValueEffects />
-        <PropEffects />
-        <ValueDependency />
-        <ValueDependencyObj />
-        <PropDependency />
-      </div>
-    ),
+    children: [
+      {
+        label: '值联动-主动',
+        path: '/value-effects',
+        element: <ValueEffects />,
+      },
+      {
+        label: '值联动-被动',
+        path: '/value-deps',
+        element: <ValueDependency />,
+      },
+      {
+        label: '值联动-被动-复杂name',
+        path: '/value-deps-obj',
+        element: <ValueDependencyObj />,
+      },
+      {
+        label: '属性联动-主动',
+        path: '/prop-effects',
+        element: <PropEffects />,
+      },
+      {
+        label: '属性联动-被动',
+        path: '/prop-deps',
+        element: <PropDependency />,
+      },
+    ],
   },
-  {
-    label: '数据源',
-    key: 'options',
-    path: '/options',
-    element: <Options />,
-  },
-  {
-    label: '远程值',
-    key: 'remoteValues',
-    path: '/remoteValues',
-    element: <RemoteValues />,
-  },
-  {
-    label: '卸载',
-    key: 'destroy',
-    path: '/destroy',
-    element: <Destroy />,
-  },
-  {
-    label: '分组实例',
-    key: 'groupInstance',
-    path: '/groupInstance',
-    element: <GroupInstance />,
-  },
-  {
-    label: '分组联动',
-    key: 'groupDependency',
-    path: '/groupDependency',
-    element: <GroupDependency />,
-  },
-  {
-    label: '分组容器',
-    key: 'groupContainer',
-    path: '/groupContainer',
-    element: <GroupContainer />,
-  },
+
   {
     label: '表单插件',
-    key: 'plugins',
     path: '/plugins',
     element: <Plugins />,
   },
   {
     label: '容器插件',
-    key: 'containerPlugins',
     path: '/containerPlugins',
-    element: (
-      <div>
-        <CollapsePlugin />
-        <SpacePlugin />
-        <FlexPlugin />
-        <CardPlugin />
-      </div>
-    ),
+    children: [
+      {
+        path: '/card',
+        label: 'Card 卡片',
+        element: <CardPlugin />,
+      },
+      {
+        path: '/collapse',
+        label: 'Collapse 折叠卡片',
+        element: <CollapsePlugin />,
+      },
+      {
+        path: '/space',
+        label: 'Space',
+        element: <SpacePlugin />,
+      },
+      {
+        path: '/flex',
+        label: 'Flex',
+        element: <FlexPlugin />,
+      },
+    ],
   },
   {
     label: '弹框',
-    key: 'modal',
     path: '/modal',
     element: <Modal />,
   },
-  {
-    label: '列表',
-    key: 'formlist',
-    path: '/formlist',
-    element: <List />,
-  },
-  {
-    label: '空ITEM',
-    key: 'emptyitem',
-    path: '/emptyitem',
-    element: <EmptyItem />,
-  },
-  {
-    label: '简化取值',
-    key: 'simplify',
-    path: '/simplify',
-    element: <Simplify />,
-  },
-];
+] as const;
 
 const Layout = () => {
-  const renderRoutes = () => {
-    return list.map((item) => {
-      const { label, key, ...rest } = item;
-      return <Route key={key} {...rest} />;
+  const renderRoutes = (data: any, parentPath = '') => {
+    return data?.map((item: any) => {
+      const { children, path, ...rest } = item;
+      const realPath = parentPath + path;
+      if (children) {
+        return renderRoutes(children, realPath);
+      }
+      return <Route key={realPath} {...rest} path={realPath} />;
     });
   };
 
-  const renderMenus = () => {
-    return list.map((item) => {
-      const { key, label, path } = item;
-      return { key, label: <Link to={path}>{label}</Link> };
+  const renderMenus = (data: any, parentPath = '') => {
+    return data?.map((item: any) => {
+      const { label, children, path } = item;
+      const realPath = parentPath + path;
+      return {
+        key: realPath,
+        label: children ? label : <Link to={realPath}>{label}</Link>,
+        children: renderMenus(children, realPath),
+      };
     });
   };
 
   return (
     <BrowserRouter>
-      <Menu mode="horizontal" items={renderMenus()} style={{ marginBottom: 24 }} />
-      <Routes>{renderRoutes()}</Routes>
+      <Menu mode="horizontal" items={renderMenus(list)} style={{ marginBottom: 24 }} />
+      <Routes>{renderRoutes(list)}</Routes>
     </BrowserRouter>
   );
 };
