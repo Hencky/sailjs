@@ -50,17 +50,15 @@ export const FormGroup = observer(<Values, P extends PluginsType = any>(props: F
     );
   };
 
-  // ===== children =====
-  let element;
-  if (group.groupProps.items) {
-    element = renderFields(group.groupProps.items as FormGroupProps<Values, P>['items']);
-  } else {
-    element = props.children;
-  }
+  // ===== children，默认被Row包裹 =====
+  const element = group.groupProps.items
+    ? renderFields(group.groupProps.items as FormGroupProps<Values, P>['items'])
+    : props.children;
 
-  // ===== 容器, 默认为Row  ======
-  let container: React.ReactNode = <Row {...group.groupProps}></Row>;
+  const children = group.container === null ? element : <Row {...group.rowProps}>{element}</Row>;
 
+  // ===== 容器  ======
+  let container;
   if (group.containerPlugin) {
     const { component: Com, defaultComponentProps } = group.containerPlugin;
     container = <Com {...defaultComponentProps} {...group.containerProps} />;
@@ -68,7 +66,9 @@ export const FormGroup = observer(<Values, P extends PluginsType = any>(props: F
     container = group.container;
   }
 
-  const child = group.container === null ? element : cloneElement(container as any, group.containerProps, element);
-
-  return <FormGroupContext.Provider value={group}>{child}</FormGroupContext.Provider>;
+  return (
+    <FormGroupContext.Provider value={group}>
+      {container ? cloneElement(container as any, group.containerProps, children) : children}
+    </FormGroupContext.Provider>
+  );
 });

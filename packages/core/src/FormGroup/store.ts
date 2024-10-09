@@ -52,13 +52,18 @@ export class GroupStore<Values = any, P = any> extends BaseStore implements Omit
     });
   }
 
-  get groupProps() {
+  get rowProps() {
     return {
-      items: this.items,
       align: this.align,
       gutter: this.gutter,
       justify: this.justify,
       wrap: this.wrap,
+    };
+  }
+
+  get groupProps() {
+    return {
+      items: this.items,
     };
   }
 

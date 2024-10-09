@@ -78,7 +78,7 @@ export const FormItem = observer(
       </Item>
     );
 
-    if (field.colProps.span === null) {
+    if (field.colProps.span === null || groupStore.container === null) {
       return element;
     }
 
