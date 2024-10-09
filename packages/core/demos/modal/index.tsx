@@ -1,8 +1,7 @@
-import { useModal, useModalForm, FormGroup } from '@sailjs/core';
-import { Button } from 'antd';
 import { sleep } from 'radash';
-import { plugins, CustomPluginsType } from '../plugins';
 import { memo, useEffect } from 'react';
+import { Button, Input, Select } from 'antd';
+import { useModal, useModalForm, FormGroup } from '@sailjs/core';
 
 const Content = () => {
   useEffect(() => {
@@ -18,13 +17,13 @@ const SaveModal = memo(() => {
   }, []);
 
   return (
-    <FormGroup<any, CustomPluginsType>
+    <FormGroup
       span={24}
       items={[
         {
           name: 'a1',
           label: 'a1',
-          component: 'input',
+          children: <Input />,
           reactions: [
             {
               effects: ['a2'],
@@ -34,11 +33,11 @@ const SaveModal = memo(() => {
             },
           ],
         },
-        { name: 'a2', label: 'a2', component: 'input', rules: [{ required: true, message: 'a2必填' }] },
+        { name: 'a2', label: 'a2', children: <Input />, rules: [{ required: true, message: 'a2必填' }] },
         {
           name: 'a3',
           label: 'a3',
-          component: 'select',
+          children: <Select />,
           componentProps: { style: { width: '100%' } },
           remoteOptions: async () => {
             console.log('remoteOptions');
@@ -55,8 +54,8 @@ const SaveModal = memo(() => {
 
 export const Modal = () => {
   const [modal, { open: openModal, close: closeModal }] = useModal();
-  const [modalForm, { open: openModalForm, close: closeModalForm }] = useModalForm({ plugins });
-  const [modalForm2, { open: openModalForm2, close: closeModalForm2 }] = useModalForm({ plugins });
+  const [modalForm, { open: openModalForm, close: closeModalForm }] = useModalForm();
+  const [modalForm2, { open: openModalForm2, close: closeModalForm2 }] = useModalForm();
 
   return (
     <div>

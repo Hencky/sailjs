@@ -2,8 +2,6 @@ import { Divider } from 'antd';
 import { FormItem, Form, FormGroup, useForm } from '@sailjs/core';
 import { plugins, type CustomPluginsType } from './plugins';
 
-export * from './plugins';
-
 export function Plugins() {
   const [form] = useForm({ plugins });
 

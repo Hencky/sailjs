@@ -1,9 +1,8 @@
 import { Input, Card, Button } from 'antd';
 import { Form, useForm, FormGroup } from '@sailjs/core';
-import { plugins } from '../plugins';
 
 export function GroupContainer() {
-  const [form] = useForm({ plugins });
+  const [form] = useForm();
 
   return (
     <Form

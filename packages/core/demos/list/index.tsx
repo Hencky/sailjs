@@ -1,9 +1,8 @@
 import { FormList, Form, useForm, FormItem } from '@sailjs/core';
-import { DEFAULT_COMPONENT_PLUGINS } from '../plugins';
-import { Card, Button } from 'antd';
+import { Card, Button, Input } from 'antd';
 
 export const List = () => {
-  const [form] = useForm<typeof DEFAULT_COMPONENT_PLUGINS>({ plugins: DEFAULT_COMPONENT_PLUGINS });
+  const [form] = useForm();
   return (
     <Form
       form={form}
@@ -25,7 +24,7 @@ export const List = () => {
                           key={childField.key}
                           name={[childField.name, 'name']}
                           label={`child ${childIndex}`}
-                          component={'input'}
+                          children={<Input />}
                           reactions={[
                             {
                               dependencies: [['list', index, 'name']],

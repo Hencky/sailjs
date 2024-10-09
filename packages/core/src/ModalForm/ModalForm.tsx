@@ -47,7 +47,7 @@ export interface ModalFormInstance<Values = any, P = PluginsType> {
 }
 
 export const useModalForm = <P extends PluginsType = any>(
-  props: FormOptionProps<P>
+  props?: FormOptionProps<P>
 ): [ReactElement, ModalFormInstance] => {
   const [modal, { open, close, isOpen }] = useModal();
 
