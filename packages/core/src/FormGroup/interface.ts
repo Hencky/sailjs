@@ -5,8 +5,7 @@ import type { BaseProps } from '../Base';
 import type { FormItemProps } from '../FormItem';
 
 export interface FormGroupProps<Values = any, P extends PluginsType = any>
-  extends Pick<FormItemProps<Values, P>, keyof BaseProps | 'reactions'>,
-    RowProps {
+  extends Pick<FormItemProps<Values, P>, keyof BaseProps | 'reactions'> {
   /** 唯一标识 */
   name?: NamePath;
 
@@ -15,5 +14,10 @@ export interface FormGroupProps<Values = any, P extends PluginsType = any>
   /** 容器属性 */
   containerProps?: any;
 
+  rowProps?: RowProps;
+
+  /** 表单项 */
   items?: (FormItemProps<Values, P> | FormGroupProps<Values, P>)[];
+
+  children?: React.ReactNode;
 }

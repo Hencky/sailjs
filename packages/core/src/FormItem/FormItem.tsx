@@ -1,10 +1,11 @@
 import { PropsWithChildren, cloneElement, useEffect, useMemo, useState, isValidElement } from 'react';
+import { omit } from 'radash';
 import { Form, Col } from 'antd';
+import { toArray } from '@sailjs/shared';
 import { useDebounceEffect } from 'ahooks';
 import { observer } from 'mobx-react-lite';
-import { toArray } from '@sailjs/shared';
-import { FieldMode } from '../Base';
 import { FieldStore } from './store';
+import { commonKeys, FieldMode } from '../Base';
 import { useFormContext } from '../Form/context';
 import { useFormGroupContext } from '../FormGroup';
 import { useFormListContext } from '../FormList/context';
@@ -16,6 +17,15 @@ const { Item, useFormInstance } = Form;
 export const FormItem = observer(
   <Values, P extends PluginsType = any>(props: PropsWithChildren<FormItemProps<Values, P>>): React.ReactNode => {
     const { name, children } = props;
+
+    const restProps = omit(props, [
+      ...commonKeys,
+      'options',
+      'remoteOptions',
+      'reactions',
+      'component',
+      'componentProps',
+    ]);
 
     const [updateKey, update] = useState({});
 
@@ -67,7 +77,7 @@ export const FormItem = observer(
     const { defaultComponentProps, component: Com } = field.plugin;
 
     const element = (
-      <Item<Values> {...field.fieldProps} name={name}>
+      <Item<Values> {...restProps} {...field.fieldProps} name={name}>
         {Com ? (
           <Com {...defaultComponentProps} {...field.componentProps} {...field.childProps} />
         ) : isValidElement(children) ? (
@@ -78,12 +88,12 @@ export const FormItem = observer(
       </Item>
     );
 
-    if (field.colProps.span === null || groupStore.container === null) {
+    if (field.span === null || groupStore?.container === null) {
       return element;
     }
 
     return (
-      <Col {...field.colProps} span={field.colProps.span}>
+      <Col {...field.colProps} span={field.span!}>
         {element}
       </Col>
     );

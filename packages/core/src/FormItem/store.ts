@@ -163,17 +163,6 @@ export class FieldStore<Values = any, P = any>
     return field;
   }
 
-  public get colProps() {
-    return {
-      span: this.span,
-      offset: this.offset,
-      push: this.push,
-      pull: this.pull,
-      order: this.order,
-      flex: this.flex,
-    };
-  }
-
   public get childProps() {
     const displayOptions: {
       variant: BaseProps['variant'];

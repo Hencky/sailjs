@@ -91,9 +91,9 @@ const list = [
     path: '/containerPlugins',
     element: (
       <div>
-        <CollapsePlugin />
-        {/* <SpacePlugin />
-        <FlexPlugin /> */}
+        {/* <CollapsePlugin /> */}
+        {/* <SpacePlugin /> */}
+        {/* <FlexPlugin /> */}
         <CardPlugin />
       </div>
     ),

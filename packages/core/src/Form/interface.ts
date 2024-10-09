@@ -13,7 +13,7 @@ export interface FormProps<Values = any, P = any>
   items?: FormItemProps[];
   /** 远程表单值 */
   remoteValues?: () => Promise<Values>;
-
+  /** Spin属性 */
   spinProps?: Omit<SpinProps, 'spinning'>;
 }
 

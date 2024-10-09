@@ -53,77 +53,17 @@ export class BaseStore<Values = any> implements BaseProps {
   get mode() {
     return this.getVal('mode');
   }
-  set flex(val) {
-    this.setVal('flex', val);
+  set colProps(val) {
+    this.setVal('colProps', val);
   }
-  get flex() {
-    return this.getVal('flex');
-  }
-  set offset(val) {
-    this.setVal('offset', val);
-  }
-  get offset() {
-    return this.getVal('offset');
-  }
-  set order(val) {
-    this.setVal('order', val);
-  }
-  get order() {
-    return this.getVal('order');
-  }
-  set pull(val) {
-    this.setVal('pull', val);
-  }
-  get pull() {
-    return this.getVal('pull');
-  }
-  set push(val) {
-    this.setVal('push', val);
-  }
-  get push() {
-    return this.getVal('push');
+  get colProps() {
+    return this.getVal('colProps') || {};
   }
   set span(val) {
     this.setVal('span', val);
   }
   get span() {
     return this.getVal('span');
-  }
-  set xs(val) {
-    this.setVal('xs', val);
-  }
-  get xs() {
-    return this.getVal('xs');
-  }
-  set sm(val) {
-    this.setVal('sm', val);
-  }
-  get sm() {
-    return this.getVal('sm');
-  }
-  set md(val) {
-    this.setVal('md', val);
-  }
-  get md() {
-    return this.getVal('md');
-  }
-  set lg(val) {
-    this.setVal('lg', val);
-  }
-  get lg() {
-    return this.getVal('lg');
-  }
-  set xl(val) {
-    this.setVal('xl', val);
-  }
-  get xl() {
-    return this.getVal('xl');
-  }
-  set xxl(val) {
-    this.setVal('xxl', val);
-  }
-  get xxl() {
-    return this.getVal('xxl');
   }
   set labelAlign(val) {
     this.setVal('labelAlign', val);
@@ -188,11 +128,7 @@ export class BaseStore<Values = any> implements BaseProps {
       hidden: computed,
       colon: computed,
       mode: computed,
-      flex: computed,
-      offset: computed,
-      order: computed,
-      pull: computed,
-      push: computed,
+      colProps: computed,
       span: computed,
       labelAlign: computed,
       labelCol: computed,

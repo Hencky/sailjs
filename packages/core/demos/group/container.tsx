@@ -23,28 +23,6 @@ export function GroupContainer() {
           },
         ]}
       />
-      <FormGroup
-        container="card"
-        containerProps={{ title: '容器插件' }}
-        name="group2"
-        items={[
-          {
-            name: 'b',
-            label: 'b',
-            children: <Input style={{ width: '100%' }} />,
-          },
-          {
-            name: 'c',
-            label: 'c',
-            children: <Input style={{ width: '100%' }} />,
-          },
-          {
-            name: 'd',
-            label: 'd',
-            children: <Input style={{ width: '100%' }} />,
-          },
-        ]}
-      />
     </Form>
   );
 }

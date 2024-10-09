@@ -44,8 +44,8 @@ export const FormGroup = observer(<Values, P extends PluginsType = any>(props: F
         {items?.map((item) => {
           const { children } = item;
 
-          if (isGroup(items)) {
-            return <FormGroup {...(item as FormGroupProps<Values, P>)} />;
+          if (isGroup(item)) {
+            return <FormGroup key={toCompareName(item.name as string)} {...(item as FormGroupProps<Values, P>)} />;
           }
 
           return (

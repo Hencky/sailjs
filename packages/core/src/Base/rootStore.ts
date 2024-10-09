@@ -6,11 +6,7 @@ export const commonKeys = [
   'hidden',
   'colon',
   'mode',
-  'flex',
-  'offset',
-  'order',
-  'pull',
-  'push',
+  'colProps',
   'span',
   'labelAlign',
   'labelCol',
@@ -30,18 +26,8 @@ export class BaseRootStore implements BaseProps {
   hidden?: BaseProps['hidden'];
   colon?: BaseProps['colon'];
   mode?: BaseProps['mode'];
-  flex?: BaseProps['flex'];
-  offset?: BaseProps['offset'];
-  order?: BaseProps['order'];
-  pull?: BaseProps['pull'];
-  push?: BaseProps['push'];
+  colProps?: BaseProps['colProps'];
   span?: BaseProps['span'] = 24;
-  xs?: BaseProps['xs'];
-  sm?: BaseProps['sm'];
-  md?: BaseProps['md'];
-  lg?: BaseProps['lg'];
-  xl?: BaseProps['xl'];
-  xxl?: BaseProps['xxl'];
   labelAlign?: BaseProps['labelAlign'];
   labelCol?: BaseProps['labelCol'];
   wrapperCol?: BaseProps['wrapperCol'];
@@ -59,18 +45,8 @@ export class BaseRootStore implements BaseProps {
       colon: observable.ref,
       mode: observable.ref,
 
-      flex: observable.ref,
-      offset: observable.ref,
-      order: observable.ref,
-      pull: observable.ref,
-      push: observable.ref,
+      colProps: observable,
       span: observable.ref,
-      xs: observable,
-      sm: observable,
-      md: observable,
-      lg: observable,
-      xl: observable,
-      xxl: observable,
 
       labelAlign: observable.ref,
       labelCol: observable,
