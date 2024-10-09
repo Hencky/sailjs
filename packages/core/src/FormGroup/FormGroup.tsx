@@ -3,6 +3,7 @@ import { Row } from 'antd';
 import { observer } from 'mobx-react-lite';
 import { FormItem } from '../FormItem';
 import { GroupStore } from './store';
+import { FieldMode } from '../Base';
 import { toCompareName } from '../utils';
 import { FormGroupContext } from './context';
 import { useFormContext } from '../Form/context';
@@ -73,6 +74,14 @@ export const FormGroup = observer(<Values, P extends PluginsType = any>(props: F
     container = group.container;
   } else {
     container = <Row {...group.rowProps}></Row>;
+  }
+
+  if (group.mode === FieldMode.HIDDEN) {
+    container = <div style={{ display: 'none' }}></div>;
+  }
+
+  if (group.mode === FieldMode.NODE) {
+    return null;
   }
 
   return (

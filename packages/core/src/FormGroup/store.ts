@@ -36,7 +36,7 @@ export class GroupStore<Values = any, P = any> extends BaseStore implements Omit
     makeObservable(this, {
       items: observable.shallow,
       container: observable,
-      containerProps: observable.shallow,
+      containerProps: observable.deep,
       containerPlugin: computed,
     });
   }
