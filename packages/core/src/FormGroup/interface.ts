@@ -15,5 +15,5 @@ export interface FormGroupProps<Values = any, P extends PluginsType = any>
   /** 容器属性 */
   containerProps?: any;
 
-  items?: FormItemProps<Values, P>[];
+  items?: (FormItemProps<Values, P> | FormGroupProps<Values, P>)[];
 }

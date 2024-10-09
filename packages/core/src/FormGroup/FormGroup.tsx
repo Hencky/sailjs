@@ -39,6 +39,11 @@ export const FormGroup = observer(<Values, P extends PluginsType = any>(props: F
       <Fragment>
         {items?.map((item) => {
           const { children } = item;
+
+          if ((item as FormGroupProps<Values, P>).items) {
+            return <FormGroup {...(item as FormGroupProps<Values, P>)} />;
+          }
+
           return (
             <FormItem<Values, P> key={toCompareName(item.name as string)} {...item}>
               {/* @ts-expect-error */}

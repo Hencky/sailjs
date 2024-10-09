@@ -20,7 +20,7 @@ import {
   GroupDependency,
   ValueDependencyObj,
 } from '@demos/core';
-import { CollapsePlugin, SpacePlugin, FlexPlugin } from '@demos/plugins';
+import { CollapsePlugin, SpacePlugin, FlexPlugin, CardPlugin } from '@demos/plugins';
 
 const list = [
   {
@@ -92,8 +92,9 @@ const list = [
     element: (
       <div>
         <CollapsePlugin />
-        <SpacePlugin />
-        <FlexPlugin />
+        {/* <SpacePlugin />
+        <FlexPlugin /> */}
+        <CardPlugin />
       </div>
     ),
   },
