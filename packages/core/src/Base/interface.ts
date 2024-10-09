@@ -15,6 +15,11 @@ export enum FieldMode {
 }
 
 export interface BaseProps {
+  // ===== 通用 =====
+  id?: string;
+  className?: string;
+  style?: React.CSSProperties;
+
   // ===== 状态属性 =====
 
   /** 表单内控件变体 */

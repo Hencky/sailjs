@@ -212,9 +212,6 @@ export class FieldStore<Values = any, P = any>
       validateTrigger: this.validateTrigger,
       valuePropName: this.valuePropName,
       wrapperCol: this.wrapperCol,
-      id: this.id,
-      style: this.style,
-      className: this.className,
     };
   }
 

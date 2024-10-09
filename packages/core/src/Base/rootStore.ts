@@ -2,6 +2,9 @@ import { makeObservable, observable } from 'mobx';
 import { BaseProps } from './interface';
 
 export const commonKeys = [
+  'id',
+  'className',
+  'style',
   'variant',
   'hidden',
   'colon',
@@ -20,8 +23,11 @@ export const commonKeys = [
 ] as const;
 
 export class BaseRootStore implements BaseProps {
-  // ===== 状态属性 =====
+  id: BaseProps['id'];
+  className?: BaseProps['className'];
+  style?: BaseProps['style'];
 
+  // ===== 状态属性 =====
   variant?: BaseProps['variant'];
   hidden?: BaseProps['hidden'];
   colon?: BaseProps['colon'];
@@ -40,6 +46,10 @@ export class BaseRootStore implements BaseProps {
 
   makeObservable() {
     makeObservable(this, {
+      id: observable.ref,
+      className: observable.ref,
+      style: observable,
+
       variant: observable.ref,
       hidden: observable.ref,
       colon: observable.ref,
