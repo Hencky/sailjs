@@ -34,13 +34,17 @@ export const FormGroup = observer(<Values, P extends PluginsType = any>(props: F
     };
   }, []);
 
+  const isGroup = (item: any): item is FormGroupProps<Values, P> => {
+    return !!item.container || !!item.items;
+  };
+
   const renderFields = (items: FormGroupProps<Values, P>['items']) => {
     return (
       <Fragment>
         {items?.map((item) => {
           const { children } = item;
 
-          if ((item as FormGroupProps<Values, P>).items) {
+          if (isGroup(items)) {
             return <FormGroup {...(item as FormGroupProps<Values, P>)} />;
           }
 
