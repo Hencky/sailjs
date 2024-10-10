@@ -197,7 +197,7 @@ export function ItemInstance(props: any) {
         <FormItem name="c" label="c" data-testid="labelC">
           <Select
             data-testid="inputC"
-            getPopupContainer={(p) => {
+            getPopupContainer={() => {
               return document.querySelector('[data-testid=inputC]')!;
             }}
           />

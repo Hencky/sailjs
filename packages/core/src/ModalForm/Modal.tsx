@@ -23,7 +23,7 @@ export const useModal = (): [React.ReactNode, ModalInstance] => {
   const propsRef = useRef<ModalProps>();
   const promiseRef = useRef<{ resolve: (r: any) => void; reject: (r: any) => void }>();
 
-  const onClose = useCallback((e?: React.MouseEvent<HTMLButtonElement>) => {
+  const onClose = useCallback((e?: React.MouseEvent<HTMLElement>) => {
     propsRef.current!.onCancel?.(e!);
     setVisible(false);
     const { reject } = promiseRef.current!;
@@ -34,7 +34,7 @@ export const useModal = (): [React.ReactNode, ModalInstance] => {
 
   // ==== 确定按钮回调，返回promise按钮自动进入loading =====
   const handleOk = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
+    (e: React.MouseEvent<HTMLElement>) => {
       setConfirmLoading(true);
       const { resolve, reject } = promiseRef.current!;
       const cb = onOk?.(e);

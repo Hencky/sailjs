@@ -2,7 +2,7 @@ import { sleep } from 'radash';
 import { Input, Select } from 'antd';
 import { FormItem, Form, useForm } from '@sailjs/core';
 
-export function Options(props) {
+export function Options(props: any) {
   const [form] = useForm();
 
   const { onGetRemoteValues } = props;
@@ -30,7 +30,7 @@ export function Options(props) {
       >
         <Select
           data-testid="selectA"
-          getPopupContainer={(p) => {
+          getPopupContainer={() => {
             return document.querySelector('[data-testid=selectA]')!;
           }}
         />
@@ -73,7 +73,7 @@ export function Options(props) {
         label="obj.b"
         data-testid="obj.b"
         dependencies={[['obj', 'a']]}
-        remoteOptions={async ([dep0]) => {
+        remoteOptions={async ([dep0]: any) => {
           console.log('remoteOptions', dep0);
           onGetRemoteValues?.(dep0);
 

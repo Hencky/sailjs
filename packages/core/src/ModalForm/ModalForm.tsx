@@ -89,7 +89,10 @@ export const useModalForm = <P extends PluginsType = any>(
         return open({
           ...restParams,
           ...restModalProps,
-          footer: renderFooter(),
+          modalProps: {
+            footer: renderFooter(),
+            ...modalProps,
+          },
           onCancel: (e) => {
             form.resetFields();
             return onCancel?.(e, getModalFormContext());

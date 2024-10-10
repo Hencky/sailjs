@@ -15,7 +15,7 @@ export const Collapse: React.FC<CollapseProps> = (props) => {
     const { key, label, panelProps, ...restItem } = item;
 
     return (
-      <ACollapse.Panel {...panelProps} header={label} key={key}>
+      <ACollapse.Panel {...panelProps} header={label} key={key!}>
         <FormGroup {...restItem} />
       </ACollapse.Panel>
     );

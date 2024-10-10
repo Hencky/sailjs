@@ -1,5 +1,5 @@
-import { StrictMode } from 'react';
 import ReactDom from 'react-dom';
+// @ts-ignore
 import Routes from '@/routes';
 
 // render(document.getElementById('root')!).render(
@@ -7,6 +7,5 @@ import Routes from '@/routes';
 //     <Routes />
 //   </StrictMode>
 // );
-
 
 ReactDom.render(<Routes />, document.getElementById('root')!);

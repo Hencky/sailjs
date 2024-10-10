@@ -1,4 +1,4 @@
-import { Card, Input, Space } from 'antd';
+import { Card, Input } from 'antd';
 import { FormItem, Form, useForm } from '@sailjs/core';
 
 export function PropDependency() {

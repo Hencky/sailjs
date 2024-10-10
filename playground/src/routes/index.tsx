@@ -169,7 +169,7 @@ const list = [
   },
 ] as const;
 
-const Layout = () => {
+const Layout: React.FC = () => {
   const renderRoutes = (data: any, parentPath = '') => {
     return data?.map((item: any) => {
       const { children, path, ...rest } = item;

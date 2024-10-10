@@ -43,6 +43,7 @@ export const FormItem = observer(
       return formStore.createField(
         fieldName as string,
         new FieldStore<Values, P>(
+          // @ts-expect-error
           { ...props, name: fieldName },
           form,
           () => formStore,
