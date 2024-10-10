@@ -1,6 +1,8 @@
 import { Menu } from 'antd';
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 
+import 'antd/dist/antd.css';
+
 import {
   List,
   Modal,
@@ -194,7 +196,9 @@ const Layout = () => {
   return (
     <BrowserRouter>
       <Menu mode="horizontal" items={renderMenus(list)} style={{ marginBottom: 24 }} />
-      <Routes>{renderRoutes(list)}</Routes>
+      <div style={{ padding: 24 }}>
+        <Routes>{renderRoutes(list)}</Routes>
+      </div>
     </BrowserRouter>
   );
 };

@@ -28,11 +28,11 @@ export class BaseStore<Values = any> implements BaseProps {
     this.commonProps[key] = val;
   }
 
-  set variant(val) {
-    this.setVal('variant', val);
+  set bordered(val) {
+    this.setVal('bordered', val);
   }
-  get variant() {
-    return this.getVal('variant');
+  get bordered() {
+    return this.getVal('bordered');
   }
 
   set hidden(val) {
@@ -83,12 +83,6 @@ export class BaseStore<Values = any> implements BaseProps {
   get wrapperCol() {
     return this.getVal('wrapperCol');
   }
-  set layout(val) {
-    this.setVal('layout', val);
-  }
-  get layout() {
-    return this.getVal('layout');
-  }
   set messageVariables(val) {
     this.setVal('messageVariables', val);
   }
@@ -124,7 +118,7 @@ export class BaseStore<Values = any> implements BaseProps {
     makeObservable(this, {
       _parent: computed,
       commonProps: observable,
-      variant: computed,
+      bordered: computed,
       hidden: computed,
       colon: computed,
       mode: computed,
@@ -133,7 +127,6 @@ export class BaseStore<Values = any> implements BaseProps {
       labelAlign: computed,
       labelCol: computed,
       wrapperCol: computed,
-      layout: computed,
       messageVariables: computed,
       validateFirst: computed,
       validateDebounce: computed,

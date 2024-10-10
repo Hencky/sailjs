@@ -1,4 +1,5 @@
 import { PropsWithChildren, cloneElement, useEffect, useMemo, useState, isValidElement } from 'react';
+import { toJS } from 'mobx';
 import { omit } from 'radash';
 import { Form, Col } from 'antd';
 import { toArray } from '@sailjs/shared';
@@ -13,9 +14,8 @@ import type { PluginsType } from '@sailjs/shared';
 import type { FormItemProps } from './interface';
 
 const { Item, useFormInstance } = Form;
-
 export const FormItem = observer(
-  <Values, P extends PluginsType = any>(props: PropsWithChildren<FormItemProps<Values, P>>): React.ReactNode => {
+  <Values, P extends PluginsType = any>(props: PropsWithChildren<FormItemProps<Values, P>>) => {
     const { name, children } = props;
 
     const restProps = omit(props, [
@@ -79,9 +79,9 @@ export const FormItem = observer(
     const element = (
       <Item<Values> {...restProps} {...field.fieldProps} name={name}>
         {Com ? (
-          <Com {...defaultComponentProps} {...field.componentProps} {...field.childProps} />
+          <Com {...defaultComponentProps} {...toJS(field.componentProps)} {...toJS(field.childProps)} />
         ) : isValidElement(children) ? (
-          cloneElement(children, { ...field.childProps })
+          cloneElement(children, { ...toJS(field.childProps) })
         ) : (
           children
         )}
@@ -93,7 +93,7 @@ export const FormItem = observer(
     }
 
     return (
-      <Col {...field.colProps} span={field.span!}>
+      <Col {...toJS(field.colProps)} span={field.span!}>
         {element}
       </Col>
     );

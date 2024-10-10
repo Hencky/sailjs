@@ -50,7 +50,7 @@ export class FormStore<Values = any, PluginsType = any>
   /** 通过状态管理（如 redux）控制表单字段，如非强需求不推荐使用 */
   fields?: FormProps['fields'];
   /** 当 Form.Item 有 hasFeedback 属性时可以自定义图标 5.9.0 */
-  feedbackIcons?: FormProps['feedbackIcons'];
+  // feedbackIcons?: FormProps['feedbackIcons'];
   /** 表单默认值，只有初始化以及重置时生效 */
   initialValues?: FormProps['initialValues'];
   /** label 标签的文本换行方式 */
@@ -76,7 +76,7 @@ export class FormStore<Values = any, PluginsType = any>
   /** 字段值更新时触发回调事件 */
   onValuesChange?: FormProps['onValuesChange'];
   /** 当表单被卸载时清空表单值 5.18.0 */
-  clearOnDestroy?: FormProps['clearOnDestroy'];
+  // clearOnDestroy?: FormProps['clearOnDestroy'];
 
   // ===== 表单实例 =====
   scrollToField = this.form!.scrollToField;
@@ -113,7 +113,7 @@ export class FormStore<Values = any, PluginsType = any>
       autoComplete: observable.ref,
       disabled: observable.ref,
       component: observable.ref,
-      feedbackIcons: observable,
+      // feedbackIcons: observable,
       labelWrap: observable.ref,
       name: observable.ref,
       preserve: observable.ref,
@@ -125,7 +125,7 @@ export class FormStore<Values = any, PluginsType = any>
       onFinish: observable,
       onFinishFailed: observable,
       onValuesChange: observable,
-      clearOnDestroy: observable.ref,
+      // clearOnDestroy: observable.ref,
       spinProps: observable,
     });
   }
@@ -334,12 +334,12 @@ export class FormStore<Values = any, PluginsType = any>
       'disabled',
       'component',
       'fields',
-      'feedbackIcons',
+      // 'feedbackIcons',
       'initialValues',
       'labelAlign',
       'labelWrap',
       'labelCol',
-      'layout',
+      // 'layout',
       'name',
       'preserve',
       'requiredMark',
@@ -347,12 +347,12 @@ export class FormStore<Values = any, PluginsType = any>
       'size',
       'validateMessages',
       'validateTrigger',
-      'variant',
+      'bordered',
       'wrapperCol',
       'onFieldsChange',
       'onFinish',
       'onFinishFailed',
-      'clearOnDestroy',
+      // 'clearOnDestroy',
     ]);
   }
 

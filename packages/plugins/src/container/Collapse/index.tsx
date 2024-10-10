@@ -14,13 +14,12 @@ export const Collapse: React.FC<CollapseProps> = (props) => {
   const finalItems = items.map((item) => {
     const { key, label, panelProps, ...restItem } = item;
 
-    return {
-      ...panelProps,
-      key,
-      label,
-      children: <FormGroup {...restItem} />,
-    };
+    return (
+      <ACollapse.Panel {...panelProps} header={label} key={key}>
+        <FormGroup {...restItem} />
+      </ACollapse.Panel>
+    );
   });
 
-  return <ACollapse {...rest} items={finalItems} />;
+  return <ACollapse {...rest}>{finalItems}</ACollapse>;
 };

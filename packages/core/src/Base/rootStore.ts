@@ -5,7 +5,7 @@ export const commonKeys = [
   'id',
   'className',
   'style',
-  'variant',
+  'bordered',
   'hidden',
   'colon',
   'mode',
@@ -14,7 +14,7 @@ export const commonKeys = [
   'labelAlign',
   'labelCol',
   'wrapperCol',
-  'layout',
+  // 'layout',
   'messageVariables',
   'validateFirst',
   'validateDebounce',
@@ -28,7 +28,7 @@ export class BaseRootStore implements BaseProps {
   style?: BaseProps['style'];
 
   // ===== 状态属性 =====
-  variant?: BaseProps['variant'];
+  bordered?: BaseProps['bordered'];
   hidden?: BaseProps['hidden'];
   colon?: BaseProps['colon'];
   mode?: BaseProps['mode'];
@@ -37,7 +37,6 @@ export class BaseRootStore implements BaseProps {
   labelAlign?: BaseProps['labelAlign'];
   labelCol?: BaseProps['labelCol'];
   wrapperCol?: BaseProps['wrapperCol'];
-  layout?: BaseProps['layout'];
   messageVariables?: BaseProps['messageVariables'];
   validateFirst?: BaseProps['validateFirst'];
   validateDebounce?: BaseProps['validateDebounce'];
@@ -50,7 +49,7 @@ export class BaseRootStore implements BaseProps {
       className: observable.ref,
       style: observable,
 
-      variant: observable.ref,
+      bordered: observable.ref,
       hidden: observable.ref,
       colon: observable.ref,
       mode: observable.ref,
@@ -61,7 +60,6 @@ export class BaseRootStore implements BaseProps {
       labelAlign: observable.ref,
       labelCol: observable,
       wrapperCol: observable,
-      layout: observable.ref,
 
       messageVariables: observable,
       validateFirst: observable.ref,

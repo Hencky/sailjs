@@ -1,4 +1,5 @@
 import { PropsWithChildren, useEffect, useMemo } from 'react';
+import { toJS } from 'mobx';
 import { omit } from 'radash';
 import { Form as AForm, Spin } from 'antd';
 import { observer } from 'mobx-react-lite';
@@ -33,7 +34,7 @@ export const Form = observer(<Values, P extends PluginsType = any>(props: PropsW
       <Spin spinning={formStore.loading} {...spinProps}>
         <AForm<Values>
           {...restProps}
-          {...formStore.formProps}
+          {...toJS(formStore.formProps)}
           form={aForm}
           onValuesChange={(changeValues, values) => {
             formStore.innerValueChange(changeValues);

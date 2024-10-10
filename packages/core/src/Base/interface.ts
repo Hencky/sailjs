@@ -22,8 +22,10 @@ export interface BaseProps {
 
   // ===== 状态属性 =====
 
+  /** 是否显示边框 */
+  bordered?: boolean;
   /** 表单内控件变体 */
-  variant?: AFormProps['variant'];
+  // variant?: AFormProps['variant'];
   /** 是否隐藏字段（依然会收集和校验字段） */
   hidden?: AFormProps['hidden'];
   /** 配合 label 属性使用，表示是否显示 label 后面的冒号 */
@@ -46,7 +48,7 @@ export interface BaseProps {
   /** 需要为输入控件设置布局样式时，使用该属性，用法同 labelCol。你可以通过 Form 的 wrapperCol 进行统一设置，不会作用于嵌套 Item。当和 Form 同时设置时，以 Item 为准 */
   wrapperCol?: AFormProps['wrapperCol'];
   /** 表单项布局 5.18 */
-  layout?: AFormItemProps['layout'];
+  // layout?: AFormItemProps['layout'];
 
   // ===== 校验属性 =====
 

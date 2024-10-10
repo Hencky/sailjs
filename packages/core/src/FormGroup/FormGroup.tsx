@@ -1,5 +1,6 @@
 import { cloneElement, useMemo, useEffect, Fragment } from 'react';
 import { Row } from 'antd';
+import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import { FormItem } from '../FormItem';
 import { GroupStore } from './store';
@@ -56,7 +57,6 @@ export const FormGroup = observer(<Values, P extends PluginsType = any>(props: F
 
           return (
             <FormItem<Values, P> key={toCompareName(item.name as string) || idx} {...item}>
-              {/* @ts-expect-error */}
               {children}
             </FormItem>
           );
@@ -74,11 +74,11 @@ export const FormGroup = observer(<Values, P extends PluginsType = any>(props: F
   let container;
   if (group.containerPlugin) {
     const { component: Com, defaultComponentProps } = group.containerPlugin;
-    container = <Com {...defaultComponentProps} {...group.containerProps} />;
+    container = <Com {...defaultComponentProps} {...toJS(group.containerProps)} />;
   } else if (group.container) {
     container = group.container;
   } else {
-    container = <Row {...group.rowProps}></Row>;
+    container = <Row {...toJS(group.rowProps)}></Row>;
   }
 
   if (group.mode === FieldMode.HIDDEN) {

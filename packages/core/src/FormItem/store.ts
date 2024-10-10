@@ -107,7 +107,7 @@ export class FieldStore<Values = any, P = any>
       options: observable.shallow,
       style: observable,
       className: observable.ref,
-      rules: observable.shallow,
+      rules: observable,
       extra: observable,
       getValueFromEvent: observable,
       hasFeedback: observable,
@@ -165,15 +165,16 @@ export class FieldStore<Values = any, P = any>
 
   public get childProps() {
     const displayOptions: {
-      variant: BaseProps['variant'];
+      bordered: BaseProps['bordered'];
       readOnly: boolean;
     } = {
-      variant: 'outlined',
+      bordered: true,
       readOnly: false,
     };
 
     if (this.mode === FieldMode.VIEW) {
-      displayOptions.variant = 'borderless';
+      // displayOptions.variant = 'borderless';
+      displayOptions.bordered = false;
       displayOptions.readOnly = true;
     }
 
