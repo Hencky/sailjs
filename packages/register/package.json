@@ -3,12 +3,13 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
-  "main": "./src/index.ts",
+  "main": "./es/index.ts",
   "module": "./es/index.js",
   "files": ["es"],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:watch": "tsc -b && vite build --watch",
     "lint": "eslint .",
     "preview": "vite preview"
   },

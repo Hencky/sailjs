@@ -1,4 +1,3 @@
-import React from 'react';
 import { Input } from 'antd';
 import { DEFAULT_COMPONENT_PLUGINS } from '../../../plugins/src/index';
 
