@@ -12,8 +12,6 @@
     "preview": "vite preview",
     "clear": "rimraf 'packages/*/{es,node_modules,coverage}' && rimraf node_modules",
     "prebuild": "npx only-allow pnpm",
-    "changeset": "pnpm changeset",
-    "version": "pnpm changeset version",
     "release": "pnpm changeset publish"
   },
   "dependencies": {
