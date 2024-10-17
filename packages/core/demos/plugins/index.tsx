@@ -1,3 +1,4 @@
+import React from 'react';
 import { Divider } from 'antd';
 import { FormItem, Form, FormGroup, useForm } from '@sailjs/core';
 import { plugins, type CustomPluginsType } from './plugins';

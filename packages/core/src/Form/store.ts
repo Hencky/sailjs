@@ -23,7 +23,7 @@ export type InnerDependencyType = {
 
 export class FormStore<Values = any, PluginsType = any>
   extends BaseRootStore
-  implements Omit<FormProps, 'form'>, BaseProps, FormInstance<Values>
+  implements Omit<FormProps, 'form'>, BaseProps
 {
   private store: Record<NamePath, FieldStore | null> = {};
   /** 表单实例 */
@@ -79,23 +79,23 @@ export class FormStore<Values = any, PluginsType = any>
   // clearOnDestroy?: FormProps['clearOnDestroy'];
 
   // ===== 表单实例 =====
-  scrollToField = this.form!.scrollToField;
-  getFieldInstance = this.form!.getFieldInstance;
-  getFieldValue = this.form!.getFieldValue;
-  getFieldsValue = this.form!.getFieldsValue;
-  getFieldError = this.form!.getFieldError;
-  getFieldsError = this.form!.getFieldsError;
-  getFieldWarning = this.form!.getFieldWarning;
-  isFieldsTouched = this.form!.isFieldsTouched;
-  isFieldTouched = this.form!.isFieldTouched;
-  isFieldValidating = this.form!.isFieldValidating;
-  isFieldsValidating = this.form!.isFieldsValidating;
-  resetFields = this.form!.resetFields;
-  setFields = this.form!.setFields;
-  setFieldValue = this.form!.setFieldValue;
-  setFieldsValue = this.form!.setFieldsValue;
-  submit = this.form!.submit;
-  validateFields = this.form!.validateFields;
+  scrollToField: FormInstance<Values>['scrollToField'] = this.form!.scrollToField;
+  getFieldInstance: FormInstance<Values>['getFieldInstance'] = this.form!.getFieldInstance;
+  getFieldValue: FormInstance<Values>['getFieldValue'] = this.form!.getFieldValue;
+  getFieldsValue: FormInstance<Values>['getFieldsValue'] = this.form!.getFieldsValue;
+  getFieldError: FormInstance<Values>['getFieldError'] = this.form!.getFieldError;
+  getFieldsError: FormInstance<Values>['getFieldsError'] = this.form!.getFieldsError;
+  getFieldWarning: FormInstance<Values>['getFieldWarning'] = this.form!.getFieldWarning;
+  isFieldsTouched: FormInstance<Values>['isFieldsTouched'] = this.form!.isFieldsTouched;
+  isFieldTouched: FormInstance<Values>['isFieldTouched'] = this.form!.isFieldTouched;
+  isFieldValidating: FormInstance<Values>['isFieldValidating'] = this.form!.isFieldValidating;
+  isFieldsValidating: FormInstance<Values>['isFieldsValidating'] = this.form!.isFieldsValidating;
+  resetFields: FormInstance<Values>['resetFields'] = this.form!.resetFields;
+  setFields: FormInstance<Values>['setFields'] = this.form!.setFields;
+  setFieldValue: FormInstance<Values>['setFieldValue'] = this.form!.setFieldValue;
+  setFieldsValue: FormInstance<Values>['setFieldsValue'] = this.form!.setFieldsValue;
+  submit: FormInstance<Values>['submit'] = this.form!.submit;
+  validateFields: FormInstance<Values>['validateFields'] = this.form!.validateFields;
 
   constructor(props?: FormOptionProps<any>) {
     const { plugins } = props || {};

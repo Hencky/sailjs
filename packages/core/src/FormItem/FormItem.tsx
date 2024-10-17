@@ -79,13 +79,11 @@ export const FormItem = observer(
 
     const element = (
       <Item<Values> {...restProps} {...field.fieldProps} name={name}>
-        {Com ? (
-          <Com {...defaultComponentProps} {...toJS(field.componentProps)} {...toJS(field.childProps)} />
-        ) : isValidElement(children) ? (
-          cloneElement(children, { ...toJS(field.childProps) })
-        ) : (
-          children
-        )}
+        {Com
+          ? cloneElement(Com, { ...defaultComponentProps, ...toJS(field.componentProps), ...toJS(field.childProps) })
+          : isValidElement(children)
+          ? cloneElement(children, { ...toJS(field.childProps) })
+          : children}
       </Item>
     );
 

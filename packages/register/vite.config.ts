@@ -9,7 +9,7 @@ export default mergeConfig(commonConfig, {
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'mobx', 'antd'],
+      external: ['react', 'react-dom'],
       output: {
         dir: 'es',
         entryFileNames: 'index.js',

@@ -8,9 +8,9 @@ import { FormContext } from './context';
 import type { PluginsType } from '@sailjs/shared';
 import type { FormProps } from './interface';
 
-const { useForm: useAForm, useWatch: useAWatch } = AForm;
+const { useForm: useAForm } = AForm;
 
-export { useAWatch, useAForm };
+export { useAForm };
 
 export const Form = observer(<Values, P extends PluginsType = any>(props: PropsWithChildren<FormProps<Values, P>>) => {
   const { children, form: formStore, onValuesChange, spinProps } = props;

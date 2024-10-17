@@ -4,6 +4,8 @@
   "version": "0.0.1",
   "type": "module",
   "main": "./src/index.ts",
+  "module": "./es/index.js",
+  "files": ["es"],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -11,7 +13,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "antd": "^4.24.15",
     "@sailjs/shared": "workspace:*"
   },
   "devDependencies": {
@@ -21,6 +22,9 @@
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
     "typescript": "^5.5.3",
-    "typescript-eslint": "^8.0.0"
+    "typescript-eslint": "^8.0.0",
+    "vite": "^5.4.0",
+    "vite-plugin-dts": "^4.2.3",
+    "vitest": "^2.1.1"
   }
 }

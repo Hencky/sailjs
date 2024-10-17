@@ -29,5 +29,7 @@
       "@demos/core": ["packages/core/demos/index.ts"],
       "@demos/plugins": ["packages/plugins/demos/index.ts"],
     }
-  }
+  },
+  // "include": ["packages/*"],
+  "exclude": ["**/dist", "**/es", "**/lib", "**/demos"]
 }

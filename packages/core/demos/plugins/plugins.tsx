@@ -1,9 +1,10 @@
+import React from 'react';
 import { Input } from 'antd';
 import { DEFAULT_COMPONENT_PLUGINS } from '../../../plugins/src/index';
 
 export const plugins = Object.assign({}, DEFAULT_COMPONENT_PLUGINS, {
   input2: {
-    component: Input,
+    component: <Input />,
     defaultComponentProps: { showCount: true },
   },
 });

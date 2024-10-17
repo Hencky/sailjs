@@ -74,7 +74,7 @@ export const FormGroup = observer(<Values, P extends PluginsType = any>(props: F
   let container;
   if (group.containerPlugin) {
     const { component: Com, defaultComponentProps } = group.containerPlugin;
-    container = <Com {...defaultComponentProps} {...toJS(group.containerProps)} />;
+    container = cloneElement(Com, { ...defaultComponentProps, ...toJS(group.containerProps) });
   } else if (group.container) {
     container = group.container;
   } else {
