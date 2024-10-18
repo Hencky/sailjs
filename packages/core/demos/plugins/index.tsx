@@ -1,5 +1,5 @@
 import { Divider } from 'antd';
-import { FormItem, Form, FormGroup, useForm } from '@sailjs/core';
+import { FormItem, Form, FormGroup, useForm } from '@voyagejs/core';
 import { plugins, type CustomPluginsType } from './plugins';
 
 export function Plugins() {

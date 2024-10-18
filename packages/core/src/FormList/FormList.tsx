@@ -1,6 +1,6 @@
 import { useContext, useMemo } from 'react';
 import { Form as AForm } from 'antd';
-import { toArray } from '@sailjs/shared';
+import { toArray } from '@voyagejs/shared';
 import { FormListContext } from './context';
 import type { FormListProps } from 'antd/lib/form/FormList';
 

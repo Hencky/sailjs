@@ -1,4 +1,4 @@
-# @sailjs/shared
+# @voyagejs/shared
 
 ## 0.1.0
 

@@ -5,7 +5,7 @@ import { Form as AForm, Spin } from 'antd';
 import { observer } from 'mobx-react-lite';
 import { commonKeys } from '../Base';
 import { FormContext } from './context';
-import type { PluginsType } from '@sailjs/shared';
+import type { PluginsType } from '@voyagejs/shared';
 import type { FormProps } from './interface';
 
 const { useForm: useAForm } = AForm;

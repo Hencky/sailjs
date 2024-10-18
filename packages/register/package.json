@@ -1,5 +1,5 @@
 {
-  "name": "@sailjs/register",
+  "name": "@voyagejs/register",
   "version": "0.1.0-alpha.1",
   "author": "Hencky",
   "type": "module",
@@ -17,7 +17,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sailjs/shared": "workspace:*"
+    "@voyagejs/shared": "workspace:*"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",

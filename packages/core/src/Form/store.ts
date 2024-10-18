@@ -1,4 +1,4 @@
-import { pluginStore } from '@sailjs/register';
+import { pluginStore } from '@voyagejs/register';
 import { makeObservable, observable, runInAction, configure } from 'mobx';
 import { isFunction, pick, isEqual, isEmpty } from 'radash';
 import { BaseProps, BaseRootStore } from '../Base';

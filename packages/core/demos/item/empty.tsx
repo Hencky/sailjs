@@ -1,4 +1,4 @@
-import { Form, useForm, FormItem } from '@sailjs/core';
+import { Form, useForm, FormItem } from '@voyagejs/core';
 
 export const EmptyItem = () => {
   const [form] = useForm();

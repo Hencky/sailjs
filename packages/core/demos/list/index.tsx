@@ -1,4 +1,4 @@
-import { FormList, Form, useForm, FormItem } from '@sailjs/core';
+import { FormList, Form, useForm, FormItem } from '@voyagejs/core';
 import { Card, Button, Input } from 'antd';
 
 export const List = () => {

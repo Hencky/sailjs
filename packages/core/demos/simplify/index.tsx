@@ -1,4 +1,4 @@
-import { Form } from '@sailjs/core';
+import { Form } from '@voyagejs/core';
 import { Input } from 'antd';
 
 const { useForm, Item, Group } = Form;

@@ -1,5 +1,5 @@
 import { Input, Card, Button } from 'antd';
-import { Form, useForm, FormGroup } from '@sailjs/core';
+import { Form, useForm, FormGroup } from '@voyagejs/core';
 
 export function GroupContainer() {
   const [form] = useForm();

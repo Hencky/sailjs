@@ -1,5 +1,5 @@
 {
-  "name": "@sailjs/core",
+  "name": "@voyagejs/core",
   "version": "0.1.0-alpha.1",
   "author": "Hencky",
   "type": "module",
@@ -19,8 +19,8 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@sailjs/register": "workspace:*",
-    "@sailjs/shared": "workspace:*",
+    "@voyagejs/register": "workspace:*",
+    "@voyagejs/shared": "workspace:*",
     "ahooks": "^3.8.1",
     "antd": "^4.24.15",
     "mobx": "^6.13.1",

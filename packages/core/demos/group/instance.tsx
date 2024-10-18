@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Input, Button, Divider } from 'antd';
-import { Form, useForm, FormGroup } from '@sailjs/core';
+import { Form, useForm, FormGroup } from '@voyagejs/core';
 
 export function GroupInstance() {
   const [form] = useForm();

@@ -1,5 +1,5 @@
 import { Card, Input } from 'antd';
-import { FormItem, Form, useForm } from '@sailjs/core';
+import { FormItem, Form, useForm } from '@voyagejs/core';
 
 export function PropDependency() {
   const [form] = useForm();

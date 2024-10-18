@@ -1,5 +1,5 @@
 {
-  "name": "@sailjs/plugins",
+  "name": "@voyagejs/plugins",
   "version": "0.1.0-alpha.1",
   "author": "Hencky",
   "type": "module",
@@ -17,9 +17,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sailjs/core": "workspace:*",
-    "@sailjs/register": "workspace:*",
-    "@sailjs/shared": "workspace:*",
+    "@voyagejs/core": "workspace:*",
+    "@voyagejs/register": "workspace:*",
+    "@voyagejs/shared": "workspace:*",
     "antd": "^4.24.15"
   },
   "devDependencies": {
@@ -29,7 +29,6 @@
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
     "rc-collapse": "^3.8.0",
-    "rc-select": "^14.16.2",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.0",
     "vite": "^5.4.0",

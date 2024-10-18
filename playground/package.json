@@ -1,5 +1,5 @@
 {
-  "name": "@sailjs/playground",
+  "name": "@voyagejs/playground",
   "version": "0.1.0-alpha.1",
   "author": "Hencky",
   "license": "MIT",
@@ -10,9 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sailjs/core": "workspace:*",
-    "@sailjs/plugins": "workspace:*",
-    "@sailjs/shared": "workspace:*",
+    "@voyagejs/core": "workspace:*",
+    "@voyagejs/plugins": "workspace:*",
+    "@voyagejs/shared": "workspace:*",
     "antd": "^4.24.15",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",

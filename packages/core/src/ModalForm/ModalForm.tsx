@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useModal } from './Modal';
 import { Form, useForm } from '../Form';
-import type { PluginsType } from '@sailjs/shared';
+import type { PluginsType } from '@voyagejs/shared';
 import type { ModalProps as AModalProps } from 'antd';
 import type { ReactNode, MouseEvent, ReactElement } from 'react';
 import type { FormProps, FormOptionProps, FormStore } from '../Form';

@@ -2,7 +2,7 @@ import { PropsWithChildren, cloneElement, useEffect, useMemo, useState, isValidE
 import { toJS } from 'mobx';
 import { omit } from 'radash';
 import { Form, Col } from 'antd';
-import { toArray } from '@sailjs/shared';
+import { toArray } from '@voyagejs/shared';
 import { useDebounceEffect } from 'ahooks';
 import { observer } from 'mobx-react-lite';
 import { FieldStore } from './store';
@@ -10,7 +10,7 @@ import { commonKeys, FieldMode } from '../Base';
 import { useFormContext } from '../Form/context';
 import { useFormGroupContext } from '../FormGroup';
 import { useFormListContext } from '../FormList/context';
-import type { PluginsType } from '@sailjs/shared';
+import type { PluginsType } from '@voyagejs/shared';
 import type { FormItemProps } from './interface';
 
 const { Item, useFormInstance } = Form;

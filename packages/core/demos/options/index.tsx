@@ -1,6 +1,6 @@
 import { sleep } from 'radash';
 import { Input, Select } from 'antd';
-import { FormItem, Form, useForm } from '@sailjs/core';
+import { FormItem, Form, useForm } from '@voyagejs/core';
 
 export function Options(props: any) {
   const [form] = useForm();

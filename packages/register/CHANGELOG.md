@@ -1,4 +1,4 @@
-# @sailjs/register
+# @voyagejs/register
 
 ## 0.1.0
 
@@ -6,4 +6,4 @@
 
 - first version
 - Updated dependencies
-  - @sailjs/shared@0.1.0
+  - @voyagejs/shared@0.1.0

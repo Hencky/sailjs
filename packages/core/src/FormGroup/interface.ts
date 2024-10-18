@@ -1,6 +1,6 @@
 import type { NamePath } from 'antd/es/form/interface';
 import type { RowProps } from 'antd/lib/row';
-import type { PluginsType } from '@sailjs/shared';
+import type { PluginsType } from '@voyagejs/shared';
 import type { BaseProps } from '../Base';
 import type { FormItemProps } from '../FormItem';
 

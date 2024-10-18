@@ -9,7 +9,7 @@ import { toCompareName } from '../utils';
 import { FormGroupContext } from './context';
 import { useFormContext } from '../Form/context';
 import { useFormGroupContext } from './context';
-import type { PluginsType } from '@sailjs/shared';
+import type { PluginsType } from '@voyagejs/shared';
 import type { FormGroupProps } from './interface';
 
 export const FormGroup = observer(<Values, P extends PluginsType = any>(props: FormGroupProps<Values, P>) => {

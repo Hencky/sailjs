@@ -1,4 +1,4 @@
-import { Form, useForm, FormGroup } from '@sailjs/core';
+import { Form, useForm, FormGroup } from '@voyagejs/core';
 import { DEFAULT_COMPONENT_PLUGINS, DEFAULT_CONTAINER_PLUGINS } from '../../..';
 
 export function SpacePlugin() {

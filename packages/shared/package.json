@@ -1,5 +1,5 @@
 {
-  "name": "@sailjs/shared",
+  "name": "@voyagejs/shared",
   "version": "0.1.0-alpha.1",
   "author": "Hencky",
   "type": "module",
