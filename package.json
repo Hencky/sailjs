@@ -1,11 +1,11 @@
 {
   "name": "sailjs",
-  "private": false,
   "workspaces": [
     "packages/*"
   ],
   "version": "0.1.0-alpha.1",
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "start": "pnpm dev --filter @sailjs/playground",
     "lint": "eslint .",

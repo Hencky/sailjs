@@ -1,7 +1,8 @@
 {
   "name": "@sailjs/playground",
-  "private": true,
   "version": "0.1.0-alpha.1",
+  "author": "Hencky",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

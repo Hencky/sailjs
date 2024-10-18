@@ -1,10 +1,11 @@
 {
   "name": "@sailjs/core",
-  "private": false,
   "version": "0.1.0-alpha.1",
+  "author": "Hencky",
   "type": "module",
   "main": "./es/index.ts",
   "module": "./es/index.js",
+  "types": "./es/index.d.ts",
   "files": [
     "es"
   ],
@@ -50,5 +51,6 @@
   "peerDependencies": {
     "react": "^16.14.0",
     "react-dom": "^16.14.0"
-  }
+  },
+  "license": "MIT"
 }
