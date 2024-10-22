@@ -1,11 +1,11 @@
 import { makeObservable, observable, runInAction } from 'mobx';
 import { FieldMode, BaseProps, BaseStore } from '../Base';
-import type { FormInstance } from 'antd';
+import type { FormInstance } from 'antd/lib/form';
 import type { FormItemProps as AFormItemProps } from 'antd/lib/form/FormItem';
 import type { NamePath } from 'antd/lib/form/interface';
 import type { FormStore } from '../Form';
-import type { FormItemProps, ReactionType } from './interface';
 import type { GroupStore } from '../FormGroup/store';
+import type { FormItemProps, ReactionType } from './interface';
 
 export class FieldStore<Values = any, P = any>
   extends BaseStore
@@ -19,6 +19,8 @@ export class FieldStore<Values = any, P = any>
   optionsLoading?: boolean;
   /** 数据源 */
   options: any[] = [];
+  /** 数据源属性名 */
+  optionsPropName: string = 'options';
   /** 远程数据源 */
   remoteOptions?: (depValues?: any[]) => Promise<any[] | undefined>;
   /** 强制刷新 */
@@ -180,7 +182,7 @@ export class FieldStore<Values = any, P = any>
 
     return {
       disabled: this.mode === FieldMode.DISABLED,
-      options: this.options,
+      [this.optionsPropName]: this.options,
       ...displayOptions,
       loading: this.optionsLoading,
     };

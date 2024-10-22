@@ -5,7 +5,7 @@
   "type": "module",
   "main": "./es/index.ts",
   "module": "./es/index.js",
-  "types": "./es/index.d.ts",
+  "types": "./src/index.ts",
   "files": [
     "es"
   ],
