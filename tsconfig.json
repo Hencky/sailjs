@@ -26,8 +26,10 @@
       "@voyagejs/register": ["packages/register/src/index.ts"],
       "@voyagejs/plugins": ["packages/plugins/src/index.ts"],
       "@voyagejs/shared": ["packages/shared/src/index.ts"],
+      "@voyagejs/table": ["packages/table/src/index.ts"],
       "@demos/core": ["packages/core/demos/index.ts"],
       "@demos/plugins": ["packages/plugins/demos/index.ts"],
+      "@demos/table": ["packages/table/demos/index.ts"],
     }
   },
   // "include": ["packages/*"],

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Form, useForm, FormGroup } from '@voyagejs/core';
 import { DEFAULT_PLUGINS, DefaultPluginsType } from '../../src';
 

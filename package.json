@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@voyagejs/core": "workspace:*",
+    "@voyagejs/table": "workspace:*",
     "antd": "^4.24.15",
     "radash": "^12.1.0",
     "react": "^16.14.0",

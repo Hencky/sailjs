@@ -99,7 +99,6 @@ export class FormStore<Values = any, PluginsType = any>
 
   constructor(props?: FormOptionProps<any>) {
     const { plugins } = props || {};
-
     super();
     super.makeObservable();
     this.pluginStore = plugins;

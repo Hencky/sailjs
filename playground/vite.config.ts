@@ -11,11 +11,13 @@ export default defineConfig({
       '@': path.resolve(__dirname, '/src'),
       '@demos/core': path.resolve(__dirname, '../packages/core/demos'),
       '@demos/plugins': path.resolve(__dirname, '../packages/plugins/demos'),
+      '@demos/table': path.resolve(__dirname, '../packages/table/demos'),
       // TODO: main
       '@voyagejs/core': path.resolve(__dirname, '../packages/core/src/index.ts'),
       '@voyagejs/register': path.resolve(__dirname, '../packages/register/src/index.ts'),
       '@voyagejs/plugins': path.resolve(__dirname, '../packages/plugins/src/index.ts'),
       '@voyagejs/shared': path.resolve(__dirname, '../packages/shared/src/index.ts'),
+      '@voyagejs/table': path.resolve(__dirname, '../packages/table/src/index.ts'),
     },
   },
 });

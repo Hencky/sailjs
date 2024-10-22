@@ -23,6 +23,7 @@ import {
   GroupDependency,
   ValueDependencyObj,
 } from '@demos/core';
+import { TableDemo } from '@demos/table';
 import { CollapsePlugin, SpacePlugin, FlexPlugin, CardPlugin, CombineDemo } from '@demos/plugins';
 
 const list = [
@@ -167,6 +168,11 @@ const list = [
     label: '弹框',
     path: '/modal',
     element: <Modal />,
+  },
+  {
+    label: '表格',
+    path: '/table',
+    element: <TableDemo />,
   },
 ] as const;
 
