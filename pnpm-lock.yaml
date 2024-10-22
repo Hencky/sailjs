@@ -247,51 +247,6 @@ importers:
       vite-plugin-dts: registry.npmjs.org/vite-plugin-dts/4.2.4_typescript@5.6.3+vite@5.4.9
       vitest: registry.npmjs.org/vitest/2.1.3_jsdom@25.0.1
 
-  playground:
-    specifiers:
-      '@eslint/js': ^9.13.0
-      '@types/node': ^22.7.8
-      '@types/react': ^16.14.62
-      '@types/react-dom': ^16.9.24
-      '@vitejs/plugin-react': ^4.3.3
-      '@voyagejs/form': workspace:*
-      '@voyagejs/plugins': workspace:*
-      '@voyagejs/shared': workspace:*
-      antd: ^4.24.16
-      eslint: ^9.13.0
-      eslint-plugin-react-hooks: ^5.1.0-rc-fb9a90fa48-20240614
-      eslint-plugin-react-refresh: ^0.4.13
-      globals: ^15.11.0
-      path: ^0.12.7
-      react: ^16.14.0
-      react-dom: ^16.14.0
-      react-router-dom: ^6.27.0
-      typescript: ^5.6.3
-      typescript-eslint: ^8.11.0
-      vite: ^5.4.9
-    dependencies:
-      '@voyagejs/form': link:../packages/form
-      '@voyagejs/plugins': link:../packages/plugins
-      '@voyagejs/shared': link:../packages/shared
-      antd: registry.npmjs.org/antd/4.24.16_react-dom@16.14.0+react@16.14.0
-      react: registry.npmjs.org/react/16.14.0
-      react-dom: registry.npmjs.org/react-dom/16.14.0_react@16.14.0
-      react-router-dom: registry.npmjs.org/react-router-dom/6.27.0_react-dom@16.14.0+react@16.14.0
-    devDependencies:
-      '@eslint/js': registry.npmjs.org/@eslint/js/9.13.0
-      '@types/node': registry.npmjs.org/@types/node/22.7.8
-      '@types/react': registry.npmjs.org/@types/react/16.14.62
-      '@types/react-dom': registry.npmjs.org/@types/react-dom/16.9.24
-      '@vitejs/plugin-react': registry.npmjs.org/@vitejs/plugin-react/4.3.3_vite@5.4.9
-      eslint: registry.npmjs.org/eslint/9.13.0
-      eslint-plugin-react-hooks: registry.npmjs.org/eslint-plugin-react-hooks/5.1.0-rc-fb9a90fa48-20240614_eslint@9.13.0
-      eslint-plugin-react-refresh: registry.npmjs.org/eslint-plugin-react-refresh/0.4.13_eslint@9.13.0
-      globals: registry.npmjs.org/globals/15.11.0
-      path: registry.npmjs.org/path/0.12.7
-      typescript: registry.npmjs.org/typescript/5.6.3
-      typescript-eslint: registry.npmjs.org/typescript-eslint/8.11.0_eslint@9.13.0+typescript@5.6.3
-      vite: registry.npmjs.org/vite/5.4.9_@types+node@22.7.8
-
 packages:
 
   registry.npmjs.org/@adobe/css-tools/4.4.0:
@@ -1545,14 +1500,6 @@ packages:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.15.tgz}
     name: '@types/json-schema'
     version: 7.0.15
-    dev: true
-
-  registry.npmjs.org/@types/node/22.7.8:
-    resolution: {integrity: sha512-a922jJy31vqR5sk+kAdIENJjHblqcZ4RmERviFsER4WJcEONqxKcjNOlk0q7OUfrF5sddT+vng070cdfMlrPLg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/node/-/node-22.7.8.tgz}
-    name: '@types/node'
-    version: 22.7.8
-    dependencies:
-      undici-types: registry.npmjs.org/undici-types/6.19.8
     dev: true
 
   registry.npmjs.org/@types/prop-types/15.7.13:
@@ -3136,12 +3083,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  registry.npmjs.org/inherits/2.0.3:
-    resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/inherits/-/inherits-2.0.3.tgz}
-    name: inherits
-    version: 2.0.3
-    dev: true
-
   registry.npmjs.org/intersection-observer/0.12.2:
     resolution: {integrity: sha512-7m1vEcPCxXYI8HqnL8CKI6siDyD+eIWSwgB3DZA+ZTogxk9I4CDnj4wilt9x/+/QbHI4YG5YZNmC6458/e9Ktg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/intersection-observer/-/intersection-observer-0.12.2.tgz}
     name: intersection-observer
@@ -3757,15 +3698,6 @@ packages:
       minipass: registry.npmjs.org/minipass/7.1.2
     dev: true
 
-  registry.npmjs.org/path/0.12.7:
-    resolution: {integrity: sha512-aXXC6s+1w7otVF9UletFkFcDsJeO7lSZBPUQhtb5O0xJe8LtYhj/GxldoL09bBj9+ZmE2hNoHqQSFMN5fikh4Q==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/path/-/path-0.12.7.tgz}
-    name: path
-    version: 0.12.7
-    dependencies:
-      process: registry.npmjs.org/process/0.11.10
-      util: registry.npmjs.org/util/0.10.4
-    dev: true
-
   registry.npmjs.org/pathe/1.1.2:
     resolution: {integrity: sha512-whLdWMYL2TwI08hn8/ZqAbrVemu0LNaNNJZX73O6qaIdCTfXutsLhMkjdENX0qhsQ9uIimo4/aQOmXkoon2nDQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/pathe/-/pathe-1.1.2.tgz}
     name: pathe
@@ -3829,13 +3761,6 @@ packages:
       ansi-regex: registry.npmjs.org/ansi-regex/5.0.1
       ansi-styles: registry.npmjs.org/ansi-styles/5.2.0
       react-is: registry.npmjs.org/react-is/17.0.2
-    dev: true
-
-  registry.npmjs.org/process/0.11.10:
-    resolution: {integrity: sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/process/-/process-0.11.10.tgz}
-    name: process
-    version: 0.11.10
-    engines: {node: '>= 0.6.0'}
     dev: true
 
   registry.npmjs.org/prop-types/15.8.1:
@@ -5144,12 +5069,6 @@ packages:
     version: 1.5.4
     dev: true
 
-  registry.npmjs.org/undici-types/6.19.8:
-    resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/undici-types/-/undici-types-6.19.8.tgz}
-    name: undici-types
-    version: 6.19.8
-    dev: true
-
   registry.npmjs.org/universalify/0.1.2:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/universalify/-/universalify-0.1.2.tgz}
     name: universalify
@@ -5189,14 +5108,6 @@ packages:
     dependencies:
       react: registry.npmjs.org/react/16.14.0
     dev: false
-
-  registry.npmjs.org/util/0.10.4:
-    resolution: {integrity: sha512-0Pm9hTQ3se5ll1XihRic3FDIku70C+iHUdT/W926rSgHV5QgXsYbKZN8MSC3tJtSkhuROzvsQjAaFENRXr+19A==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/util/-/util-0.10.4.tgz}
-    name: util
-    version: 0.10.4
-    dependencies:
-      inherits: registry.npmjs.org/inherits/2.0.3
-    dev: true
 
   registry.npmjs.org/vite-node/2.1.3:
     resolution: {integrity: sha512-I1JadzO+xYX887S39Do+paRePCKoiDrWRRjp9kkG5he0t7RXNvPAJPCQSJqbGN4uCrFFeS3Kj3sLqY8NMYBEdA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/vite-node/-/vite-node-2.1.3.tgz}
@@ -5284,48 +5195,6 @@ packages:
       terser:
         optional: true
     dependencies:
-      esbuild: registry.npmjs.org/esbuild/0.21.5
-      postcss: registry.npmjs.org/postcss/8.4.47
-      rollup: registry.npmjs.org/rollup/4.24.0
-    optionalDependencies:
-      fsevents: registry.npmjs.org/fsevents/2.3.3
-    dev: true
-
-  registry.npmjs.org/vite/5.4.9_@types+node@22.7.8:
-    resolution: {integrity: sha512-20OVpJHh0PAM0oSOELa5GaZNWeDjcAvQjGXy2Uyr+Tp+/D2/Hdz6NLgpJLsarPTA2QJ6v8mX2P1ZfbsSKvdMkg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/vite/-/vite-5.4.9.tgz}
-    id: registry.npmjs.org/vite/5.4.9
-    name: vite
-    version: 5.4.9
-    engines: {node: ^18.0.0 || >=20.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': ^18.0.0 || >=20.0.0
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      sass-embedded: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      sass-embedded:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      '@types/node': registry.npmjs.org/@types/node/22.7.8
       esbuild: registry.npmjs.org/esbuild/0.21.5
       postcss: registry.npmjs.org/postcss/8.4.47
       rollup: registry.npmjs.org/rollup/4.24.0

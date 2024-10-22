@@ -29,9 +29,9 @@
       "@voyagejs/table": ["packages/table/src/index.ts"],
       "@demos/form": ["packages/form/demos/index.ts"],
       "@demos/plugins": ["packages/plugins/demos/index.ts"],
-      "@demos/table": ["packages/table/demos/index.ts"],
+      "@demos/table": ["packages/table/demos/index.ts"]
     }
   },
   // "include": ["packages/*"],
-  "exclude": ["**/dist", "**/es", "**/lib", "**/demos"]
+  "exclude": ["**/dist", "**/es", "**/lib"]
 }

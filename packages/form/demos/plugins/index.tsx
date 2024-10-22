@@ -1,3 +1,4 @@
+import React from 'react';
 import { Divider } from 'antd';
 import { FormItem, Form, FormGroup, useForm } from '@voyagejs/form';
 import { plugins, type CustomPluginsType } from './plugins';

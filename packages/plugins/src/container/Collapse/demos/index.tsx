@@ -1,5 +1,5 @@
 import { Form, useForm, FormGroup } from '@voyagejs/form';
-import { DEFAULT_COMPONENT_PLUGINS, DEFAULT_CONTAINER_PLUGINS } from '../../..';
+import { DEFAULT_COMPONENT_PLUGINS, DEFAULT_CONTAINER_PLUGINS } from '@voyagejs/plugins';
 
 export function CollapsePlugin() {
   const [form] = useForm({ plugins: Object.assign({}, DEFAULT_COMPONENT_PLUGINS, DEFAULT_CONTAINER_PLUGINS) });
