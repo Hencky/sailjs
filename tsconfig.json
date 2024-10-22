@@ -32,6 +32,6 @@
       "@demos/table": ["packages/table/demos/index.ts"]
     }
   },
-  // "include": ["packages/*"],
-  "exclude": ["**/dist", "**/es", "**/lib"]
+  "include": ["packages/**/*.ts", "packages/**/*.tsx"]
+  // "exclude": ["**/demos"]
 }

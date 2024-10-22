@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, Space } from 'antd';
 import { ActionContainer } from '@voyagejs/plugins';
 

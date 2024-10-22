@@ -1,8 +1,8 @@
 import { isObject } from 'radash';
 import { makeObservable, observable, computed, toJS, runInAction } from 'mobx';
 import type { TableProps as ATableProps, TablePaginationConfig } from 'antd';
-import type { TableRowSelection } from 'antd/es/table/interface';
 import type { TableProps, SorterParams } from './interface';
+import type { TableRowSelection } from 'antd/lib/table/interface';
 
 export class TableStore<RecordType extends Object = any> implements TableProps<RecordType> {
   loading = false;
@@ -130,17 +130,17 @@ export class TableStore<RecordType extends Object = any> implements TableProps<R
     return this.selectedRows.map((rowData) => rowData[this.rowKey as keyof RecordType]);
   }
 
-  get tableProps() {
+  get tableProps(): ATableProps<RecordType> {
     return {
       dataSource: this.dataSource,
       pagination: this.pagination,
       loading: this.loading,
       rowSelection: this.rowSelection
-        ? {
+        ? ({
             ...(this.rowSelection === true ? {} : this.rowSelection),
             selectedRowKeys: this.selectedRowKeys,
             onChange: this.onRowSelectionChange,
-          }
+          } as TableRowSelection<RecordType>)
         : undefined,
     };
   }
