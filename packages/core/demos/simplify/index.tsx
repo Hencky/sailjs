@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form } from '@voyagejs/core';
+import { Form } from '@voyagejs/form';
 import { Input, Button } from 'antd';
 
 const { useForm, Item, Group, useFormIntance } = Form;

@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Input, Button, Divider, Select, Space } from 'antd';
-import { FormItem, Form, useForm, FieldMode } from '@voyagejs/core';
+import { FormItem, Form, useForm, FieldMode } from '@voyagejs/form';
 
 export function ItemInstance(props: any) {
   const [form] = useForm();

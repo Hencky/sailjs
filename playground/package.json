@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@voyagejs/core": "workspace:*",
+    "@voyagejs/form": "workspace:*",
     "@voyagejs/plugins": "workspace:*",
     "@voyagejs/shared": "workspace:*",
     "antd": "^4.24.15",

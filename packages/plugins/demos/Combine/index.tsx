@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, useForm, FormGroup } from '@voyagejs/core';
+import { Form, useForm, FormGroup } from '@voyagejs/form';
 import { DEFAULT_PLUGINS, DefaultPluginsType } from '../../src';
 
 export function CombineDemo() {

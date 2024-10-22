@@ -1,7 +1,7 @@
 import React from 'react';
 import { Collapse as ACollapse } from 'antd';
-import { FormGroup } from '@voyagejs/core';
-import type { FormGroupProps } from '@voyagejs/core';
+import { FormGroup } from '@voyagejs/form';
+import type { FormGroupProps } from '@voyagejs/form';
 import type { CollapseProps as ACollapseProps } from 'antd/lib/collapse';
 import type { ItemType } from 'rc-collapse/es/interface';
 

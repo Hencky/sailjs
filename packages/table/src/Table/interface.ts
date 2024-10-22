@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import type { ModalFormInstance } from '@voyagejs/form';
 import type { ColumnType as AColumnType, TableProps as ATableProps } from 'antd/lib/table';
 import type { Key, SorterResult, TableRowSelection } from 'antd/lib/table/interface';
 
@@ -79,7 +80,13 @@ export interface TableInstance<RecordType extends Object = any> {
 }
 
 export interface ColumnType<RecordType> extends Omit<AColumnType<RecordType>, 'render' | 'key'> {
-  render?: (ctx: { value: RecordType; index: number; table: TableInstance; record: RecordType }) => ReactElement;
+  render?: (ctx: {
+    value: RecordType;
+    index: number;
+    table: TableInstance;
+    record: RecordType;
+    modal: ModalFormInstance;
+  }) => ReactElement;
   key?: string;
   /** 列显示状态，为false时隐藏列 */
   visible?: boolean;

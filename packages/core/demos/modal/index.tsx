@@ -1,7 +1,7 @@
 import { memo, useEffect } from 'react';
 import { sleep } from 'radash';
 import { Button, Input, Select } from 'antd';
-import { useModal, useModalForm, FormGroup } from '@voyagejs/core';
+import { useModal, useModalForm, FormGroup } from '@voyagejs/form';
 
 const Content = () => {
   useEffect(() => {

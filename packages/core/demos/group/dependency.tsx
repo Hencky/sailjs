@@ -1,5 +1,5 @@
 import { Input, Select } from 'antd';
-import { Form, useForm, FormGroup, FieldMode } from '@voyagejs/core';
+import { Form, useForm, FormGroup, FieldMode } from '@voyagejs/form';
 
 export function GroupDependency() {
   const [form] = useForm();

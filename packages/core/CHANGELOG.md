@@ -1,4 +1,4 @@
-# @voyagejs/core
+# @voyagejs/form
 
 ## 0.1.0
 

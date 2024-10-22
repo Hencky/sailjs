@@ -1,5 +1,5 @@
 import { Divider } from 'antd';
-import { FormItem, Form, FormGroup, useForm } from '@voyagejs/core';
+import { FormItem, Form, FormGroup, useForm } from '@voyagejs/form';
 import { plugins, type CustomPluginsType } from './plugins';
 
 export function Plugins() {

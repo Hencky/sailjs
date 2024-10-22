@@ -22,7 +22,7 @@
 
     "baseUrl": "./",
     "paths": {
-      "@voyagejs/core": ["packages/core/src/index.ts"],
+      "@voyagejs/form": ["packages/core/src/index.ts"],
       "@voyagejs/register": ["packages/register/src/index.ts"],
       "@voyagejs/plugins": ["packages/plugins/src/index.ts"],
       "@voyagejs/shared": ["packages/shared/src/index.ts"],

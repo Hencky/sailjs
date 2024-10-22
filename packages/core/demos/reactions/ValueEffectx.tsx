@@ -1,5 +1,5 @@
 import { Card, Input } from 'antd';
-import { FormItem, Form, useForm } from '@voyagejs/core';
+import { FormItem, Form, useForm } from '@voyagejs/form';
 
 export function ValueEffects() {
   const [form] = useForm();

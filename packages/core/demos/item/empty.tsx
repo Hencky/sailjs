@@ -1,4 +1,4 @@
-import { Form, useForm, FormItem } from '@voyagejs/core';
+import { Form, useForm, FormItem } from '@voyagejs/form';
 
 export const EmptyItem = () => {
   const [form] = useForm();

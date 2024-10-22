@@ -1,6 +1,6 @@
 import { sleep } from 'radash';
 import { Input } from 'antd';
-import { FormItem, Form, useForm } from '@voyagejs/core';
+import { FormItem, Form, useForm } from '@voyagejs/form';
 
 export function RemoteValues() {
   const [form] = useForm();

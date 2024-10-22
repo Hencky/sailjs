@@ -1,10 +1,11 @@
+import type { ModalFormInstance } from '@voyagejs/form';
+import type { ColumnType as AColumnType } from 'antd/lib/table';
 import type { TableStore } from './store';
 import type { ColumnType } from './interface';
-import type { ColumnType as AColumnType } from 'antd/lib/table';
 
 export function renderColumns<RecordType = unknown>(
   columns: ColumnType<RecordType>[],
-  ctx: TableStore,
+  ctx: { table: TableStore; modal: ModalFormInstance },
   callback?: (columnData: any) => void
 ): AColumnType<RecordType>[] {
   return columns

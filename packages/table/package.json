@@ -19,6 +19,7 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@voyagejs/form": "workspace:*",
     "@voyagejs/register": "workspace:*",
     "@voyagejs/shared": "workspace:*",
     "antd": "^4.24.15",
