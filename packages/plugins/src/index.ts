@@ -1,4 +1,5 @@
 export * from './form';
+export * from './actions';
 export * from './container';
 
 import { DEFAULT_COMPONENT_PLUGINS, DefaultComponentPluginsType } from './form';

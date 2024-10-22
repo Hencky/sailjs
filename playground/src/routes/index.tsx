@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu } from 'antd';
+import { Menu, Space } from 'antd';
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 
 import 'antd/dist/antd.css';
@@ -24,7 +24,15 @@ import {
   ValueDependencyObj,
 } from '@demos/form';
 import { TableDemo } from '@demos/table';
-import { CollapsePlugin, SpacePlugin, FlexPlugin, CardPlugin, CombineDemo } from '@demos/plugins';
+import {
+  CollapsePlugin,
+  SpacePlugin,
+  FlexPlugin,
+  CardPlugin,
+  CombineDemo,
+  ModalConfirmDemo,
+  ActionContainerDemo,
+} from '@demos/plugins';
 
 const list = [
   {
@@ -163,6 +171,16 @@ const list = [
         element: <FlexPlugin />,
       },
     ],
+  },
+  {
+    label: '行为插件',
+    path: '/actions',
+    element: (
+      <Space style={{ display: 'flex' }}>
+        <ModalConfirmDemo />
+        <ActionContainerDemo />
+      </Space>
+    ),
   },
   {
     label: '弹框',
