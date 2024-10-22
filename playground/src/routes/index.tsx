@@ -22,7 +22,7 @@ import {
   ValueDependency,
   GroupDependency,
   ValueDependencyObj,
-} from '@demos/core';
+} from '@demos/form';
 import { TableDemo } from '@demos/table';
 import { CollapsePlugin, SpacePlugin, FlexPlugin, CardPlugin, CombineDemo } from '@demos/plugins';
 

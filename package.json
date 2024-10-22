@@ -10,31 +10,31 @@
     "start": "pnpm dev --filter @voyagejs/playground",
     "lint": "eslint .",
     "preview": "vite preview",
-    "clear": "rimraf 'packages/*/{es,node_modules,coverage}' && rimraf node_modules",
+    "clean": "rimraf packages/**/node_modules packages/**/es && rimraf node_modules",
     "prebuild": "npx only-allow pnpm",
     "release": "pnpm changeset publish"
   },
   "dependencies": {
-    "antd": "^4.24.15",
+    "antd": "^4.24.16",
     "radash": "^12.1.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-router-dom": "^6.26.1"
+    "react-router-dom": "^6.27.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.8.0",
-    "@types/react": "^16.0.0",
-    "@types/react-dom": "^16.0.0",
-    "@vitejs/plugin-react": "^4.3.1",
+    "@eslint/js": "^9.13.0",
+    "@types/react": "^16.14.62",
+    "@types/react-dom": "^16.9.24",
+    "@vitejs/plugin-react": "^4.3.3",
     "concurrently": "^9.0.1",
-    "eslint": "^9.8.0",
-    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
-    "eslint-plugin-react-refresh": "^0.4.9",
-    "globals": "^15.9.0",
-    "typescript": "^5.5.3",
-    "typescript-eslint": "^8.0.0",
-    "vite": "^5.4.0",
-    "vite-plugin-dts": "^4.2.3",
-    "vitest": "^2.1.1"
+    "eslint": "^9.13.0",
+    "eslint-plugin-react-hooks": "^5.1.0-rc-fb9a90fa48-20240614",
+    "eslint-plugin-react-refresh": "^0.4.13",
+    "globals": "^15.11.0",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.11.0",
+    "vite": "^5.4.9",
+    "vite-plugin-dts": "^4.2.4",
+    "vitest": "^2.1.3"
   }
 }

@@ -22,12 +22,12 @@
 
     "baseUrl": "./",
     "paths": {
-      "@voyagejs/form": ["packages/core/src/index.ts"],
+      "@voyagejs/form": ["packages/form/src/index.ts"],
       "@voyagejs/register": ["packages/register/src/index.ts"],
       "@voyagejs/plugins": ["packages/plugins/src/index.ts"],
       "@voyagejs/shared": ["packages/shared/src/index.ts"],
       "@voyagejs/table": ["packages/table/src/index.ts"],
-      "@demos/core": ["packages/core/demos/index.ts"],
+      "@demos/form": ["packages/form/demos/index.ts"],
       "@demos/plugins": ["packages/plugins/demos/index.ts"],
       "@demos/table": ["packages/table/demos/index.ts"],
     }

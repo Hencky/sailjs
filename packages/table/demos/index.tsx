@@ -62,11 +62,13 @@ export const TableDemo = () => {
             render: (ctx) => {
               return (
                 <Button
+                  type="text"
+                  size="small"
                   onClick={() => {
                     console.log('record', ctx.record);
                     ctx.modal.open({
                       title: '编辑',
-                      children: <div>编辑</div>,
+                      children: <div>内容</div>,
                     });
                   }}
                 >
