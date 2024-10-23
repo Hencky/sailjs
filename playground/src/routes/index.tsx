@@ -30,6 +30,7 @@ import {
   FlexPlugin,
   CardPlugin,
   CombineDemo,
+  BaseIcon,
   ModalConfirmDemo,
   ActionContainerDemo,
 } from '@demos/plugins';
@@ -179,6 +180,7 @@ const list = [
       <Space style={{ display: 'flex' }}>
         <ModalConfirmDemo />
         <ActionContainerDemo />
+        <BaseIcon />
       </Space>
     ),
   },

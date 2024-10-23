@@ -1,0 +1,31 @@
+@import '../../../../styles/index.less';
+
+@text-prefix-cls: ~'@{ant-prefix}-text';
+
+@text-prefix-cls: ~'@{ant-prefix}-text';
+
+.@{text-prefix-cls} {
+  font-size: 14px;
+
+  &-type {
+    &-title {
+      font-size: 16px;
+      color: @text-primary-color !important;
+    }
+
+    &-primary {
+      font-size: 14px;
+      color: @primary-color !important;
+    }
+
+    &-text {
+      font-size: 14px;
+      color: @text-basic-color !important;
+    }
+
+    &-description {
+      font-size: 14px;
+      color: @text-shallow-color !important;
+    }
+  }
+}

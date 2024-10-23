@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@voyagejs/form": "workspace:*",
-    "@voyagejs/register": "workspace:*",
+    "@voyagejs/plugins": "workspace:*",
     "@voyagejs/shared": "workspace:*",
     "antd": "^4.24.16",
     "mobx": "^6.13.5",

@@ -1,0 +1,59 @@
+@import '../../../../styles/index.less';
+
+@icon-prefix-cls: ~'@{ant-prefix}-base-icon';
+
+.@{icon-prefix-cls} {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    color: @primary-color !important;
+  }
+
+  &-disabled {
+    color: @icon-disabled-color !important;
+    cursor: not-allowed;
+  }
+
+  &-icon-loading {
+    display: none;
+  }
+
+  & &-loading-placeholder {
+    display: none;
+    color: @primary-color !important;
+  }
+
+  &-primary {
+    color: @primary-color !important;
+
+    &:hover {
+      color: @primary-color !important;
+    }
+  }
+
+  &-error {
+    color: @error-color !important;
+
+    &:hover {
+      color: @error-color !important;
+    }
+  }
+
+  &-success {
+    color: @success-color !important;
+
+    &:hover {
+      color: @success-color !important;
+    }
+  }
+
+  &-warning {
+    color: @warning-color !important;
+
+    &:hover {
+      color: @warning-color !important;
+    }
+  }
+}

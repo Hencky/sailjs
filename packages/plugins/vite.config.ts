@@ -16,4 +16,12 @@ export default mergeConfig(commonConfig, {
       },
     },
   },
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+        additionalData: `@import "${resolve(__dirname, 'src/style/index.less')}";`,
+      },
+    },
+  },
 });

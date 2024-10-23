@@ -20,4 +20,11 @@ export default defineConfig({
       '@voyagejs/table': path.resolve(__dirname, '../packages/table/src/index.ts'),
     },
   },
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+      },
+    },
+  },
 });

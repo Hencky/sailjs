@@ -36,7 +36,7 @@ export const Table = observer(
         <ATable
           rowKey={'id'}
           bordered={false}
-          onChange={table.onTableChagne}
+          onChange={table.onTableChange}
           {...toJS(table.tableProps)}
           columns={renderColumns(columns!, { table, modal: modalCtx })}
         />

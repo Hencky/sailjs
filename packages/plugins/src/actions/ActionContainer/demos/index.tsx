@@ -14,7 +14,7 @@ export const ActionContainerDemo = () => {
       </ActionContainer>
 
       <ActionContainer
-        tooltip={{ placement: 'right', title: '提示' }}
+        tooltip={{ placement: 'bottom', title: '提示' }}
         onClick={() => {
           console.log('ok');
         }}
@@ -32,7 +32,7 @@ export const ActionContainerDemo = () => {
       </ActionContainer>
 
       <ActionContainer
-        confirm={{ title: '确认?', placement: 'right' }}
+        confirm={{ title: '确认?', placement: 'bottom' }}
         onClick={() => {
           console.log('ok');
         }}

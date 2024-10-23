@@ -103,7 +103,7 @@ export class TableStore<RecordType extends Object = any> implements TableProps<R
     this.refresh();
   }
 
-  onTableChagne: TableProps<RecordType>['onChange'] = (pagination, filters, sorter, ...args) => {
+  onTableChange: TableProps<RecordType>['onChange'] = (pagination, filters, sorter, ...args) => {
     this.pagination = pagination;
     this.filter = filters;
     this.sorter = sorter;

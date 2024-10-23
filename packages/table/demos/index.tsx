@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { toJS } from 'mobx';
 import { Space, Button } from 'antd';
 import { Table, TableRef } from '@voyagejs/table';
@@ -9,7 +9,7 @@ export const TableDemo = () => {
 
   return (
     <div>
-      <Space style={{ marginBottom: 16 }}>
+      <Space style={{ marginBottom: 16 }} wrap>
         <Button onClick={() => ref.current!.table.refresh()}>刷新表格</Button>
         <Button onClick={() => ref.current!.table.refresh({ a: 1 })}>刷新表格带参数</Button>
         <Button onClick={() => ref.current!.table.reset()}>重置到初始状态</Button>
